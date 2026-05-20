@@ -1,0 +1,502 @@
+[
+  {
+    "id": "VCA-ALH-VIN-MOP-PEN-001",
+    "collection": "alhambra",
+    "category": "pendant",
+    "name": {
+      "en": "Vintage Alhambra pendant, mother-of-pearl",
+      "fr": "Pendentif Vintage Alhambra, nacre"
+    },
+    "description": {
+      "en": "Iconic four-motif clover pendant in 18K yellow gold framed by a beaded edge, set with a single white mother-of-pearl medallion.",
+      "fr": "Pendentif emblématique au motif trèfle en or jaune 18 carats serti d'une médaille de nacre blanche, bordure perlée."
+    },
+    "material": "yellow_gold",
+    "stones": ["mother_of_pearl"],
+    "price_chf": 3950,
+    "year_introduced": 1968,
+    "image_path": "images/vca-alh-vin-mop-pen-001.jpg",
+    "is_high_jewelry": false,
+    "tags": ["everyday", "iconic", "entry", "gift"]
+  },
+  {
+    "id": "VCA-ALH-VIN-CAR-PEN-002",
+    "collection": "alhambra",
+    "category": "pendant",
+    "name": {
+      "en": "Vintage Alhambra pendant, carnelian",
+      "fr": "Pendentif Vintage Alhambra, cornaline"
+    },
+    "description": {
+      "en": "Vintage Alhambra in 18K yellow gold with a warm carnelian medallion — a signature autumn piece from the maison.",
+      "fr": "Pendentif Vintage Alhambra en or jaune 18 carats avec médaille de cornaline — signature automnale de la maison."
+    },
+    "material": "yellow_gold",
+    "stones": ["carnelian"],
+    "price_chf": 4200,
+    "year_introduced": 1968,
+    "image_path": "images/vca-alh-vin-car-pen-002.jpg",
+    "is_high_jewelry": false,
+    "tags": ["everyday", "iconic", "gift"]
+  },
+  {
+    "id": "VCA-ALH-VIN-ONX-BRC-003",
+    "collection": "alhambra",
+    "category": "bracelet",
+    "name": {
+      "en": "Vintage Alhambra five-motif bracelet, onyx",
+      "fr": "Bracelet Vintage Alhambra cinq motifs, onyx"
+    },
+    "description": {
+      "en": "Five Alhambra motifs in 18K yellow gold with deep black onyx, articulated for everyday wear.",
+      "fr": "Cinq motifs Alhambra en or jaune 18 carats sertis d'onyx noir, articulés pour le port quotidien."
+    },
+    "material": "yellow_gold",
+    "stones": ["onyx"],
+    "price_chf": 6800,
+    "year_introduced": 1968,
+    "image_path": "images/vca-alh-vin-onx-brc-003.jpg",
+    "is_high_jewelry": false,
+    "tags": ["bracelet", "everyday", "iconic"]
+  },
+  {
+    "id": "VCA-ALH-MAG-MOP-NCK-004",
+    "collection": "alhambra",
+    "category": "necklace",
+    "name": {
+      "en": "Magic Alhambra long necklace, six motifs",
+      "fr": "Sautoir Magic Alhambra six motifs"
+    },
+    "description": {
+      "en": "Long necklace with six oversized Magic Alhambra motifs alternating mother-of-pearl and 18K yellow gold.",
+      "fr": "Sautoir composé de six grands motifs Magic Alhambra alternant nacre et or jaune 18 carats."
+    },
+    "material": "yellow_gold",
+    "stones": ["mother_of_pearl"],
+    "price_chf": 28500,
+    "year_introduced": 2006,
+    "image_path": "images/vca-alh-mag-mop-nck-004.jpg",
+    "is_high_jewelry": false,
+    "tags": ["necklace", "statement", "evening"]
+  },
+  {
+    "id": "VCA-ALH-SWT-MOP-EAR-005",
+    "collection": "alhambra",
+    "category": "earrings",
+    "name": {
+      "en": "Sweet Alhambra earstuds, mother-of-pearl",
+      "fr": "Boucles d'oreilles Sweet Alhambra, nacre"
+    },
+    "description": {
+      "en": "Petite Alhambra earstuds in 18K yellow gold and mother-of-pearl — a discreet daily classic.",
+      "fr": "Petites boucles d'oreilles Alhambra en or jaune 18 carats et nacre — un classique discret."
+    },
+    "material": "yellow_gold",
+    "stones": ["mother_of_pearl"],
+    "price_chf": 2150,
+    "year_introduced": 2007,
+    "image_path": "images/vca-alh-swt-mop-ear-005.jpg",
+    "is_high_jewelry": false,
+    "tags": ["earrings", "everyday", "entry", "gift"]
+  },
+  {
+    "id": "VCA-ALH-VIN-MAL-RNG-006",
+    "collection": "alhambra",
+    "category": "ring",
+    "name": {
+      "en": "Vintage Alhambra ring, malachite",
+      "fr": "Bague Vintage Alhambra, malachite"
+    },
+    "description": {
+      "en": "Single-motif Alhambra ring in 18K yellow gold with a malachite medallion.",
+      "fr": "Bague mono-motif Alhambra en or jaune 18 carats avec médaille de malachite."
+    },
+    "material": "yellow_gold",
+    "stones": ["malachite"],
+    "price_chf": 3850,
+    "year_introduced": 1968,
+    "image_path": "images/vca-alh-vin-mal-rng-006.jpg",
+    "is_high_jewelry": false,
+    "tags": ["ring", "everyday", "iconic"]
+  },
+  {
+    "id": "VCA-ALH-PUR-DIA-EAR-007",
+    "collection": "alhambra",
+    "category": "earrings",
+    "name": {
+      "en": "Pure Alhambra diamond earrings",
+      "fr": "Boucles d'oreilles Pure Alhambra diamants"
+    },
+    "description": {
+      "en": "Pure Alhambra motif fully paved with round brilliant diamonds, set in 18K white gold.",
+      "fr": "Motif Pure Alhambra entièrement pavé de diamants ronds, serti en or blanc 18 carats."
+    },
+    "material": "white_gold",
+    "stones": ["diamond"],
+    "price_chf": 21500,
+    "year_introduced": 2009,
+    "image_path": "images/vca-alh-pur-dia-ear-007.jpg",
+    "is_high_jewelry": false,
+    "tags": ["earrings", "evening", "celebration"]
+  },
+  {
+    "id": "VCA-ALH-MAG-LAP-NCK-008",
+    "collection": "alhambra",
+    "category": "necklace",
+    "name": {
+      "en": "Magic Alhambra necklace, lapis lazuli",
+      "fr": "Collier Magic Alhambra, lapis-lazuli"
+    },
+    "description": {
+      "en": "Three Magic Alhambra motifs in 18K yellow gold with lapis lazuli, an emblem of the maison's stone heritage.",
+      "fr": "Trois motifs Magic Alhambra en or jaune 18 carats sertis de lapis-lazuli."
+    },
+    "material": "yellow_gold",
+    "stones": ["lapis_lazuli"],
+    "price_chf": 18900,
+    "year_introduced": 2006,
+    "image_path": "images/vca-alh-mag-lap-nck-008.jpg",
+    "is_high_jewelry": false,
+    "tags": ["necklace", "statement", "evening"]
+  },
+  {
+    "id": "VCA-FRV-YG-RNG-009",
+    "collection": "frivole",
+    "category": "ring",
+    "name": {
+      "en": "Frivole between-the-finger ring, yellow gold",
+      "fr": "Bague Frivole entre-les-doigts, or jaune"
+    },
+    "description": {
+      "en": "Two heart-shaped Frivole flowers in mirror-polished 18K yellow gold, designed to drape across two fingers.",
+      "fr": "Deux fleurs Frivole aux pétales en forme de cœur, en or jaune 18 carats poli miroir, à porter entre deux doigts."
+    },
+    "material": "yellow_gold",
+    "stones": [],
+    "price_chf": 8600,
+    "year_introduced": 2003,
+    "image_path": "images/vca-frv-yg-rng-009.jpg",
+    "is_high_jewelry": false,
+    "tags": ["ring", "statement", "design"]
+  },
+  {
+    "id": "VCA-FRV-DIA-EAR-010",
+    "collection": "frivole",
+    "category": "earrings",
+    "name": {
+      "en": "Frivole earrings, diamond pavé",
+      "fr": "Boucles d'oreilles Frivole, pavage diamants"
+    },
+    "description": {
+      "en": "Three Frivole flowers pavé-set with round brilliant diamonds in 18K white gold — light and luminous.",
+      "fr": "Trois fleurs Frivole pavées de diamants ronds en or blanc 18 carats — lumineuses et légères."
+    },
+    "material": "white_gold",
+    "stones": ["diamond"],
+    "price_chf": 32500,
+    "year_introduced": 2003,
+    "image_path": "images/vca-frv-dia-ear-010.jpg",
+    "is_high_jewelry": false,
+    "tags": ["earrings", "evening", "celebration", "investment"]
+  },
+  {
+    "id": "VCA-FRV-YG-PEN-011",
+    "collection": "frivole",
+    "category": "pendant",
+    "name": {
+      "en": "Frivole pendant, mini model",
+      "fr": "Pendentif Frivole, mini modèle"
+    },
+    "description": {
+      "en": "Mini Frivole flower in 18K yellow gold suspended on a fine chain.",
+      "fr": "Mini fleur Frivole en or jaune 18 carats sur chaîne fine."
+    },
+    "material": "yellow_gold",
+    "stones": [],
+    "price_chf": 2950,
+    "year_introduced": 2003,
+    "image_path": "images/vca-frv-yg-pen-011.jpg",
+    "is_high_jewelry": false,
+    "tags": ["pendant", "everyday", "entry", "gift"]
+  },
+  {
+    "id": "VCA-FRV-DIA-BRC-012",
+    "collection": "frivole",
+    "category": "bracelet",
+    "name": {
+      "en": "Frivole bracelet, diamond pavé",
+      "fr": "Bracelet Frivole, pavage diamants"
+    },
+    "description": {
+      "en": "A line of Frivole flowers in 18K white gold pavé-set with diamonds.",
+      "fr": "Bracelet de fleurs Frivole en or blanc 18 carats serties de diamants."
+    },
+    "material": "white_gold",
+    "stones": ["diamond"],
+    "price_chf": 41000,
+    "year_introduced": 2003,
+    "image_path": "images/vca-frv-dia-brc-012.jpg",
+    "is_high_jewelry": false,
+    "tags": ["bracelet", "evening", "investment"]
+  },
+  {
+    "id": "VCA-BAL-DIA-CLP-013",
+    "collection": "ballerinas",
+    "category": "brooch",
+    "name": {
+      "en": "Ballerina clip, diamond",
+      "fr": "Clip Ballerine, diamants"
+    },
+    "description": {
+      "en": "Sculpted ballerina figurine in platinum and 18K white gold with diamond tutu — a tribute to the maison's 1940s Broadway era.",
+      "fr": "Ballerine sculptée en platine et or blanc 18 carats au tutu de diamants — hommage à l'ère Broadway des années 1940 de la maison."
+    },
+    "material": "platinum",
+    "stones": ["diamond"],
+    "price_chf": 92000,
+    "year_introduced": 1941,
+    "image_path": "images/vca-bal-dia-clp-013.jpg",
+    "is_high_jewelry": true,
+    "tags": ["high_jewelry", "collector", "investment", "archive"]
+  },
+  {
+    "id": "VCA-BAL-EME-CLP-014",
+    "collection": "ballerinas",
+    "category": "brooch",
+    "name": {
+      "en": "Ballerina clip, emerald",
+      "fr": "Clip Ballerine, émeraude"
+    },
+    "description": {
+      "en": "Ballerina figurine with a face composed of a single rose-cut emerald, body paved in diamonds.",
+      "fr": "Ballerine au visage composé d'une émeraude taille rose, corps pavé de diamants."
+    },
+    "material": "platinum",
+    "stones": ["emerald", "diamond"],
+    "price_chf": 168000,
+    "year_introduced": 1944,
+    "image_path": "images/vca-bal-eme-clp-014.jpg",
+    "is_high_jewelry": true,
+    "tags": ["high_jewelry", "collector", "investment", "archive"]
+  },
+  {
+    "id": "VCA-LCK-CAT-PEN-015",
+    "collection": "lucky_animals",
+    "category": "pendant",
+    "name": {
+      "en": "Lucky Animals pendant, cat",
+      "fr": "Pendentif Lucky Animals, chat"
+    },
+    "description": {
+      "en": "Playful cat motif in 18K yellow gold with onyx and tsavorite eyes, on a delicate chain.",
+      "fr": "Motif chat ludique en or jaune 18 carats avec onyx et yeux en tsavorite, sur chaîne fine."
+    },
+    "material": "yellow_gold",
+    "stones": ["onyx", "tsavorite"],
+    "price_chf": 4600,
+    "year_introduced": 2014,
+    "image_path": "images/vca-lck-cat-pen-015.jpg",
+    "is_high_jewelry": false,
+    "tags": ["pendant", "gift", "design"]
+  },
+  {
+    "id": "VCA-LCK-BTF-PEN-016",
+    "collection": "lucky_animals",
+    "category": "pendant",
+    "name": {
+      "en": "Lucky Animals pendant, butterfly",
+      "fr": "Pendentif Lucky Animals, papillon"
+    },
+    "description": {
+      "en": "Butterfly motif in 18K rose gold with mother-of-pearl wings and a diamond body.",
+      "fr": "Motif papillon en or rose 18 carats aux ailes de nacre et corps de diamants."
+    },
+    "material": "rose_gold",
+    "stones": ["mother_of_pearl", "diamond"],
+    "price_chf": 5400,
+    "year_introduced": 2014,
+    "image_path": "images/vca-lck-btf-pen-016.jpg",
+    "is_high_jewelry": false,
+    "tags": ["pendant", "gift", "everyday"]
+  },
+  {
+    "id": "VCA-PRL-YG-BRC-017",
+    "collection": "perlee",
+    "category": "bracelet",
+    "name": {
+      "en": "Perlée bracelet, signature",
+      "fr": "Bracelet Perlée, signature"
+    },
+    "description": {
+      "en": "Signature beaded golden bracelet, an ode to the maison's mastery of the granulation technique.",
+      "fr": "Bracelet doré perlé signature, hommage à la maîtrise de la granulation par la maison."
+    },
+    "material": "yellow_gold",
+    "stones": [],
+    "price_chf": 12500,
+    "year_introduced": 2008,
+    "image_path": "images/vca-prl-yg-brc-017.jpg",
+    "is_high_jewelry": false,
+    "tags": ["bracelet", "everyday", "design"]
+  },
+  {
+    "id": "VCA-PRL-DIA-RNG-018",
+    "collection": "perlee",
+    "category": "ring",
+    "name": {
+      "en": "Perlée diamond ring, large model",
+      "fr": "Bague Perlée diamants, grand modèle"
+    },
+    "description": {
+      "en": "Perlée ring with a paved diamond band in 18K white gold.",
+      "fr": "Bague Perlée à pavage de diamants en or blanc 18 carats."
+    },
+    "material": "white_gold",
+    "stones": ["diamond"],
+    "price_chf": 13800,
+    "year_introduced": 2010,
+    "image_path": "images/vca-prl-dia-rng-018.jpg",
+    "is_high_jewelry": false,
+    "tags": ["ring", "wedding", "celebration"]
+  },
+  {
+    "id": "VCA-ALH-VIN-TUR-EAR-019",
+    "collection": "alhambra",
+    "category": "earrings",
+    "name": {
+      "en": "Vintage Alhambra earrings, turquoise",
+      "fr": "Boucles d'oreilles Vintage Alhambra, turquoise"
+    },
+    "description": {
+      "en": "A rare seasonal edition of the Alhambra in turquoise, set in 18K yellow gold.",
+      "fr": "Édition saisonnière rare de l'Alhambra en turquoise, sertie en or jaune 18 carats."
+    },
+    "material": "yellow_gold",
+    "stones": ["turquoise"],
+    "price_chf": 6900,
+    "year_introduced": 2017,
+    "image_path": "images/vca-alh-vin-tur-ear-019.jpg",
+    "is_high_jewelry": false,
+    "tags": ["earrings", "rare", "collector"]
+  },
+  {
+    "id": "VCA-ALH-VIN-TIG-BRC-020",
+    "collection": "alhambra",
+    "category": "bracelet",
+    "name": {
+      "en": "Vintage Alhambra bracelet, tiger's eye",
+      "fr": "Bracelet Vintage Alhambra, œil-de-tigre"
+    },
+    "description": {
+      "en": "Five-motif bracelet in 18K yellow gold with tiger's eye medallions.",
+      "fr": "Bracelet cinq motifs en or jaune 18 carats serti d'œil-de-tigre."
+    },
+    "material": "yellow_gold",
+    "stones": ["tigers_eye"],
+    "price_chf": 7400,
+    "year_introduced": 2022,
+    "image_path": "images/vca-alh-vin-tig-brc-020.jpg",
+    "is_high_jewelry": false,
+    "tags": ["bracelet", "rare", "design"]
+  },
+  {
+    "id": "VCA-LCK-FRG-PEN-021",
+    "collection": "lucky_animals",
+    "category": "pendant",
+    "name": {
+      "en": "Lucky Animals pendant, frog",
+      "fr": "Pendentif Lucky Animals, grenouille"
+    },
+    "description": {
+      "en": "Talismanic frog motif in 18K yellow gold with chrysoprase body and diamond eyes.",
+      "fr": "Motif grenouille porte-bonheur en or jaune 18 carats avec corps en chrysoprase et yeux de diamants."
+    },
+    "material": "yellow_gold",
+    "stones": ["chrysoprase", "diamond"],
+    "price_chf": 5800,
+    "year_introduced": 2016,
+    "image_path": "images/vca-lck-frg-pen-021.jpg",
+    "is_high_jewelry": false,
+    "tags": ["pendant", "gift", "talisman"]
+  },
+  {
+    "id": "VCA-BAL-SPP-CLP-022",
+    "collection": "ballerinas",
+    "category": "brooch",
+    "name": {
+      "en": "Ballerina clip, sapphire",
+      "fr": "Clip Ballerine, saphir"
+    },
+    "description": {
+      "en": "Mid-century inspired ballerina clip with a rose-cut sapphire face and diamond tulle.",
+      "fr": "Clip Ballerine d'inspiration milieu de siècle, visage en saphir taille rose et tulle de diamants."
+    },
+    "material": "platinum",
+    "stones": ["sapphire", "diamond"],
+    "price_chf": 142000,
+    "year_introduced": 1946,
+    "image_path": "images/vca-bal-spp-clp-022.jpg",
+    "is_high_jewelry": true,
+    "tags": ["high_jewelry", "collector", "archive"]
+  },
+  {
+    "id": "VCA-FRV-YG-NCK-023",
+    "collection": "frivole",
+    "category": "necklace",
+    "name": {
+      "en": "Frivole necklace, mini model",
+      "fr": "Collier Frivole, mini modèle"
+    },
+    "description": {
+      "en": "Five mini Frivole flowers in 18K yellow gold along a fine chain.",
+      "fr": "Cinq mini fleurs Frivole en or jaune 18 carats le long d'une chaîne fine."
+    },
+    "material": "yellow_gold",
+    "stones": [],
+    "price_chf": 9600,
+    "year_introduced": 2003,
+    "image_path": "images/vca-frv-yg-nck-023.jpg",
+    "is_high_jewelry": false,
+    "tags": ["necklace", "everyday", "design"]
+  },
+  {
+    "id": "VCA-PRL-RG-RNG-024",
+    "collection": "perlee",
+    "category": "ring",
+    "name": {
+      "en": "Perlée couleurs ring, malachite",
+      "fr": "Bague Perlée couleurs, malachite"
+    },
+    "description": {
+      "en": "Perlée ring centred on a polished malachite inset in 18K rose gold with bead detailing.",
+      "fr": "Bague Perlée centrée d'une malachite polie sertie d'or rose 18 carats à détails perlés."
+    },
+    "material": "rose_gold",
+    "stones": ["malachite"],
+    "price_chf": 4400,
+    "year_introduced": 2013,
+    "image_path": "images/vca-prl-rg-rng-024.jpg",
+    "is_high_jewelry": false,
+    "tags": ["ring", "everyday", "gift"]
+  },
+  {
+    "id": "VCA-ALH-HOL-DIA-NCK-025",
+    "collection": "alhambra",
+    "category": "necklace",
+    "name": {
+      "en": "Holiday Alhambra necklace, diamond",
+      "fr": "Collier Holiday Alhambra, diamants"
+    },
+    "description": {
+      "en": "Limited holiday edition Alhambra long necklace with twenty motifs alternating diamond and mother-of-pearl.",
+      "fr": "Édition limitée des fêtes : sautoir Alhambra à vingt motifs alternant diamants et nacre."
+    },
+    "material": "white_gold",
+    "stones": ["diamond", "mother_of_pearl"],
+    "price_chf": 78500,
+    "year_introduced": 2023,
+    "image_path": "images/vca-alh-hol-dia-nck-025.jpg",
+    "is_high_jewelry": false,
+    "tags": ["necklace", "limited_edition", "celebration", "investment"]
+  }
+]

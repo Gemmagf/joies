@@ -1,0 +1,162 @@
+[
+  {
+    "id": "HER-001-ALHAMBRA-1968",
+    "title": {
+      "en": "1968 — The debut of the Alhambra motif",
+      "fr": "1968 — La naissance du motif Alhambra"
+    },
+    "body": {
+      "en": "In 1968, the maison introduced the Alhambra long necklace, a refined chain of four-leaf clover motifs framed by a beaded gold edge. Inspired by the geometric mosaics of the Alhambra palace in Granada, the design was conceived as a talisman of luck and quickly became one of the most recognisable signatures of the house.",
+      "fr": "En 1968, la maison présente le sautoir Alhambra, une succession raffinée de motifs trèfle à quatre feuilles bordés d'une perle d'or. Inspiré par les mosaïques géométriques du palais de l'Alhambra à Grenade, le motif est conçu comme un talisman de chance et devient rapidement l'une des signatures les plus reconnaissables de la maison."
+    },
+    "year": 1968,
+    "collection": "alhambra",
+    "tags": ["origin", "iconic", "history"],
+    "source": "Maison archives (fictional)",
+    "image_url": null
+  },
+  {
+    "id": "HER-002-MYSTERY-SETTING",
+    "title": {
+      "en": "1933 — The patenting of the Mystery Setting",
+      "fr": "1933 — Le brevet du Serti Mystérieux"
+    },
+    "body": {
+      "en": "The Mystery Setting was patented by the maison in 1933. The technique allows precious stones — typically rubies and sapphires — to be set in such a way that no metal is visible from the front. Each stone is individually cut, grooved, and slid along nearly invisible gold rails, producing a continuous surface of colour. Only a handful of artisans in the workshop are trained to execute it.",
+      "fr": "Le Serti Mystérieux est breveté par la maison en 1933. La technique permet de sertir les pierres précieuses — généralement rubis et saphirs — sans qu'aucun métal ne soit visible. Chaque pierre est taillée et rainurée individuellement, puis glissée sur de fins rails d'or, créant une surface continue de couleur. Seuls quelques artisans de l'atelier sont formés pour la réaliser."
+    },
+    "year": 1933,
+    "collection": null,
+    "tags": ["craftsmanship", "patent", "savoir_faire"],
+    "source": "Maison archives (fictional)",
+    "image_url": null
+  },
+  {
+    "id": "HER-003-FRIVOLE-INSPIRATION",
+    "title": {
+      "en": "2003 — Frivole, the heart-shaped petal",
+      "fr": "2003 — Frivole, le pétale en forme de cœur"
+    },
+    "body": {
+      "en": "Introduced in 2003, the Frivole collection reimagines the wildflower with petals shaped as miniature hearts. The mirror-polished gold is faceted to catch light at every angle, evoking the play of sun across a summer field. The collection has since expanded to between-the-finger rings and diamond pavé versions.",
+      "fr": "Lancée en 2003, la collection Frivole réinvente la fleur des champs avec des pétales en forme de cœur miniatures. L'or poli miroir est facetté pour capter la lumière sous tous les angles, évoquant le jeu du soleil dans un champ d'été. La collection s'est depuis enrichie de bagues entre-les-doigts et de versions pavées de diamants."
+    },
+    "year": 2003,
+    "collection": "frivole",
+    "tags": ["design", "inspiration"],
+    "source": "Maison archives (fictional)",
+    "image_url": null
+  },
+  {
+    "id": "HER-004-BALLERINAS-BROADWAY",
+    "title": {
+      "en": "1941 — Ballerinas and the Broadway years",
+      "fr": "1941 — Les Ballerines et les années Broadway"
+    },
+    "body": {
+      "en": "After the workshop temporarily relocated to New York during the war, the maison's designers began sculpting ballerina figurines as clips and brooches, drawing on the city's golden age of ballet and Broadway. The earliest ballerinas date to 1941; many were commissioned by collectors and remain in private hands.",
+      "fr": "Après le repli temporaire de l'atelier à New York pendant la guerre, les créateurs de la maison sculptent des figurines de ballerines en clips et broches, inspirés par l'âge d'or du ballet new-yorkais et de Broadway. Les premières ballerines datent de 1941 ; beaucoup furent commandées par des collectionneurs et demeurent en mains privées."
+    },
+    "year": 1941,
+    "collection": "ballerinas",
+    "tags": ["archive", "high_jewelry", "history"],
+    "source": "Maison archives (fictional)",
+    "image_url": null
+  },
+  {
+    "id": "HER-005-PLACE-VENDOME",
+    "title": {
+      "en": "1906 — The founding boutique at Place Vendôme",
+      "fr": "1906 — La boutique fondatrice de la place Vendôme"
+    },
+    "body": {
+      "en": "The maison opened its first boutique at 22 Place Vendôme in 1906. Conceived as a salon rather than a shop, the address established the codes of the modern luxury boutique — private viewing rooms, an archive accessible to clients, and a discreet entrance for visiting royalty.",
+      "fr": "La maison ouvre sa première boutique au 22 place Vendôme en 1906. Conçue comme un salon plutôt qu'un magasin, l'adresse fixe les codes de la boutique de luxe moderne — salons privés, archives accessibles aux clients, et entrée discrète pour les têtes couronnées."
+    },
+    "year": 1906,
+    "collection": null,
+    "tags": ["history", "boutique", "origin"],
+    "source": "Maison archives (fictional)",
+    "image_url": null
+  },
+  {
+    "id": "HER-006-LUCKY-ANIMALS",
+    "title": {
+      "en": "Talismans and lucky animals",
+      "fr": "Talismans et animaux porte-bonheur"
+    },
+    "body": {
+      "en": "The maison's affection for talismans dates back to the early 20th century, when frogs, ladybirds, and four-leaf clovers were offered to clients on the eve of important events. The contemporary Lucky Animals collection draws directly from these early sketches preserved in the archives.",
+      "fr": "L'attachement de la maison aux talismans remonte au début du XXe siècle, lorsque grenouilles, coccinelles et trèfles à quatre feuilles étaient offerts aux clients à la veille d'événements importants. La collection contemporaine Lucky Animals s'inspire directement de ces premières esquisses conservées aux archives."
+    },
+    "year": 1910,
+    "collection": "lucky_animals",
+    "tags": ["talisman", "history", "design"],
+    "source": "Maison archives (fictional)",
+    "image_url": null
+  },
+  {
+    "id": "HER-007-STONE-SELECTION",
+    "title": {
+      "en": "Selecting the stones — a journey of refusal",
+      "fr": "La sélection des pierres — un parcours de refus"
+    },
+    "body": {
+      "en": "The maison's gemologists travel between Geneva, Paris and the mining regions of Mogok and Muzo. Of the stones presented, fewer than three percent are retained. The criterion is not size or carat alone, but the quality of light a stone refracts under the workshop's daylight-balanced lamps.",
+      "fr": "Les gemmologues de la maison voyagent entre Genève, Paris et les régions minières de Mogok et Muzo. Des pierres présentées, moins de trois pour cent sont retenues. Le critère n'est ni la taille ni le carat, mais la qualité de la lumière qu'une pierre restitue sous les lampes à lumière du jour de l'atelier."
+    },
+    "year": null,
+    "collection": null,
+    "tags": ["craftsmanship", "savoir_faire", "stones"],
+    "source": "Maison archives (fictional)",
+    "image_url": null
+  },
+  {
+    "id": "HER-008-PERLEE-GRANULATION",
+    "title": {
+      "en": "2008 — Perlée and the granulation technique",
+      "fr": "2008 — Perlée et la technique de la granulation"
+    },
+    "body": {
+      "en": "The Perlée collection, launched in 2008, is built around the granulation technique — minute spheres of gold soldered to a metal base. Practised since antiquity, it requires the artisan to control fusion temperatures within a narrow margin to avoid deforming the beads. Each Perlée bracelet carries between 380 and 1200 individually placed grains.",
+      "fr": "Lancée en 2008, la collection Perlée s'appuie sur la technique de la granulation — d'infimes sphères d'or soudées sur une base métallique. Pratiquée depuis l'Antiquité, elle exige de l'artisan une maîtrise rigoureuse des températures de fusion. Chaque bracelet Perlée porte entre 380 et 1200 grains individuellement placés."
+    },
+    "year": 2008,
+    "collection": "perlee",
+    "tags": ["craftsmanship", "savoir_faire", "design"],
+    "source": "Maison archives (fictional)",
+    "image_url": null
+  },
+  {
+    "id": "HER-009-MOTHER-OF-PEARL",
+    "title": {
+      "en": "Mother-of-pearl — a signature material",
+      "fr": "La nacre — un matériau signature"
+    },
+    "body": {
+      "en": "White mother-of-pearl became a signature of the Alhambra collection from its inception. Sourced primarily from the Mexican Gulf, the shells are cut into discs by a small group of lapidaries in the maison's workshop. The natural striations are read like fingerprints — no two motifs are identical.",
+      "fr": "La nacre blanche est devenue une signature de la collection Alhambra dès ses origines. Provenant principalement du golfe du Mexique, les coquillages sont découpés en disques par un petit groupe de lapidaires dans l'atelier de la maison. Les stries naturelles se lisent comme des empreintes — aucun motif n'est identique à un autre."
+    },
+    "year": null,
+    "collection": "alhambra",
+    "tags": ["craftsmanship", "materials", "alhambra"],
+    "source": "Maison archives (fictional)",
+    "image_url": null
+  },
+  {
+    "id": "HER-010-GENEVA-ATELIER",
+    "title": {
+      "en": "The Geneva atelier",
+      "fr": "L'atelier de Genève"
+    },
+    "body": {
+      "en": "While the historic atelier remains in Paris, the maison maintains a Geneva workshop dedicated to high jewelry restoration and private commissions. Many of the maison's most discreet clients prefer Geneva for its proximity, its banking traditions, and the privacy of the lakeside boutiques.",
+      "fr": "Si l'atelier historique demeure à Paris, la maison entretient un atelier genevois dédié à la restauration de haute joaillerie et aux commandes privées. Nombre des clients les plus discrets de la maison privilégient Genève pour sa proximité, ses traditions bancaires et la discrétion des boutiques du bord du lac."
+    },
+    "year": null,
+    "collection": null,
+    "tags": ["geneva", "boutique", "high_jewelry"],
+    "source": "Maison archives (fictional)",
+    "image_url": null
+  }
+]
