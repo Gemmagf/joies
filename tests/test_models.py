@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 
 import pytest
 
@@ -59,7 +59,7 @@ def test_conversation_last_user_message():
 def test_appointment_request_defaults():
     req = AppointmentRequest(
         client_name="Mme Dubois",
-        preferred_at=datetime.now(timezone.utc) + timedelta(days=2),
+        preferred_at=datetime.now(UTC) + timedelta(days=2),
     )
     assert req.boutique.startswith("Geneva")
     assert req.channel == "boutique"

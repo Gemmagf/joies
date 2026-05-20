@@ -6,7 +6,6 @@ Redis. Redis is used when REDIS_URL points at a reachable instance.
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
 from functools import lru_cache
 from typing import Protocol, runtime_checkable
 

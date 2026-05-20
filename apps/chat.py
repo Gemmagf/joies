@@ -7,7 +7,7 @@ Run locally:
 from __future__ import annotations
 
 import uuid
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from typing import cast
 
 import streamlit as st
@@ -58,7 +58,7 @@ def _render_message(msg: ChatMessage) -> None:
     with st.chat_message(msg.role, avatar=avatar):
         st.markdown(msg.content)
         if msg.citations:
-            with st.expander("Sources" if msg.locale == "en" else "Sources"):
+            with st.expander("Sources" if msg.locale == "en" else "Patrimoine"):
                 for c in msg.citations:
                     st.caption(f"[{c.document_id}] — {c.snippet}")
 
@@ -140,7 +140,7 @@ def main() -> None:
         content=reply_text,
         locale=state.locale,
         citations=list(citations),
-        timestamp=datetime.now(timezone.utc),
+        timestamp=datetime.now(UTC),
     )
     state.messages.append(assistant_msg)
 

@@ -6,9 +6,8 @@ directly so the demo can render even with the chat app stopped.
 
 from __future__ import annotations
 
-import json
 from collections import Counter
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from functools import lru_cache
 from pathlib import Path
 from typing import Any, Literal
@@ -32,7 +31,7 @@ EventType = Literal[
 class Event(BaseModel):
     type: EventType
     conversation_id: str
-    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    timestamp: datetime = Field(default_factory=lambda: datetime.now(UTC))
     payload: dict[str, Any] = Field(default_factory=dict)
 
 

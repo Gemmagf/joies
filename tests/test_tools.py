@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 
 from maison_concierge.models import AppointmentRequest
 from maison_concierge.tools import book_appointment, flag_high_value_lead, pricing_lookup
@@ -15,7 +15,7 @@ def test_book_appointment_writes_record(tmp_path, monkeypatch):
 
     request = AppointmentRequest(
         client_name="Mme Berthier",
-        preferred_at=datetime.now(timezone.utc) + timedelta(days=1),
+        preferred_at=datetime.now(UTC) + timedelta(days=1),
     )
     appointment = book_appointment(request)
     assert appointment.reference.startswith("VCA-APT-")

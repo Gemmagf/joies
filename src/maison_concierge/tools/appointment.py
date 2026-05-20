@@ -8,9 +8,9 @@ the dashboard can show real demo activity.
 from __future__ import annotations
 
 import hashlib
-import json
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
+from typing import Any, ClassVar
 
 from ..config import get_settings
 from ..models import Appointment, AppointmentRequest
@@ -42,7 +42,7 @@ def book_appointment(request: AppointmentRequest) -> Appointment:
     appointment = Appointment(
         reference=_reference(request),
         request=request,
-        confirmed_at=datetime.now(timezone.utc),
+        confirmed_at=datetime.now(UTC),
         advisor_assigned=_assign_advisor(request.client_name),
     )
     path = _appointments_path()
@@ -55,14 +55,14 @@ def book_appointment(request: AppointmentRequest) -> Appointment:
 class AppointmentTool:
     """Adapter exposing the Anthropic tool-use schema."""
 
-    name = "book_appointment"
-    description = (
+    name: ClassVar[str] = "book_appointment"
+    description: ClassVar[str] = (
         "Book a private appointment for the client. Use when the client requests an "
         "appointment, when escalating a high-value lead, or when the client wants to view "
         "a specific piece in person."
     )
 
-    input_schema = {
+    input_schema: ClassVar[dict[str, Any]] = {
         "type": "object",
         "properties": {
             "client_name": {"type": "string"},

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from enum import StrEnum
 from typing import Literal
 
@@ -40,7 +40,7 @@ class ChatMessage(BaseModel):
     role: Role
     content: str
     locale: Literal["en", "fr"] = "en"
-    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    timestamp: datetime = Field(default_factory=lambda: datetime.now(UTC))
     citations: list[Citation] = Field(default_factory=list)
 
 

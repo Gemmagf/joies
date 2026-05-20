@@ -2,8 +2,7 @@
 
 from __future__ import annotations
 
-import json
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Literal
 
@@ -24,7 +23,7 @@ class LeadFlag(BaseModel):
     client_hint: str | None = None
     tier: LeadTier
     reason: str
-    flagged_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    flagged_at: datetime = Field(default_factory=lambda: datetime.now(UTC))
 
 
 def _leads_path() -> Path:
