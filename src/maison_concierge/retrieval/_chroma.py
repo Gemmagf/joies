@@ -8,6 +8,7 @@ later is a localised change.
 from __future__ import annotations
 
 from functools import lru_cache
+from typing import Any
 
 import chromadb
 from chromadb.config import Settings as ChromaSettings
@@ -16,7 +17,7 @@ from ..config import get_settings
 
 
 @lru_cache(maxsize=1)
-def get_chroma_client() -> chromadb.api.ClientAPI:
+def get_chroma_client() -> Any:
     settings = get_settings()
     settings.chroma_dir.mkdir(parents=True, exist_ok=True)
     return chromadb.PersistentClient(
