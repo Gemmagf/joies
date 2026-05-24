@@ -1,0 +1,717 @@
+[
+  {
+    "id": "CL-0001",
+    "display_name": "Antoine Marchetti",
+    "segment": "established",
+    "tenure_years": 1.9,
+    "lifetime_spend_chf": 34627.0,
+    "collections_owned": [
+      "perlee"
+    ],
+    "preferred_language": "fr",
+    "city": "Paris",
+    "last_appointment_at": "2026-01-16T14:19:03.885634Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0002",
+    "display_name": "B\u00e9atrice Dubois",
+    "segment": "prospect",
+    "tenure_years": 0.65,
+    "lifetime_spend_chf": 2725.0,
+    "collections_owned": [
+      "frivole"
+    ],
+    "preferred_language": "en",
+    "city": "Dubai",
+    "last_appointment_at": null,
+    "notes": null
+  },
+  {
+    "id": "CL-0003",
+    "display_name": "\u00c9lodie Marchetti",
+    "segment": "established",
+    "tenure_years": 3.0,
+    "lifetime_spend_chf": 19359.0,
+    "collections_owned": [
+      "perlee",
+      "ballerinas"
+    ],
+    "preferred_language": "fr",
+    "city": "Monaco",
+    "last_appointment_at": "2025-10-10T14:19:03.886472Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0004",
+    "display_name": "Camille Vaillant",
+    "segment": "prospect",
+    "tenure_years": 0.83,
+    "lifetime_spend_chf": 3093.0,
+    "collections_owned": [],
+    "preferred_language": "fr",
+    "city": "Lausanne",
+    "last_appointment_at": null,
+    "notes": null
+  },
+  {
+    "id": "CL-0005",
+    "display_name": "B\u00e9atrice Rey",
+    "segment": "established",
+    "tenure_years": 5.0,
+    "lifetime_spend_chf": 20205.0,
+    "collections_owned": [
+      "ballerinas",
+      "frivole"
+    ],
+    "preferred_language": "en",
+    "city": "Lausanne",
+    "last_appointment_at": "2026-01-30T14:19:03.886496Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0006",
+    "display_name": "Margaret Pemberton",
+    "segment": "prospect",
+    "tenure_years": 0.16,
+    "lifetime_spend_chf": 1897.0,
+    "collections_owned": [],
+    "preferred_language": "en",
+    "city": "Dubai",
+    "last_appointment_at": null,
+    "notes": null
+  },
+  {
+    "id": "CL-0007",
+    "display_name": "Eleanor Ashford",
+    "segment": "established",
+    "tenure_years": 3.1,
+    "lifetime_spend_chf": 7648.0,
+    "collections_owned": [
+      "frivole",
+      "lucky_animals"
+    ],
+    "preferred_language": "en",
+    "city": "Geneva",
+    "last_appointment_at": "2026-01-23T14:19:03.886514Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0008",
+    "display_name": "Catherine Caldwell",
+    "segment": "vip",
+    "tenure_years": 10.5,
+    "lifetime_spend_chf": 149332.0,
+    "collections_owned": [
+      "perlee",
+      "lucky_animals",
+      "frivole",
+      "alhambra"
+    ],
+    "preferred_language": "en",
+    "city": "Zurich",
+    "last_appointment_at": "2026-04-27T14:19:03.886525Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0009",
+    "display_name": "Madeleine Berthier",
+    "segment": "established",
+    "tenure_years": 4.7,
+    "lifetime_spend_chf": 21886.0,
+    "collections_owned": [
+      "lucky_animals"
+    ],
+    "preferred_language": "en",
+    "city": "Zurich",
+    "last_appointment_at": "2026-01-27T14:19:03.886534Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0010",
+    "display_name": "Antoine Dubois",
+    "segment": "established",
+    "tenure_years": 3.6,
+    "lifetime_spend_chf": 15673.0,
+    "collections_owned": [
+      "alhambra",
+      "ballerinas"
+    ],
+    "preferred_language": "fr",
+    "city": "Lausanne",
+    "last_appointment_at": "2026-01-13T14:19:03.886542Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0011",
+    "display_name": "Antoine Garnier",
+    "segment": "prospect",
+    "tenure_years": 0.87,
+    "lifetime_spend_chf": 1492.0,
+    "collections_owned": [],
+    "preferred_language": "fr",
+    "city": "Dubai",
+    "last_appointment_at": null,
+    "notes": null
+  },
+  {
+    "id": "CL-0012",
+    "display_name": "Eleanor Whitcomb",
+    "segment": "prospect",
+    "tenure_years": 0.93,
+    "lifetime_spend_chf": 4394.0,
+    "collections_owned": [],
+    "preferred_language": "en",
+    "city": "New York",
+    "last_appointment_at": null,
+    "notes": null
+  },
+  {
+    "id": "CL-0013",
+    "display_name": "Margaret Halloway",
+    "segment": "prospect",
+    "tenure_years": 0.98,
+    "lifetime_spend_chf": 2664.0,
+    "collections_owned": [
+      "frivole"
+    ],
+    "preferred_language": "fr",
+    "city": "New York",
+    "last_appointment_at": null,
+    "notes": null
+  },
+  {
+    "id": "CL-0014",
+    "display_name": "Adrian Ashford",
+    "segment": "prospect",
+    "tenure_years": 0.69,
+    "lifetime_spend_chf": 3565.0,
+    "collections_owned": [
+      "frivole"
+    ],
+    "preferred_language": "fr",
+    "city": "Dubai",
+    "last_appointment_at": "2025-09-12T14:19:03.886565Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0015",
+    "display_name": "Henri Dubois",
+    "segment": "prospect",
+    "tenure_years": 0.59,
+    "lifetime_spend_chf": 36.0,
+    "collections_owned": [],
+    "preferred_language": "en",
+    "city": "Hong Kong",
+    "last_appointment_at": null,
+    "notes": null
+  },
+  {
+    "id": "CL-0016",
+    "display_name": "Henri Berthier",
+    "segment": "prospect",
+    "tenure_years": 0.67,
+    "lifetime_spend_chf": 1071.0,
+    "collections_owned": [
+      "frivole"
+    ],
+    "preferred_language": "en",
+    "city": "Dubai",
+    "last_appointment_at": "2025-12-21T14:19:03.886577Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0017",
+    "display_name": "Camille Vaillant",
+    "segment": "vip",
+    "tenure_years": 9.7,
+    "lifetime_spend_chf": 307886.0,
+    "collections_owned": [
+      "alhambra",
+      "lucky_animals",
+      "ballerinas"
+    ],
+    "preferred_language": "fr",
+    "city": "Monaco",
+    "last_appointment_at": "2026-04-01T14:19:03.886585Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0018",
+    "display_name": "B\u00e9atrice Marchetti",
+    "segment": "vip",
+    "tenure_years": 9.4,
+    "lifetime_spend_chf": 154705.0,
+    "collections_owned": [
+      "alhambra",
+      "lucky_animals",
+      "ballerinas"
+    ],
+    "preferred_language": "en",
+    "city": "Dubai",
+    "last_appointment_at": "2026-05-02T14:19:03.886594Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0019",
+    "display_name": "Eleanor Halloway",
+    "segment": "prospect",
+    "tenure_years": 0.49,
+    "lifetime_spend_chf": 1069.0,
+    "collections_owned": [],
+    "preferred_language": "fr",
+    "city": "Paris",
+    "last_appointment_at": null,
+    "notes": null
+  },
+  {
+    "id": "CL-0020",
+    "display_name": "Theodore Sinclair",
+    "segment": "established",
+    "tenure_years": 5.3,
+    "lifetime_spend_chf": 44817.0,
+    "collections_owned": [
+      "frivole",
+      "perlee"
+    ],
+    "preferred_language": "en",
+    "city": "London",
+    "last_appointment_at": "2026-02-18T14:19:03.886607Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0021",
+    "display_name": "Madeleine Laurent",
+    "segment": "prospect",
+    "tenure_years": 0.48,
+    "lifetime_spend_chf": 4597.0,
+    "collections_owned": [],
+    "preferred_language": "fr",
+    "city": "Geneva",
+    "last_appointment_at": null,
+    "notes": null
+  },
+  {
+    "id": "CL-0022",
+    "display_name": "Camille Marchetti",
+    "segment": "vip",
+    "tenure_years": 13.1,
+    "lifetime_spend_chf": 143713.0,
+    "collections_owned": [
+      "perlee",
+      "alhambra",
+      "frivole"
+    ],
+    "preferred_language": "en",
+    "city": "Milan",
+    "last_appointment_at": "2026-02-19T14:19:03.886620Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0023",
+    "display_name": "Antoine Marchetti",
+    "segment": "established",
+    "tenure_years": 3.1,
+    "lifetime_spend_chf": 31868.0,
+    "collections_owned": [
+      "lucky_animals",
+      "ballerinas"
+    ],
+    "preferred_language": "fr",
+    "city": "Monaco",
+    "last_appointment_at": "2025-10-24T14:19:03.886628Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0024",
+    "display_name": "Camille Berthier",
+    "segment": "vip",
+    "tenure_years": 8.1,
+    "lifetime_spend_chf": 377308.0,
+    "collections_owned": [
+      "frivole",
+      "ballerinas",
+      "perlee"
+    ],
+    "preferred_language": "en",
+    "city": "Dubai",
+    "last_appointment_at": "2026-04-24T14:19:03.886639Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0025",
+    "display_name": "Antoine Dubois",
+    "segment": "established",
+    "tenure_years": 4.2,
+    "lifetime_spend_chf": 42557.0,
+    "collections_owned": [
+      "ballerinas"
+    ],
+    "preferred_language": "en",
+    "city": "Dubai",
+    "last_appointment_at": "2026-04-05T14:19:03.886647Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0026",
+    "display_name": "Catherine Caldwell",
+    "segment": "vip",
+    "tenure_years": 11.7,
+    "lifetime_spend_chf": 129223.0,
+    "collections_owned": [
+      "perlee",
+      "lucky_animals",
+      "frivole",
+      "alhambra"
+    ],
+    "preferred_language": "en",
+    "city": "London",
+    "last_appointment_at": "2026-05-03T14:19:03.886655Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0027",
+    "display_name": "Eleanor Worthington",
+    "segment": "established",
+    "tenure_years": 4.0,
+    "lifetime_spend_chf": 15478.0,
+    "collections_owned": [
+      "perlee",
+      "lucky_animals"
+    ],
+    "preferred_language": "en",
+    "city": "Monaco",
+    "last_appointment_at": "2025-12-12T14:19:03.886663Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0028",
+    "display_name": "\u00c9lodie Dubois",
+    "segment": "prospect",
+    "tenure_years": 0.15,
+    "lifetime_spend_chf": 637.0,
+    "collections_owned": [
+      "alhambra"
+    ],
+    "preferred_language": "fr",
+    "city": "Monaco",
+    "last_appointment_at": null,
+    "notes": null
+  },
+  {
+    "id": "CL-0029",
+    "display_name": "Helena Hartford",
+    "segment": "established",
+    "tenure_years": 5.2,
+    "lifetime_spend_chf": 14469.0,
+    "collections_owned": [
+      "frivole"
+    ],
+    "preferred_language": "en",
+    "city": "Hong Kong",
+    "last_appointment_at": "2026-01-19T14:19:03.886683Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0030",
+    "display_name": "Helena Hartford",
+    "segment": "prospect",
+    "tenure_years": 0.79,
+    "lifetime_spend_chf": 540.0,
+    "collections_owned": [],
+    "preferred_language": "fr",
+    "city": "Paris",
+    "last_appointment_at": null,
+    "notes": null
+  },
+  {
+    "id": "CL-0031",
+    "display_name": "Helena Caldwell",
+    "segment": "prospect",
+    "tenure_years": 0.66,
+    "lifetime_spend_chf": 1992.0,
+    "collections_owned": [
+      "alhambra"
+    ],
+    "preferred_language": "fr",
+    "city": "Paris",
+    "last_appointment_at": "2025-12-03T14:19:03.886695Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0032",
+    "display_name": "Henri Dubois",
+    "segment": "established",
+    "tenure_years": 2.5,
+    "lifetime_spend_chf": 28224.0,
+    "collections_owned": [
+      "alhambra",
+      "perlee"
+    ],
+    "preferred_language": "en",
+    "city": "Lausanne",
+    "last_appointment_at": "2025-12-03T14:19:03.886702Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0033",
+    "display_name": "Helena Hartford",
+    "segment": "established",
+    "tenure_years": 2.0,
+    "lifetime_spend_chf": 40980.0,
+    "collections_owned": [
+      "ballerinas"
+    ],
+    "preferred_language": "fr",
+    "city": "Hong Kong",
+    "last_appointment_at": "2026-04-23T14:19:03.886710Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0034",
+    "display_name": "B\u00e9atrice Laurent",
+    "segment": "established",
+    "tenure_years": 4.2,
+    "lifetime_spend_chf": 18208.0,
+    "collections_owned": [
+      "alhambra",
+      "ballerinas"
+    ],
+    "preferred_language": "en",
+    "city": "Milan",
+    "last_appointment_at": "2025-12-26T14:19:03.886718Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0035",
+    "display_name": "Philippe Rey",
+    "segment": "prospect",
+    "tenure_years": 0.42,
+    "lifetime_spend_chf": 4702.0,
+    "collections_owned": [],
+    "preferred_language": "en",
+    "city": "Dubai",
+    "last_appointment_at": "2026-01-25T14:19:03.886723Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0036",
+    "display_name": "Theodore Caldwell",
+    "segment": "established",
+    "tenure_years": 3.8,
+    "lifetime_spend_chf": 31188.0,
+    "collections_owned": [
+      "lucky_animals",
+      "perlee"
+    ],
+    "preferred_language": "fr",
+    "city": "Paris",
+    "last_appointment_at": "2025-11-13T14:19:03.886730Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0037",
+    "display_name": "\u00c9lodie Berthier",
+    "segment": "prospect",
+    "tenure_years": 0.63,
+    "lifetime_spend_chf": 1676.0,
+    "collections_owned": [],
+    "preferred_language": "en",
+    "city": "London",
+    "last_appointment_at": "2025-12-25T14:19:03.886736Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0038",
+    "display_name": "Madeleine Dubois",
+    "segment": "prospect",
+    "tenure_years": 0.61,
+    "lifetime_spend_chf": 3842.0,
+    "collections_owned": [],
+    "preferred_language": "en",
+    "city": "Paris",
+    "last_appointment_at": null,
+    "notes": null
+  },
+  {
+    "id": "CL-0039",
+    "display_name": "Philippe Marchetti",
+    "segment": "established",
+    "tenure_years": 1.5,
+    "lifetime_spend_chf": 35039.0,
+    "collections_owned": [
+      "lucky_animals"
+    ],
+    "preferred_language": "en",
+    "city": "Zurich",
+    "last_appointment_at": "2026-03-09T14:19:03.886747Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0040",
+    "display_name": "Isabel Worthington",
+    "segment": "prospect",
+    "tenure_years": 0.85,
+    "lifetime_spend_chf": 2282.0,
+    "collections_owned": [],
+    "preferred_language": "en",
+    "city": "Dubai",
+    "last_appointment_at": "2025-07-27T14:19:03.886753Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0041",
+    "display_name": "Adrian Sinclair",
+    "segment": "collector",
+    "tenure_years": 20.5,
+    "lifetime_spend_chf": 981343.0,
+    "collections_owned": [
+      "alhambra",
+      "frivole",
+      "ballerinas",
+      "lucky_animals",
+      "perlee"
+    ],
+    "preferred_language": "en",
+    "city": "Zurich",
+    "last_appointment_at": "2026-05-04T14:19:03.886761Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0042",
+    "display_name": "Solange Marchetti",
+    "segment": "vip",
+    "tenure_years": 11.7,
+    "lifetime_spend_chf": 139728.0,
+    "collections_owned": [
+      "ballerinas",
+      "alhambra",
+      "lucky_animals",
+      "perlee"
+    ],
+    "preferred_language": "en",
+    "city": "London",
+    "last_appointment_at": "2026-04-15T14:19:03.886769Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0043",
+    "display_name": "B\u00e9atrice Berthier",
+    "segment": "established",
+    "tenure_years": 3.7,
+    "lifetime_spend_chf": 21631.0,
+    "collections_owned": [
+      "lucky_animals"
+    ],
+    "preferred_language": "en",
+    "city": "Milan",
+    "last_appointment_at": "2026-01-25T14:19:03.886776Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0044",
+    "display_name": "Eleanor Hartford",
+    "segment": "vip",
+    "tenure_years": 8.8,
+    "lifetime_spend_chf": 316182.0,
+    "collections_owned": [
+      "perlee",
+      "frivole",
+      "lucky_animals",
+      "alhambra"
+    ],
+    "preferred_language": "en",
+    "city": "New York",
+    "last_appointment_at": "2026-04-10T14:19:03.886784Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0045",
+    "display_name": "Henri Vaillant",
+    "segment": "established",
+    "tenure_years": 5.2,
+    "lifetime_spend_chf": 44229.0,
+    "collections_owned": [
+      "lucky_animals"
+    ],
+    "preferred_language": "fr",
+    "city": "Zurich",
+    "last_appointment_at": "2025-12-04T14:19:03.886791Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0046",
+    "display_name": "Philippe Garnier",
+    "segment": "established",
+    "tenure_years": 2.5,
+    "lifetime_spend_chf": 18094.0,
+    "collections_owned": [
+      "ballerinas",
+      "perlee"
+    ],
+    "preferred_language": "en",
+    "city": "New York",
+    "last_appointment_at": "2025-10-22T14:19:03.886798Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0047",
+    "display_name": "Philippe Rey",
+    "segment": "vip",
+    "tenure_years": 12.0,
+    "lifetime_spend_chf": 77709.0,
+    "collections_owned": [
+      "frivole",
+      "alhambra",
+      "ballerinas",
+      "lucky_animals"
+    ],
+    "preferred_language": "fr",
+    "city": "Lausanne",
+    "last_appointment_at": "2026-02-07T14:19:03.886806Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0048",
+    "display_name": "Madeleine Garnier",
+    "segment": "prospect",
+    "tenure_years": 0.67,
+    "lifetime_spend_chf": 2820.0,
+    "collections_owned": [
+      "frivole"
+    ],
+    "preferred_language": "fr",
+    "city": "Paris",
+    "last_appointment_at": null,
+    "notes": null
+  },
+  {
+    "id": "CL-0049",
+    "display_name": "Margaret Pemberton",
+    "segment": "established",
+    "tenure_years": 1.6,
+    "lifetime_spend_chf": 17478.0,
+    "collections_owned": [
+      "lucky_animals",
+      "frivole"
+    ],
+    "preferred_language": "en",
+    "city": "London",
+    "last_appointment_at": "2026-04-15T14:19:03.886818Z",
+    "notes": null
+  },
+  {
+    "id": "CL-0050",
+    "display_name": "James Halloway",
+    "segment": "established",
+    "tenure_years": 3.9,
+    "lifetime_spend_chf": 9842.0,
+    "collections_owned": [
+      "ballerinas"
+    ],
+    "preferred_language": "fr",
+    "city": "London",
+    "last_appointment_at": "2025-12-19T14:19:03.886826Z",
+    "notes": null
+  }
+]

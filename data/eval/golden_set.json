@@ -1,0 +1,302 @@
+[
+  {
+    "id": "gold-001",
+    "text": "I'm looking for an anniversary gift, around CHF 5,000.",
+    "locale": "en",
+    "expected_intent": "celebration",
+    "expected_routes": ["catalog"],
+    "expected_piece_ids_top_k": ["VCA-ALH-VIN-MOP-PEN-001", "VCA-ALH-VIN-CAR-PEN-002", "VCA-ALH-VIN-MAL-RNG-006"],
+    "expected_heritage_ids": [],
+    "expected_escalate": false
+  },
+  {
+    "id": "gold-002",
+    "text": "Quel cadeau pour ma fille qui se marie ?",
+    "locale": "fr",
+    "expected_intent": "celebration",
+    "expected_routes": ["catalog"],
+    "expected_piece_ids_top_k": ["VCA-PRL-DIA-RNG-018", "VCA-ALH-PUR-DIA-RNG-058", "VCA-ALH-VIN-WMP-DIA-RNG-027"],
+    "expected_heritage_ids": [],
+    "expected_escalate": false
+  },
+  {
+    "id": "gold-003",
+    "text": "Birthday gift for my sister, she loves nature motifs.",
+    "locale": "en",
+    "expected_intent": "gift",
+    "expected_routes": ["catalog"],
+    "expected_piece_ids_top_k": ["VCA-FRV-YG-PEN-011", "VCA-LCK-BTF-PEN-016", "VCA-LCK-DRG-PEN-046"],
+    "expected_heritage_ids": [],
+    "expected_escalate": false
+  },
+  {
+    "id": "gold-004",
+    "text": "Something for Mother's Day, classic and timeless.",
+    "locale": "en",
+    "expected_intent": "gift",
+    "expected_routes": ["catalog"],
+    "expected_piece_ids_top_k": ["VCA-ALH-VIN-MOP-PEN-001", "VCA-ALH-SWT-MOP-EAR-005", "VCA-ALH-VIN-CAR-PEN-002"],
+    "expected_heritage_ids": [],
+    "expected_escalate": false
+  },
+  {
+    "id": "gold-005",
+    "text": "Engagement ring around CHF 15,000, classic but distinctive.",
+    "locale": "en",
+    "expected_intent": "celebration",
+    "expected_routes": ["catalog"],
+    "expected_piece_ids_top_k": ["VCA-PRL-DIA-RNG-018", "VCA-ALH-PUR-DIA-RNG-058", "VCA-ALH-VIN-WMP-DIA-RNG-027"],
+    "expected_heritage_ids": [],
+    "expected_escalate": false
+  },
+  {
+    "id": "gold-006",
+    "text": "Sixtieth birthday for my husband — something refined for a man.",
+    "locale": "en",
+    "expected_intent": "celebration",
+    "expected_routes": ["catalog"],
+    "expected_piece_ids_top_k": ["VCA-ALH-MEN-ONX-CUF-034", "VCA-CAD-YG-WCH-055", "VCA-CAD-DIA-WCH-056"],
+    "expected_heritage_ids": [],
+    "expected_escalate": false
+  },
+  {
+    "id": "gold-007",
+    "text": "Cadeau de retraite pour un collectionneur de pièces vintage.",
+    "locale": "fr",
+    "expected_intent": "celebration",
+    "expected_routes": ["catalog"],
+    "expected_piece_ids_top_k": ["VCA-CAD-YG-WCH-055", "VCA-ALH-VIN-COR-PEN-035", "VCA-ALH-VIN-CHR-NCK-033"],
+    "expected_heritage_ids": [],
+    "expected_escalate": false
+  },
+  {
+    "id": "gold-008",
+    "text": "D'où vient le motif Alhambra ?",
+    "locale": "fr",
+    "expected_intent": "heritage_inquiry",
+    "expected_routes": ["heritage"],
+    "expected_piece_ids_top_k": [],
+    "expected_heritage_ids": ["HER-001-ALHAMBRA-1968"],
+    "expected_escalate": false
+  },
+  {
+    "id": "gold-009",
+    "text": "Tell me about the Mystery Setting technique.",
+    "locale": "en",
+    "expected_intent": "heritage_inquiry",
+    "expected_routes": ["heritage"],
+    "expected_piece_ids_top_k": [],
+    "expected_heritage_ids": ["HER-002-MYSTERY-SETTING"],
+    "expected_escalate": false
+  },
+  {
+    "id": "gold-010",
+    "text": "What is the story behind the Frivole collection?",
+    "locale": "en",
+    "expected_intent": "heritage_inquiry",
+    "expected_routes": ["heritage"],
+    "expected_piece_ids_top_k": [],
+    "expected_heritage_ids": ["HER-003-FRIVOLE-INSPIRATION"],
+    "expected_escalate": false
+  },
+  {
+    "id": "gold-011",
+    "text": "Quelle est l'histoire des ballerines de la maison ?",
+    "locale": "fr",
+    "expected_intent": "heritage_inquiry",
+    "expected_routes": ["heritage"],
+    "expected_piece_ids_top_k": [],
+    "expected_heritage_ids": ["HER-004-BALLERINAS-BROADWAY"],
+    "expected_escalate": false
+  },
+  {
+    "id": "gold-012",
+    "text": "How does the maison source mother-of-pearl?",
+    "locale": "en",
+    "expected_intent": "heritage_inquiry",
+    "expected_routes": ["heritage"],
+    "expected_piece_ids_top_k": [],
+    "expected_heritage_ids": ["HER-009-MOTHER-OF-PEARL", "HER-007-STONE-SELECTION"],
+    "expected_escalate": false
+  },
+  {
+    "id": "gold-013",
+    "text": "Show me your most iconic pieces in yellow gold.",
+    "locale": "en",
+    "expected_intent": "browse",
+    "expected_routes": ["catalog"],
+    "expected_piece_ids_top_k": ["VCA-ALH-VIN-MOP-PEN-001", "VCA-FRV-YG-RNG-009", "VCA-PRL-YG-BRC-017"],
+    "expected_heritage_ids": [],
+    "expected_escalate": false
+  },
+  {
+    "id": "gold-014",
+    "text": "Bracelets that work for everyday wear.",
+    "locale": "en",
+    "expected_intent": "browse",
+    "expected_routes": ["catalog"],
+    "expected_piece_ids_top_k": ["VCA-ALH-VIN-ONX-BRC-003", "VCA-PRL-YG-BRC-017", "VCA-FRV-YG-BRC-039"],
+    "expected_heritage_ids": [],
+    "expected_escalate": false
+  },
+  {
+    "id": "gold-015",
+    "text": "Earrings under CHF 3,500 for daily wear.",
+    "locale": "en",
+    "expected_intent": "browse",
+    "expected_routes": ["catalog"],
+    "expected_piece_ids_top_k": ["VCA-ALH-SWT-MOP-EAR-005", "VCA-FRV-YG-EAR-037"],
+    "expected_heritage_ids": [],
+    "expected_escalate": false
+  },
+  {
+    "id": "gold-016",
+    "text": "I want to start a collection of high jewelry pieces.",
+    "locale": "en",
+    "expected_intent": "investment_piece",
+    "expected_routes": ["catalog"],
+    "expected_piece_ids_top_k": ["VCA-BAL-DIA-CLP-013", "VCA-BAL-EME-CLP-014", "VCA-BAL-RUB-MYS-CLP-040"],
+    "expected_heritage_ids": [],
+    "expected_escalate": false
+  },
+  {
+    "id": "gold-017",
+    "text": "Looking for an archival Ballerina clip, willing to invest meaningfully.",
+    "locale": "en",
+    "expected_intent": "investment_piece",
+    "expected_routes": ["catalog"],
+    "expected_piece_ids_top_k": ["VCA-BAL-DIA-CLP-013", "VCA-BAL-EME-CLP-014", "VCA-BAL-SPP-CLP-022"],
+    "expected_heritage_ids": [],
+    "expected_escalate": false
+  },
+  {
+    "id": "gold-018",
+    "text": "I'm interested in the Cadenas watch as a collector's piece.",
+    "locale": "en",
+    "expected_intent": "investment_piece",
+    "expected_routes": ["catalog"],
+    "expected_piece_ids_top_k": ["VCA-CAD-YG-WCH-055", "VCA-CAD-DIA-WCH-056"],
+    "expected_heritage_ids": [],
+    "expected_escalate": false
+  },
+  {
+    "id": "gold-019",
+    "text": "How much is the Magic Alhambra long necklace?",
+    "locale": "en",
+    "expected_intent": "price_inquiry",
+    "expected_routes": ["catalog"],
+    "expected_piece_ids_top_k": ["VCA-ALH-MAG-MOP-NCK-004", "VCA-ALH-MAG-LAP-NCK-008"],
+    "expected_heritage_ids": [],
+    "expected_escalate": false
+  },
+  {
+    "id": "gold-020",
+    "text": "What can you show me under CHF 4,000?",
+    "locale": "en",
+    "expected_intent": "price_inquiry",
+    "expected_routes": ["catalog"],
+    "expected_piece_ids_top_k": ["VCA-ALH-SWT-MOP-EAR-005", "VCA-PRL-SGL-RNG-052", "VCA-PRL-WG-RNG-054"],
+    "expected_heritage_ids": [],
+    "expected_escalate": false
+  },
+  {
+    "id": "gold-021",
+    "text": "Prix d'une bague Perlée signature ?",
+    "locale": "fr",
+    "expected_intent": "price_inquiry",
+    "expected_routes": ["catalog"],
+    "expected_piece_ids_top_k": ["VCA-PRL-SGL-RNG-052", "VCA-PRL-WG-RNG-054"],
+    "expected_heritage_ids": [],
+    "expected_escalate": false
+  },
+  {
+    "id": "gold-022",
+    "text": "I'd like to book a private appointment in Geneva next week.",
+    "locale": "en",
+    "expected_intent": "appointment",
+    "expected_routes": [],
+    "expected_piece_ids_top_k": [],
+    "expected_heritage_ids": [],
+    "expected_escalate": false
+  },
+  {
+    "id": "gold-023",
+    "text": "Puis-je avoir un rendez-vous pour voir l'Alhambra ?",
+    "locale": "fr",
+    "expected_intent": "appointment",
+    "expected_routes": ["catalog"],
+    "expected_piece_ids_top_k": ["VCA-ALH-VIN-MOP-PEN-001", "VCA-ALH-VIN-CAR-PEN-002"],
+    "expected_heritage_ids": [],
+    "expected_escalate": false
+  },
+  {
+    "id": "gold-024",
+    "text": "Can someone visit my residence in Zurich to present pieces?",
+    "locale": "en",
+    "expected_intent": "appointment",
+    "expected_routes": [],
+    "expected_piece_ids_top_k": [],
+    "expected_heritage_ids": [],
+    "expected_escalate": false
+  },
+  {
+    "id": "gold-025",
+    "text": "Can you tell me the resale value of my grandmother's 1972 Alhambra necklace?",
+    "locale": "en",
+    "expected_intent": "unknown",
+    "expected_routes": [],
+    "expected_piece_ids_top_k": [],
+    "expected_heritage_ids": [],
+    "expected_escalate": true
+  },
+  {
+    "id": "gold-026",
+    "text": "Do you carry Cartier or Bvlgari pieces?",
+    "locale": "en",
+    "expected_intent": "unknown",
+    "expected_routes": [],
+    "expected_piece_ids_top_k": [],
+    "expected_heritage_ids": [],
+    "expected_escalate": true
+  },
+  {
+    "id": "gold-027",
+    "text": "I want to complain about a recent purchase that was damaged.",
+    "locale": "en",
+    "expected_intent": "unknown",
+    "expected_routes": [],
+    "expected_piece_ids_top_k": [],
+    "expected_heritage_ids": [],
+    "expected_escalate": true
+  },
+  {
+    "id": "gold-028",
+    "text": "Hi.",
+    "locale": "en",
+    "expected_intent": "unknown",
+    "expected_routes": [],
+    "expected_piece_ids_top_k": [],
+    "expected_heritage_ids": [],
+    "expected_escalate": false
+  },
+  {
+    "id": "gold-029",
+    "text": "Une pièce talismanique pour ma fille qui part étudier à l'étranger.",
+    "locale": "fr",
+    "expected_intent": "gift",
+    "expected_routes": ["catalog"],
+    "expected_piece_ids_top_k": ["VCA-LCK-LDB-PEN-042", "VCA-LCK-FRG-PEN-021", "VCA-LCK-OWL-PEN-043"],
+    "expected_heritage_ids": ["HER-006-LUCKY-ANIMALS"],
+    "expected_escalate": false
+  },
+  {
+    "id": "gold-030",
+    "text": "Tell me about the Geneva atelier — is high jewelry restoration done there?",
+    "locale": "en",
+    "expected_intent": "heritage_inquiry",
+    "expected_routes": ["heritage"],
+    "expected_piece_ids_top_k": [],
+    "expected_heritage_ids": ["HER-010-GENEVA-ATELIER"],
+    "expected_escalate": false
+  }
+]

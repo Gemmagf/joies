@@ -1,6 +1,7 @@
-"""Pydantic domain models for catalog, conversation and observability."""
+"""Pydantic domain models for catalog, clients, conversation and observability."""
 
 from .catalog import CatalogPiece, Collection, HeritageDocument
+from .client import ClientProfile, ClientSegment
 from .conversation import (
     AgentTrace,
     ChatMessage,
@@ -20,6 +21,8 @@ __all__ = [
     "ChatMessage",
     "Citation",
     "ClientIntent",
+    "ClientProfile",
+    "ClientSegment",
     "Collection",
     "ConversationState",
     "EscalationReason",

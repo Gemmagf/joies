@@ -1,0 +1,72 @@
+{
+  "n_train": 1125,
+  "n_test": 375,
+  "accuracy": 0.568,
+  "roc_auc": 0.6130292411098983,
+  "average_precision": 0.5927034797775859,
+  "per_segment_precision": {
+    "collector": 0.8333333333333334,
+    "established": 0.5411764705882353,
+    "prospect": 0.30952380952380953,
+    "vip": 0.6363636363636364
+  },
+  "per_segment_recall": {
+    "collector": 0.8333333333333334,
+    "established": 0.575,
+    "prospect": 0.2653061224489796,
+    "vip": 0.8235294117647058
+  },
+  "feature_importance": {
+    "num__tenure_years": 0.07324240369633046,
+    "num__log_lifetime_spend_chf": -0.10505522575452775,
+    "num__days_since_last_appointment": -0.23923561547941838,
+    "num__n_turns": 0.2937304557195001,
+    "num__intent_confidence": 0.08241340437728818,
+    "cat__segment_collector": 0.26419745832270336,
+    "cat__segment_established": -0.1828307048145174,
+    "cat__segment_prospect": -0.30240426484101474,
+    "cat__segment_vip": 0.2122450220630901,
+    "cat__intent_appointment": 0.7556939381068041,
+    "cat__intent_browse": -0.3526710360849951,
+    "cat__intent_celebration": 0.4054531011156364,
+    "cat__intent_gift": 0.07275194813727058,
+    "cat__intent_heritage_inquiry": -0.5536062325677609,
+    "cat__intent_investment_piece": 0.3256848499481417,
+    "cat__intent_price_inquiry": -0.2208894199121949,
+    "cat__intent_unknown": -0.44120963801263946,
+    "cat__preferred_language_en": -0.04515443491597295,
+    "cat__preferred_language_fr": 0.03636194564623209
+  },
+  "confusion_matrix": [
+    [
+      121,
+      85
+    ],
+    [
+      77,
+      92
+    ]
+  ],
+  "classification_report": "              precision    recall  f1-score   support\n\n  no_booking       0.61      0.59      0.60       206\n      booked       0.52      0.54      0.53       169\n\n    accuracy                           0.57       375\n   macro avg       0.57      0.57      0.57       375\nweighted avg       0.57      0.57      0.57       375\n",
+  "feature_names": [
+    "num__tenure_years",
+    "num__log_lifetime_spend_chf",
+    "num__days_since_last_appointment",
+    "num__n_turns",
+    "num__intent_confidence",
+    "cat__segment_collector",
+    "cat__segment_established",
+    "cat__segment_prospect",
+    "cat__segment_vip",
+    "cat__intent_appointment",
+    "cat__intent_browse",
+    "cat__intent_celebration",
+    "cat__intent_gift",
+    "cat__intent_heritage_inquiry",
+    "cat__intent_investment_piece",
+    "cat__intent_price_inquiry",
+    "cat__intent_unknown",
+    "cat__preferred_language_en",
+    "cat__preferred_language_fr"
+  ]
+}

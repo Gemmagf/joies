@@ -27,6 +27,7 @@ dependencies = [
     "python-dotenv>=1.0.0",
     "chromadb>=0.5.0",
     "sentence-transformers>=3.0.0",
+    "scikit-learn>=1.4.0",
     "redis>=5.0.0",
     "tenacity>=8.2.0",
     "structlog>=24.1.0",
@@ -69,7 +70,7 @@ target-version = "py311"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP", "N", "SIM", "RUF"]
-ignore = ["E501"]
+ignore = ["E501", "N803", "N806"]  # N803/N806: ML convention — `X`, `X_train`, etc. are valid
 
 [tool.mypy]
 python_version = "3.11"
