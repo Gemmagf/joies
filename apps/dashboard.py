@@ -274,14 +274,14 @@ def render_business_case() -> None:
             "Avg SA minutes per inquiry",
             min_value=3.0,
             max_value=25.0,
-            value=DEFAULT_ASSUMPTIONS.sa_minutes_per_inquiry,
+            value=float(DEFAULT_ASSUMPTIONS.sa_minutes_per_inquiry),
             step=0.5,
         )
         cache_hit = st.slider(
             "Prompt-cache hit rate",
             min_value=0.0,
             max_value=1.0,
-            value=DEFAULT_ASSUMPTIONS.cache_hit_rate,
+            value=float(DEFAULT_ASSUMPTIONS.cache_hit_rate),
             step=0.05,
         )
         custom_deflection = st.slider(
