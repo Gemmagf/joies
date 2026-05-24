@@ -12,7 +12,7 @@ from dataclasses import dataclass, field
 from statistics import mean
 
 from ..models import ClientIntent
-from ..retrieval import CatalogRAG, HeritageRAG
+from ..retrieval import CatalogRAG, HeritageRAG, HybridCatalogRAG
 from .golden import GoldenItem, load_golden_set
 
 
@@ -73,12 +73,18 @@ def evaluate_retrieval(
     target: str = "catalog",
     catalog: CatalogRAG | None = None,
     heritage: HeritageRAG | None = None,
+    hybrid: HybridCatalogRAG | None = None,
     items: list[GoldenItem] | None = None,
     k: int = 5,
 ) -> RetrievalMetrics:
     items = items or load_golden_set()
     if target == "catalog":
         rag = catalog or CatalogRAG()
+        rag.index()
+        relevant_items = [it for it in items if it.expected_piece_ids_top_k]
+        get_expected = lambda it: it.expected_piece_ids_top_k  # noqa: E731
+    elif target == "catalog_hybrid":
+        rag = hybrid or HybridCatalogRAG()
         rag.index()
         relevant_items = [it for it in items if it.expected_piece_ids_top_k]
         get_expected = lambda it: it.expected_piece_ids_top_k  # noqa: E731
@@ -93,7 +99,7 @@ def evaluate_retrieval(
     per_query: list[PerQueryResult] = []
     for it in relevant_items:
         expected = get_expected(it)
-        if target == "catalog":
+        if target in ("catalog", "catalog_hybrid"):
             hits = rag.search(it.text, k=k)
             retrieved_ids = [h.piece.id for h in hits]
         else:

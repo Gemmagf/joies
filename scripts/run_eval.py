@@ -32,14 +32,21 @@ def main() -> None:
         return
 
     c = report.catalog_retrieval
+    hyb = report.catalog_hybrid_retrieval
     h = report.heritage_retrieval
     print(f"Wrote eval report → {output_path}")
     print()
-    print(f"Catalog retrieval (n={c.n_queries}):")
-    print(f"  recall@1 = {c.recall_at_1:.2f}")
-    print(f"  recall@3 = {c.recall_at_3:.2f}")
-    print(f"  recall@5 = {c.recall_at_5:.2f}")
-    print(f"  MRR      = {c.mrr:.2f}")
+    print(f"CATALOG RETRIEVAL — n={c.n_queries}")
+    print(f"{'metric':<12} {'dense':>8} {'hybrid':>8} {'delta':>10}")
+    for label, d, b in (
+        ("recall@1", c.recall_at_1, hyb.recall_at_1),
+        ("recall@3", c.recall_at_3, hyb.recall_at_3),
+        ("recall@5", c.recall_at_5, hyb.recall_at_5),
+        ("MRR",      c.mrr,         hyb.mrr),
+    ):
+        delta = b - d
+        delta_pct = (delta / d * 100) if d > 0 else float("inf")
+        print(f"{label:<12} {d:>8.2f} {b:>8.2f} {delta_pct:>+9.0f}%")
     print()
     print(f"Heritage retrieval (n={h.n_queries}):")
     print(f"  recall@1 = {h.recall_at_1:.2f}")

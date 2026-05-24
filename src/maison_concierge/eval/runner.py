@@ -18,6 +18,7 @@ from .retrieval import RetrievalMetrics, evaluate_retrieval
 class EvalReport:
     timestamp: datetime
     catalog_retrieval: RetrievalMetrics
+    catalog_hybrid_retrieval: RetrievalMetrics
     heritage_retrieval: RetrievalMetrics
     groundedness_samples: list[GroundednessReport] = field(default_factory=list)
     calibration: CalibrationReport | None = None
@@ -30,6 +31,7 @@ def run_full_eval(*, include_groundedness_smoke: bool = True) -> EvalReport:
     otherwise it's left as None and the dashboard shows a placeholder.
     """
     catalog_metrics = evaluate_retrieval(target="catalog")
+    catalog_hybrid_metrics = evaluate_retrieval(target="catalog_hybrid")
     heritage_metrics = evaluate_retrieval(target="heritage")
 
     groundedness_samples: list[GroundednessReport] = []
@@ -66,6 +68,7 @@ def run_full_eval(*, include_groundedness_smoke: bool = True) -> EvalReport:
     return EvalReport(
         timestamp=datetime.now(UTC),
         catalog_retrieval=catalog_metrics,
+        catalog_hybrid_retrieval=catalog_hybrid_metrics,
         heritage_retrieval=heritage_metrics,
         groundedness_samples=groundedness_samples,
         calibration=calibration_report,
@@ -84,6 +87,14 @@ def write_eval_report(report: EvalReport, path: Path) -> None:
             "recall_at_5": report.catalog_retrieval.recall_at_5,
             "mrr": report.catalog_retrieval.mrr,
             "per_intent": report.catalog_retrieval.per_intent,
+        },
+        "catalog_hybrid_retrieval": {
+            "n_queries": report.catalog_hybrid_retrieval.n_queries,
+            "recall_at_1": report.catalog_hybrid_retrieval.recall_at_1,
+            "recall_at_3": report.catalog_hybrid_retrieval.recall_at_3,
+            "recall_at_5": report.catalog_hybrid_retrieval.recall_at_5,
+            "mrr": report.catalog_hybrid_retrieval.mrr,
+            "per_intent": report.catalog_hybrid_retrieval.per_intent,
         },
         "heritage_retrieval": {
             "n_queries": report.heritage_retrieval.n_queries,

@@ -171,24 +171,50 @@ def render_quality() -> None:
 
     st.caption(f"Eval run at `{report['timestamp']}`")
 
-    st.subheader("Retrieval quality")
-    cols = st.columns(2)
-    for col, target_key in zip(cols, ["catalog_retrieval", "heritage_retrieval"], strict=True):
-        m = report[target_key]
-        with col:
-            st.markdown(f"**{target_key.replace('_', ' ').title()}**  (n = {m['n_queries']})")
-            metric_cols = st.columns(4)
-            metric_cols[0].metric("recall@1", f"{m['recall_at_1']:.2f}")
-            metric_cols[1].metric("recall@3", f"{m['recall_at_3']:.2f}")
-            metric_cols[2].metric("recall@5", f"{m['recall_at_5']:.2f}")
-            metric_cols[3].metric("MRR", f"{m['mrr']:.2f}")
-            if m["per_intent"]:
-                rows = [
-                    {"intent": intent, **per_metrics}
-                    for intent, per_metrics in m["per_intent"].items()
-                ]
-                df = pd.DataFrame(rows).set_index("intent")
-                st.dataframe(df.style.format("{:.2f}"), use_container_width=True)
+    st.subheader("Catalog retrieval — dense vs hybrid (BM25 + dense, fused via RRF)")
+    dense = report["catalog_retrieval"]
+    hybrid = report.get("catalog_hybrid_retrieval")
+    if hybrid is not None:
+        cmp_rows = []
+        for key, label in [
+            ("recall_at_1", "recall@1"),
+            ("recall_at_3", "recall@3"),
+            ("recall_at_5", "recall@5"),
+            ("mrr", "MRR"),
+        ]:
+            d = dense[key]
+            h = hybrid[key]
+            delta = f"+{((h - d) / d * 100):.0f}%" if d > 0 else "n/a"
+            cmp_rows.append({"metric": label, "dense": d, "hybrid": h, "lift": delta})
+        cmp_df = pd.DataFrame(cmp_rows).set_index("metric")
+        st.dataframe(
+            cmp_df.style.format({"dense": "{:.2f}", "hybrid": "{:.2f}"}),
+            use_container_width=True,
+        )
+        st.caption(
+            "Hybrid retrieval combines BM25 lexical scores with dense embeddings via "
+            "Reciprocal Rank Fusion (Cormack et al., 2009). The lift comes mostly from "
+            "queries where exact tokens (materials, stones, collection names) outrank "
+            "semantic neighbours — dense retrieval cannot distinguish *carnelian* from *amber*."
+        )
+    else:
+        metric_cols = st.columns(4)
+        metric_cols[0].metric("recall@1", f"{dense['recall_at_1']:.2f}")
+        metric_cols[1].metric("recall@3", f"{dense['recall_at_3']:.2f}")
+        metric_cols[2].metric("recall@5", f"{dense['recall_at_5']:.2f}")
+        metric_cols[3].metric("MRR", f"{dense['mrr']:.2f}")
+
+    st.subheader("Heritage retrieval")
+    h = report["heritage_retrieval"]
+    metric_cols = st.columns(4)
+    metric_cols[0].metric("recall@1", f"{h['recall_at_1']:.2f}")
+    metric_cols[1].metric("recall@3", f"{h['recall_at_3']:.2f}")
+    metric_cols[2].metric("recall@5", f"{h['recall_at_5']:.2f}")
+    metric_cols[3].metric("MRR", f"{h['mrr']:.2f}")
+
+    if h["per_intent"]:
+        rows = [{"intent": intent, **per_metrics} for intent, per_metrics in h["per_intent"].items()]
+        st.dataframe(pd.DataFrame(rows).set_index("intent").style.format("{:.2f}"), use_container_width=True)
 
     st.divider()
     st.subheader("Groundedness")
