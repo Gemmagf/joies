@@ -12,9 +12,12 @@ Escalation short-circuits straight to compose so the apology is centralised.
 
 from __future__ import annotations
 
+import time
+
 from langgraph.graph import END, START, StateGraph
 
 from ..config import get_settings
+from ..eval.groundedness import check_groundedness
 from ..i18n import detect_locale, t
 from ..models import ClientIntent, EscalationReason
 from ..observability import get_recorder
@@ -81,27 +84,66 @@ class Orchestrator:
             "route_visual": (result.needs_visual_search or has_image) and not escalate,
             "escalate": escalate,
             "escalation_reason": escalation_reason,
+            "trace": {
+                "intent": {
+                    "mode": "demo" if self.demo_mode else "claude",
+                    "detected": intent.value,
+                    "confidence": round(result.confidence, 3),
+                    "locale": result.locale,
+                    "escalate": escalate,
+                    "escalation_reason": escalation_reason.value if escalation_reason else None,
+                },
+            },
         }
 
     def _node_catalog(self, state: OrchestratorState) -> dict:
         if not state.get("route_catalog"):
-            return {"catalog_hits": []}
+            return {"catalog_hits": [], "trace": {"catalog": {"skipped": True}}}
         self._catalog.index()
+        start = time.perf_counter()
         hits = self._catalog.search(state["user_message"], k=4)
-        return {"catalog_hits": hits}
+        latency_ms = round((time.perf_counter() - start) * 1000, 1)
+        trace_payload: dict = {"n_hits": len(hits), "latency_ms": latency_ms}
+        if isinstance(self._catalog, HybridCatalogRAG):
+            trace_payload.update(self._catalog.last_diagnostics)
+            trace_payload["retriever"] = "hybrid (BM25 + dense, RRF)"
+        else:
+            trace_payload["retriever"] = "dense only"
+            trace_payload["fused_top"] = [h.piece.id for h in hits]
+        return {"catalog_hits": hits, "trace": {"catalog": trace_payload}}
 
     def _node_heritage(self, state: OrchestratorState) -> dict:
         if not state.get("route_heritage"):
-            return {"heritage_hits": []}
+            return {"heritage_hits": [], "trace": {"heritage": {"skipped": True}}}
         self._heritage.index()
+        start = time.perf_counter()
         hits = self._heritage.search(state["user_message"], k=3, locale=state.get("locale", "en"))
-        return {"heritage_hits": hits}
+        latency_ms = round((time.perf_counter() - start) * 1000, 1)
+        return {
+            "heritage_hits": hits,
+            "trace": {
+                "heritage": {
+                    "retriever": "dense (Chroma)",
+                    "n_hits": len(hits),
+                    "top_ids": [h.document.id for h in hits],
+                    "latency_ms": latency_ms,
+                }
+            },
+        }
 
     def _node_visual(self, state: OrchestratorState) -> dict:
         if not state.get("route_visual") or state.get("image_bytes") is None:
-            return {"visual_hits": []}
+            return {"visual_hits": [], "trace": {"visual": {"skipped": True}}}
         hits = self._visual.search_by_image(state["image_bytes"], k=4)
-        return {"visual_hits": hits}
+        return {
+            "visual_hits": hits,
+            "trace": {
+                "visual": {
+                    "retriever": "CLIP" if not (hits and hits[0].degraded) else "text fallback",
+                    "n_hits": len(hits),
+                }
+            },
+        }
 
     def _node_compose(self, state: OrchestratorState) -> dict:
         locale = state.get("locale", "en")
@@ -110,7 +152,14 @@ class Orchestrator:
             return {
                 "assistant_reply": t("chat.escalation", locale),
                 "citations": [],
+                "trace": {
+                    "compose": {
+                        "mode": "escalation",
+                        "template": "chat.escalation",
+                    }
+                },
             }
+        start = time.perf_counter()
         if self.demo_mode:
             reply, citations = compose_reply_templated(
                 intent=intent,
@@ -119,6 +168,7 @@ class Orchestrator:
                 heritage_hits=state.get("heritage_hits", []),
                 visual_hits=state.get("visual_hits", []),
             )
+            compose_mode = "demo"
         else:
             reply, citations = compose_reply(
                 user_message=state["user_message"],
@@ -127,7 +177,36 @@ class Orchestrator:
                 heritage_hits=state.get("heritage_hits", []),
                 visual_hits=state.get("visual_hits", []),
             )
-        return {"assistant_reply": reply, "citations": citations}
+            compose_mode = "claude (sonnet-4-6, adaptive thinking, prompt-cached)"
+        latency_ms = round((time.perf_counter() - start) * 1000, 1)
+
+        groundedness = check_groundedness(
+            reply,
+            catalog_evidence=[h.piece for h in state.get("catalog_hits", [])],
+            heritage_evidence=[h.document for h in state.get("heritage_hits", [])],
+        )
+        finding_counts: dict[str, int] = {}
+        for f in groundedness.findings:
+            finding_counts[f.kind] = finding_counts.get(f.kind, 0) + 1
+
+        return {
+            "assistant_reply": reply,
+            "citations": citations,
+            "trace": {
+                "compose": {
+                    "mode": compose_mode,
+                    "intent": intent.value,
+                    "latency_ms": latency_ms,
+                    "reply_length_chars": len(reply),
+                    "n_citations": len(citations),
+                },
+                "groundedness": {
+                    "is_grounded": groundedness.is_grounded,
+                    "hallucination_count": groundedness.hallucination_count,
+                    "findings_by_kind": finding_counts,
+                },
+            },
+        }
 
     def _build_graph(self):
         graph = StateGraph(OrchestratorState)

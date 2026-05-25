@@ -59,6 +59,13 @@ def _eval_report() -> dict | None:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _simulation_report() -> dict | None:
+    path = get_settings().data_dir / "eval" / "simulation_report.json"
+    if not path.exists():
+        return None
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
 def _booking_model_paths() -> tuple[Path, Path]:
     base = get_settings().data_dir / "clients"
     return base / "booking_model.joblib", base / "booking_model_report.json"
@@ -203,6 +210,55 @@ def render_quality() -> None:
         metric_cols[1].metric("recall@3", f"{dense['recall_at_3']:.2f}")
         metric_cols[2].metric("recall@5", f"{dense['recall_at_5']:.2f}")
         metric_cols[3].metric("MRR", f"{dense['mrr']:.2f}")
+
+    # --- Per-query drill-down (catalog) -----------------------------------------------
+    if hybrid and hybrid.get("per_query") and dense.get("per_query"):
+        with st.expander("Per-query diagnosis — which queries hit, which miss", expanded=False):
+            from maison_concierge.eval.golden import load_golden_set
+
+            golden_by_id = {g.id: g for g in load_golden_set()}
+            dense_by_id = {q["item_id"]: q for q in dense["per_query"]}
+            hybrid_by_id = {q["item_id"]: q for q in hybrid["per_query"]}
+
+            rows = []
+            for item_id in sorted(hybrid_by_id):
+                gq = golden_by_id.get(item_id)
+                dq = dense_by_id.get(item_id, {})
+                hq = hybrid_by_id[item_id]
+                rows.append(
+                    {
+                        "id": item_id,
+                        "query": (gq.text if gq else "?")[:80],
+                        "intent": hq["intent"],
+                        "dense recall@5": dq.get("recall_at_5", 0.0),
+                        "hybrid recall@5": hq["recall_at_5"],
+                        "hybrid hit@1": "✓" if hq["hit_at_1"] else "—",
+                    }
+                )
+            df = pd.DataFrame(rows)
+            st.dataframe(
+                df.style.format({"dense recall@5": "{:.2f}", "hybrid recall@5": "{:.2f}"})
+                  .background_gradient(subset=["hybrid recall@5"], cmap="Greens", vmin=0, vmax=1),
+                use_container_width=True,
+                hide_index=True,
+            )
+
+            failing = [q for q in hybrid["per_query"] if q["recall_at_5"] < 0.5]
+            if failing:
+                st.markdown("**Failing queries** (recall@5 < 0.5) — diagnosis:")
+                for q in failing[:5]:
+                    gq = golden_by_id.get(q["item_id"])
+                    with st.container(border=True):
+                        st.markdown(f"**`{q['item_id']}`** — *{gq.text if gq else ''}*")
+                        cols = st.columns(2)
+                        cols[0].markdown("**Expected (top-k)**")
+                        for pid in q["expected_ids"]:
+                            badge = "✓" if pid in q["retrieved_ids"] else "✗"
+                            cols[0].markdown(f"- {badge} `{pid}`")
+                        cols[1].markdown("**Retrieved (top-5)**")
+                        for rank, pid in enumerate(q["retrieved_ids"], start=1):
+                            badge = "✓" if pid in q["expected_ids"] else " "
+                            cols[1].markdown(f"{rank}. {badge} `{pid}`")
 
     st.subheader("Heritage retrieval")
     h = report["heritage_retrieval"]
@@ -571,6 +627,163 @@ def render_segments() -> None:
 
 
 # =========================================================================
+# Simulator — synthetic conversation stress test
+# =========================================================================
+
+
+def render_simulator() -> None:
+    sim = _simulation_report()
+    if sim is None:
+        st.warning(
+            "No simulation report found. Run `python scripts/run_simulator.py` to "
+            "stress-test the orchestrator with synthetic conversations."
+        )
+        return
+
+    st.caption(
+        f"Generated {sim['n_turns']} synthetic conversations through the orchestrator (demo mode) "
+        f"and graded each on intent accuracy, groundedness, retrieval coverage, and an "
+        f"composite quality score. Run at `{sim['timestamp']}`."
+    )
+
+    cols = st.columns(5)
+    cols[0].metric("Turns", sim["n_turns"])
+    cols[1].metric("Intent accuracy", f"{sim['intent_accuracy']:.0%}")
+    cols[2].metric("Groundedness", f"{sim['grounded_rate']:.0%}")
+    cols[3].metric("Escalation rate", f"{sim['escalation_rate']:.0%}")
+    cols[4].metric("Avg quality", f"{sim['avg_quality_score']:.2f}")
+
+    st.divider()
+    left, right = st.columns(2)
+    with left:
+        st.subheader("Per intent")
+        per_intent = pd.DataFrame(
+            [{"intent": k, **v} for k, v in sim["per_intent"].items()]
+        ).set_index("intent")
+        st.dataframe(
+            per_intent.style.format(
+                {"intent_accuracy": "{:.0%}", "grounded_rate": "{:.0%}", "avg_quality": "{:.2f}"}
+            ),
+            use_container_width=True,
+        )
+        chart = (
+            alt.Chart(per_intent.reset_index())
+            .mark_bar(color="#8a6f3f")
+            .encode(
+                y=alt.Y("intent:N", sort="-x"),
+                x=alt.X("avg_quality:Q", title="Avg quality (0-1)"),
+                tooltip=["intent", "n", alt.Tooltip("intent_accuracy:Q", format=".0%"), alt.Tooltip("avg_quality:Q", format=".2f")],
+            )
+            .properties(height=300)
+        )
+        st.altair_chart(chart, use_container_width=True)
+
+    with right:
+        st.subheader("Per locale")
+        per_locale = pd.DataFrame(
+            [{"locale": k, **v} for k, v in sim["per_locale"].items()]
+        ).set_index("locale")
+        st.dataframe(
+            per_locale.style.format(
+                {"intent_accuracy": "{:.0%}", "grounded_rate": "{:.0%}", "avg_quality": "{:.2f}"}
+            ),
+            use_container_width=True,
+        )
+
+        st.subheader("Quality distribution")
+        turns_df = pd.DataFrame(sim["turns"])
+        hist = (
+            alt.Chart(turns_df)
+            .mark_bar(color="#8a6f3f")
+            .encode(
+                x=alt.X("quality_score:Q", bin=alt.Bin(maxbins=10), title="Quality score"),
+                y=alt.Y("count():Q", title="Turns"),
+                tooltip=["count()"],
+            )
+            .properties(height=200)
+        )
+        st.altair_chart(hist, use_container_width=True)
+
+    st.divider()
+    st.subheader("Worst 10 turns")
+    worst_df = pd.DataFrame(sim["worst_turns"])
+    if not worst_df.empty:
+        st.dataframe(
+            worst_df[
+                [
+                    "template_intent",
+                    "detected_intent",
+                    "intent_match",
+                    "locale",
+                    "user_message",
+                    "quality_score",
+                ]
+            ],
+            use_container_width=True,
+            hide_index=True,
+        )
+
+
+# =========================================================================
+# Heritage knowledge graph
+# =========================================================================
+
+
+def render_heritage_graph() -> None:
+    try:
+        from maison_concierge.analysis.heritage_graph import build_graph
+    except ImportError:
+        st.warning("Heritage graph module not available.")
+        return
+
+    try:
+        from pyvis.network import Network
+    except ImportError:
+        st.warning("Install `pyvis` to render the heritage knowledge graph.")
+        return
+
+    g = build_graph()
+    if g.number_of_nodes() == 0:
+        st.info("No heritage data loaded.")
+        return
+
+    st.caption(
+        f"{g.number_of_nodes()} nodes · {g.number_of_edges()} edges. Entities extracted from the "
+        "10 heritage documents: collections, founding years, craftsmanship techniques, places. "
+        "Edges connect entities co-occurring within the same document."
+    )
+
+    net = Network(height="560px", width="100%", bgcolor="#faf8f4", font_color="#1c1c1c", directed=False)
+    palette = {
+        "collection": "#8a6f3f",
+        "year": "#3f6e8a",
+        "technique": "#6e3f8a",
+        "place": "#8a3f3f",
+        "document": "#3a3a3a",
+    }
+    for node, data in g.nodes(data=True):
+        kind = data.get("kind", "other")
+        net.add_node(
+            node,
+            label=str(data.get("label", node)),
+            color=palette.get(kind, "#888"),
+            title=f"{kind}: {data.get('label', node)}",
+            shape="dot",
+            size=20 if kind in ("collection", "document") else 14,
+        )
+    for u, v, data in g.edges(data=True):
+        net.add_edge(u, v, value=data.get("weight", 1), title=data.get("source", ""))
+    net.toggle_physics(True)
+
+    html = net.generate_html(notebook=False)
+    st.components.v1.html(html, height=600, scrolling=False)
+
+    st.markdown("**Legend** — " + "  ·  ".join(
+        f"<span style='color:{c}'>● {k}</span>" for k, c in palette.items()
+    ), unsafe_allow_html=True)
+
+
+# =========================================================================
 # App entry
 # =========================================================================
 
@@ -582,8 +795,8 @@ def main() -> None:
         "for the multi-agent client advisor."
     )
 
-    overview_tab, quality_tab, business_tab, segments_tab = st.tabs(
-        ["Overview", "Quality", "Business case", "Segments"]
+    overview_tab, quality_tab, business_tab, segments_tab, sim_tab, heritage_tab = st.tabs(
+        ["Overview", "Quality", "Business case", "Segments", "Simulator", "Heritage graph"]
     )
     with overview_tab:
         render_overview()
@@ -593,6 +806,10 @@ def main() -> None:
         render_business_case()
     with segments_tab:
         render_segments()
+    with sim_tab:
+        render_simulator()
+    with heritage_tab:
+        render_heritage_graph()
 
 
 if __name__ == "__main__":

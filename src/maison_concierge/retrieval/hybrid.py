@@ -101,6 +101,13 @@ class HybridCatalogRAG:
         self._dense = dense or CatalogRAG()
         self._candidate_pool = candidate_pool
         self._rrf_k = rrf_k
+        # Populated on every `search()` call so the orchestrator's trace panel can
+        # show which retriever contributed what.
+        self.last_diagnostics: dict[str, list[str]] = {
+            "bm25_top": [],
+            "dense_top": [],
+            "fused_top": [],
+        }
 
     def index(self, *, force: bool = False) -> int:
         """Build both indices. BM25 is in-memory and rebuilds on every process start;
@@ -137,6 +144,11 @@ class HybridCatalogRAG:
             [bm25_ranking, dense_ranking], k=self._rrf_k
         )
         ordered = sorted(fused_scores.items(), key=lambda kv: kv[1], reverse=True)
+        self.last_diagnostics = {
+            "bm25_top": bm25_ranking[:5],
+            "dense_top": dense_ranking[:5],
+            "fused_top": [pid for pid, _ in ordered[:5]],
+        }
 
         results: list[CatalogSearchResult] = []
         for piece_id, score in ordered:

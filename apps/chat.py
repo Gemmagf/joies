@@ -155,6 +155,64 @@ def main() -> None:
                         f"CHF {hit.piece.price_chf:,.0f}"
                     )
 
+        trace = result.get("trace") or {}
+        if trace:
+            with st.expander("Why this reply (debug trace)"):
+                intent_info = trace.get("intent", {})
+                catalog_info = trace.get("catalog", {})
+                heritage_info = trace.get("heritage", {})
+                compose_info = trace.get("compose", {})
+                groundedness_info = trace.get("groundedness", {})
+
+                if intent_info:
+                    st.markdown(
+                        f"**Intent** · `{intent_info.get('detected', '?')}` "
+                        f"· confidence `{intent_info.get('confidence', 0):.2f}` "
+                        f"· locale `{intent_info.get('locale', '?')}` "
+                        f"· mode `{intent_info.get('mode', '?')}` "
+                        f"{'· **escalated**' if intent_info.get('escalate') else ''}"
+                    )
+                if catalog_info and not catalog_info.get("skipped"):
+                    st.markdown(f"**Catalog retrieval** · {catalog_info.get('retriever', '?')}")
+                    cols_t = st.columns(3)
+                    cols_t[0].caption("BM25 top-5")
+                    for pid in catalog_info.get("bm25_top", []):
+                        cols_t[0].markdown(f"- `{pid}`")
+                    cols_t[1].caption("Dense top-5")
+                    for pid in catalog_info.get("dense_top", []):
+                        cols_t[1].markdown(f"- `{pid}`")
+                    cols_t[2].caption("RRF-fused top-5")
+                    for pid in catalog_info.get("fused_top", []):
+                        cols_t[2].markdown(f"- `{pid}`")
+                    st.caption(f"latency: {catalog_info.get('latency_ms', 0)} ms")
+                if heritage_info and not heritage_info.get("skipped"):
+                    st.markdown(
+                        f"**Heritage retrieval** · {heritage_info.get('retriever', '?')} · "
+                        f"{heritage_info.get('n_hits', 0)} hits · "
+                        f"{heritage_info.get('latency_ms', 0)} ms"
+                    )
+                    if heritage_info.get("top_ids"):
+                        st.code("\n".join(heritage_info["top_ids"]), language="text")
+                if compose_info:
+                    st.markdown(
+                        f"**Composer** · {compose_info.get('mode', '?')} "
+                        f"· template intent `{compose_info.get('intent', '?')}` "
+                        f"· {compose_info.get('reply_length_chars', 0)} chars "
+                        f"· {compose_info.get('n_citations', 0)} citations "
+                        f"· {compose_info.get('latency_ms', 0)} ms"
+                    )
+                if groundedness_info:
+                    is_grounded = groundedness_info.get("is_grounded", True)
+                    badge = "PASS" if is_grounded else f"FAIL ({groundedness_info.get('hallucination_count', 0)})"
+                    st.markdown(
+                        f"**Groundedness** · {badge}"
+                        + (
+                            f" · findings: {groundedness_info.get('findings_by_kind', {})}"
+                            if groundedness_info.get("findings_by_kind")
+                            else ""
+                        )
+                    )
+
     assistant_msg = ChatMessage(
         role="assistant",
         content=reply_text,

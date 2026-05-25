@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Annotated, Literal, TypedDict
+from typing import Annotated, Any, Literal, TypedDict
 
 from ..models import Citation, ClientIntent, EscalationReason
 from ..retrieval import CatalogSearchResult, HeritageSearchResult, VisualSearchResult
@@ -12,6 +12,12 @@ Locale = Literal["en", "fr"]
 
 def _take_last(_: object, new: object) -> object:
     return new
+
+
+def _merge_dicts(current: dict | None, new: dict | None) -> dict:
+    merged = dict(current or {})
+    merged.update(new or {})
+    return merged
 
 
 class OrchestratorState(TypedDict, total=False):
@@ -34,3 +40,4 @@ class OrchestratorState(TypedDict, total=False):
 
     assistant_reply: Annotated[str, _take_last]
     citations: list[Citation]
+    trace: Annotated[dict[str, Any], _merge_dicts]

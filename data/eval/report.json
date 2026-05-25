@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-24T15:23:24.404615+00:00",
+  "timestamp": "2026-05-25T08:24:15.332577+00:00",
   "catalog_retrieval": {
     "n_queries": 18,
     "recall_at_1": 0.1388888888888889,
@@ -43,7 +43,382 @@
         "recall_at_5": 0.0,
         "mrr": 0.0
       }
-    }
+    },
+    "per_query": [
+      {
+        "item_id": "gold-001",
+        "intent": "celebration",
+        "recall_at_1": 0.0,
+        "recall_at_3": 0.3333333333333333,
+        "recall_at_5": 0.3333333333333333,
+        "mrr": 0.3333333333333333,
+        "hit_at_1": false,
+        "retrieved_ids": [
+          "VCA-LCK-FRG-PEN-021",
+          "VCA-LCK-LDB-PEN-042",
+          "VCA-ALH-VIN-CAR-PEN-002",
+          "VCA-LCK-CHM-BRC-048",
+          "VCA-LCK-HDG-PEN-060"
+        ],
+        "expected_ids": [
+          "VCA-ALH-VIN-MOP-PEN-001",
+          "VCA-ALH-VIN-CAR-PEN-002",
+          "VCA-ALH-VIN-MAL-RNG-006"
+        ]
+      },
+      {
+        "item_id": "gold-002",
+        "intent": "celebration",
+        "recall_at_1": 0.0,
+        "recall_at_3": 0.0,
+        "recall_at_5": 0.0,
+        "mrr": 0.0,
+        "hit_at_1": false,
+        "retrieved_ids": [
+          "VCA-LCK-BTF-PEN-016",
+          "VCA-LCK-SWN-PEN-045",
+          "VCA-LCK-FSH-PEN-044",
+          "VCA-LCK-LDB-PEN-042",
+          "VCA-ALH-SWT-MOP-BRC-028"
+        ],
+        "expected_ids": [
+          "VCA-PRL-DIA-RNG-018",
+          "VCA-ALH-PUR-DIA-RNG-058",
+          "VCA-ALH-VIN-WMP-DIA-RNG-027"
+        ]
+      },
+      {
+        "item_id": "gold-003",
+        "intent": "gift",
+        "recall_at_1": 0.3333333333333333,
+        "recall_at_3": 0.3333333333333333,
+        "recall_at_5": 0.3333333333333333,
+        "mrr": 1.0,
+        "hit_at_1": true,
+        "retrieved_ids": [
+          "VCA-LCK-BTF-PEN-016",
+          "VCA-LCK-LDB-PEN-042",
+          "VCA-LCK-FRG-PEN-021",
+          "VCA-LCK-HDG-PEN-060",
+          "VCA-LCK-OWL-PEN-043"
+        ],
+        "expected_ids": [
+          "VCA-FRV-YG-PEN-011",
+          "VCA-LCK-BTF-PEN-016",
+          "VCA-LCK-DRG-PEN-046"
+        ]
+      },
+      {
+        "item_id": "gold-004",
+        "intent": "gift",
+        "recall_at_1": 0.3333333333333333,
+        "recall_at_3": 0.6666666666666666,
+        "recall_at_5": 0.6666666666666666,
+        "mrr": 1.0,
+        "hit_at_1": true,
+        "retrieved_ids": [
+          "VCA-ALH-VIN-CAR-PEN-002",
+          "VCA-LCK-LDB-PEN-042",
+          "VCA-ALH-VIN-MOP-PEN-001",
+          "VCA-BAL-SPP-CLP-022",
+          "VCA-BAL-RUB-MYS-CLP-040"
+        ],
+        "expected_ids": [
+          "VCA-ALH-VIN-MOP-PEN-001",
+          "VCA-ALH-SWT-MOP-EAR-005",
+          "VCA-ALH-VIN-CAR-PEN-002"
+        ]
+      },
+      {
+        "item_id": "gold-005",
+        "intent": "celebration",
+        "recall_at_1": 0.0,
+        "recall_at_3": 0.0,
+        "recall_at_5": 0.0,
+        "mrr": 0.0,
+        "hit_at_1": false,
+        "retrieved_ids": [
+          "VCA-PRL-WG-RNG-054",
+          "VCA-ALH-VIN-MAL-RNG-006",
+          "VCA-PRL-SGL-RNG-052",
+          "VCA-PRL-CLR-TUR-RNG-051",
+          "VCA-ALH-VIN-CAR-PEN-002"
+        ],
+        "expected_ids": [
+          "VCA-PRL-DIA-RNG-018",
+          "VCA-ALH-PUR-DIA-RNG-058",
+          "VCA-ALH-VIN-WMP-DIA-RNG-027"
+        ]
+      },
+      {
+        "item_id": "gold-006",
+        "intent": "celebration",
+        "recall_at_1": 0.0,
+        "recall_at_3": 0.0,
+        "recall_at_5": 0.0,
+        "mrr": 0.0,
+        "hit_at_1": false,
+        "retrieved_ids": [
+          "VCA-PRL-CLR-TUR-RNG-051",
+          "VCA-LCK-LDB-PEN-042",
+          "VCA-ALH-VIN-CAR-PEN-002",
+          "VCA-PRL-WG-RNG-054",
+          "VCA-ALH-HOL-DIA-NCK-025"
+        ],
+        "expected_ids": [
+          "VCA-ALH-MEN-ONX-CUF-034",
+          "VCA-CAD-YG-WCH-055",
+          "VCA-CAD-DIA-WCH-056"
+        ]
+      },
+      {
+        "item_id": "gold-007",
+        "intent": "celebration",
+        "recall_at_1": 0.0,
+        "recall_at_3": 0.3333333333333333,
+        "recall_at_5": 0.3333333333333333,
+        "mrr": 0.5,
+        "hit_at_1": false,
+        "retrieved_ids": [
+          "VCA-ALH-VIN-CAR-PEN-002",
+          "VCA-ALH-VIN-COR-PEN-035",
+          "VCA-ALH-VIN-CHL-PEN-031",
+          "VCA-ALH-VIN-OPL-PEN-059",
+          "VCA-ALH-VIN-AGT-PEN-026"
+        ],
+        "expected_ids": [
+          "VCA-CAD-YG-WCH-055",
+          "VCA-ALH-VIN-COR-PEN-035",
+          "VCA-ALH-VIN-CHR-NCK-033"
+        ]
+      },
+      {
+        "item_id": "gold-013",
+        "intent": "browse",
+        "recall_at_1": 0.0,
+        "recall_at_3": 0.0,
+        "recall_at_5": 0.0,
+        "mrr": 0.0,
+        "hit_at_1": false,
+        "retrieved_ids": [
+          "VCA-LCK-FRG-PEN-021",
+          "VCA-LCK-HDG-PEN-060",
+          "VCA-LCK-LDB-PEN-042",
+          "VCA-LCK-SWN-PEN-045",
+          "VCA-LCK-DRG-PEN-046"
+        ],
+        "expected_ids": [
+          "VCA-ALH-VIN-MOP-PEN-001",
+          "VCA-FRV-YG-RNG-009",
+          "VCA-PRL-YG-BRC-017"
+        ]
+      },
+      {
+        "item_id": "gold-014",
+        "intent": "browse",
+        "recall_at_1": 0.3333333333333333,
+        "recall_at_3": 0.3333333333333333,
+        "recall_at_5": 0.3333333333333333,
+        "mrr": 1.0,
+        "hit_at_1": true,
+        "retrieved_ids": [
+          "VCA-ALH-VIN-ONX-BRC-003",
+          "VCA-LCK-CHM-BRC-048",
+          "VCA-ALH-VIN-TIG-BRC-020",
+          "VCA-ALH-VIN-CHL-PEN-031",
+          "VCA-LCK-LDB-PEN-042"
+        ],
+        "expected_ids": [
+          "VCA-ALH-VIN-ONX-BRC-003",
+          "VCA-PRL-YG-BRC-017",
+          "VCA-FRV-YG-BRC-039"
+        ]
+      },
+      {
+        "item_id": "gold-015",
+        "intent": "browse",
+        "recall_at_1": 0.0,
+        "recall_at_3": 0.5,
+        "recall_at_5": 0.5,
+        "mrr": 0.5,
+        "hit_at_1": false,
+        "retrieved_ids": [
+          "VCA-LCK-LDB-EAR-049",
+          "VCA-FRV-YG-EAR-037",
+          "VCA-LCK-CHM-BRC-048",
+          "VCA-ALH-SWT-MOP-BRC-028",
+          "VCA-ALH-VIN-TUR-EAR-019"
+        ],
+        "expected_ids": [
+          "VCA-ALH-SWT-MOP-EAR-005",
+          "VCA-FRV-YG-EAR-037"
+        ]
+      },
+      {
+        "item_id": "gold-016",
+        "intent": "investment_piece",
+        "recall_at_1": 0.0,
+        "recall_at_3": 0.0,
+        "recall_at_5": 0.0,
+        "mrr": 0.0,
+        "hit_at_1": false,
+        "retrieved_ids": [
+          "VCA-ALH-MAG-MOP-NCK-004",
+          "VCA-ALH-VIN-YG-NCK-032",
+          "VCA-BAL-SPP-CLP-022",
+          "VCA-PRL-YG-NCK-050",
+          "VCA-ALH-SWT-MOP-BRC-028"
+        ],
+        "expected_ids": [
+          "VCA-BAL-DIA-CLP-013",
+          "VCA-BAL-EME-CLP-014",
+          "VCA-BAL-RUB-MYS-CLP-040"
+        ]
+      },
+      {
+        "item_id": "gold-017",
+        "intent": "investment_piece",
+        "recall_at_1": 0.0,
+        "recall_at_3": 0.6666666666666666,
+        "recall_at_5": 1.0,
+        "mrr": 0.5,
+        "hit_at_1": false,
+        "retrieved_ids": [
+          "VCA-BAL-RUB-MYS-CLP-040",
+          "VCA-BAL-SPP-CLP-022",
+          "VCA-BAL-DIA-CLP-013",
+          "VCA-BAL-EME-CLP-014",
+          "VCA-BAL-YDI-CLP-041"
+        ],
+        "expected_ids": [
+          "VCA-BAL-DIA-CLP-013",
+          "VCA-BAL-EME-CLP-014",
+          "VCA-BAL-SPP-CLP-022"
+        ]
+      },
+      {
+        "item_id": "gold-018",
+        "intent": "investment_piece",
+        "recall_at_1": 0.5,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "hit_at_1": true,
+        "retrieved_ids": [
+          "VCA-CAD-YG-WCH-055",
+          "VCA-CAD-DIA-WCH-056",
+          "VCA-ALH-VIN-TIG-BRC-020",
+          "VCA-ALH-MEN-ONX-CUF-034",
+          "VCA-ALH-VIN-CAR-PEN-002"
+        ],
+        "expected_ids": [
+          "VCA-CAD-YG-WCH-055",
+          "VCA-CAD-DIA-WCH-056"
+        ]
+      },
+      {
+        "item_id": "gold-019",
+        "intent": "price_inquiry",
+        "recall_at_1": 0.5,
+        "recall_at_3": 0.5,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "hit_at_1": true,
+        "retrieved_ids": [
+          "VCA-ALH-MAG-MOP-NCK-004",
+          "VCA-ALH-VIN-YG-NCK-032",
+          "VCA-ALH-VIN-CHR-NCK-033",
+          "VCA-ALH-MAG-MOP-EAR-029",
+          "VCA-ALH-MAG-LAP-NCK-008"
+        ],
+        "expected_ids": [
+          "VCA-ALH-MAG-MOP-NCK-004",
+          "VCA-ALH-MAG-LAP-NCK-008"
+        ]
+      },
+      {
+        "item_id": "gold-020",
+        "intent": "price_inquiry",
+        "recall_at_1": 0.0,
+        "recall_at_3": 0.0,
+        "recall_at_5": 0.0,
+        "mrr": 0.0,
+        "hit_at_1": false,
+        "retrieved_ids": [
+          "VCA-FRV-WG-RNG-038",
+          "VCA-FRV-YG-PEN-011",
+          "VCA-FRV-YG-BRC-039",
+          "VCA-LCK-LDB-PEN-042",
+          "VCA-FRV-YG-NCK-023"
+        ],
+        "expected_ids": [
+          "VCA-ALH-SWT-MOP-EAR-005",
+          "VCA-PRL-SGL-RNG-052",
+          "VCA-PRL-WG-RNG-054"
+        ]
+      },
+      {
+        "item_id": "gold-021",
+        "intent": "price_inquiry",
+        "recall_at_1": 0.5,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "hit_at_1": true,
+        "retrieved_ids": [
+          "VCA-PRL-WG-RNG-054",
+          "VCA-PRL-SGL-RNG-052",
+          "VCA-PRL-YG-BRC-017",
+          "VCA-PRL-CLR-TUR-RNG-051",
+          "VCA-FRV-WG-RNG-038"
+        ],
+        "expected_ids": [
+          "VCA-PRL-SGL-RNG-052",
+          "VCA-PRL-WG-RNG-054"
+        ]
+      },
+      {
+        "item_id": "gold-023",
+        "intent": "appointment",
+        "recall_at_1": 0.0,
+        "recall_at_3": 0.0,
+        "recall_at_5": 0.0,
+        "mrr": 0.0,
+        "hit_at_1": false,
+        "retrieved_ids": [
+          "VCA-ALH-PUR-DIA-EAR-007",
+          "VCA-ALH-VIN-TUR-EAR-019",
+          "VCA-ALH-SWT-MOP-EAR-005",
+          "VCA-ALH-PUR-DIA-PEN-030",
+          "VCA-ALH-HOL-DIA-NCK-025"
+        ],
+        "expected_ids": [
+          "VCA-ALH-VIN-MOP-PEN-001",
+          "VCA-ALH-VIN-CAR-PEN-002"
+        ]
+      },
+      {
+        "item_id": "gold-029",
+        "intent": "gift",
+        "recall_at_1": 0.0,
+        "recall_at_3": 0.0,
+        "recall_at_5": 0.3333333333333333,
+        "mrr": 0.2,
+        "hit_at_1": false,
+        "retrieved_ids": [
+          "VCA-BAL-RUB-MYS-CLP-040",
+          "VCA-BAL-DIA-CLP-013",
+          "VCA-BAL-SPP-CLP-022",
+          "VCA-BAL-EME-CLP-014",
+          "VCA-LCK-LDB-PEN-042"
+        ],
+        "expected_ids": [
+          "VCA-LCK-LDB-PEN-042",
+          "VCA-LCK-FRG-PEN-021",
+          "VCA-LCK-OWL-PEN-043"
+        ]
+      }
+    ]
   },
   "catalog_hybrid_retrieval": {
     "n_queries": 18,
@@ -88,7 +463,382 @@
         "recall_at_5": 0.0,
         "mrr": 0.0
       }
-    }
+    },
+    "per_query": [
+      {
+        "item_id": "gold-001",
+        "intent": "celebration",
+        "recall_at_1": 0.0,
+        "recall_at_3": 0.3333333333333333,
+        "recall_at_5": 0.3333333333333333,
+        "mrr": 0.5,
+        "hit_at_1": false,
+        "retrieved_ids": [
+          "VCA-LCK-FRG-PEN-021",
+          "VCA-ALH-VIN-CAR-PEN-002",
+          "VCA-LCK-HMB-PEN-047",
+          "VCA-LCK-BTF-PEN-016",
+          "VCA-LCK-DRG-PEN-046"
+        ],
+        "expected_ids": [
+          "VCA-ALH-VIN-MOP-PEN-001",
+          "VCA-ALH-VIN-CAR-PEN-002",
+          "VCA-ALH-VIN-MAL-RNG-006"
+        ]
+      },
+      {
+        "item_id": "gold-002",
+        "intent": "celebration",
+        "recall_at_1": 0.0,
+        "recall_at_3": 0.0,
+        "recall_at_5": 0.0,
+        "mrr": 0.0,
+        "hit_at_1": false,
+        "retrieved_ids": [
+          "VCA-LCK-BTF-PEN-016",
+          "VCA-LCK-SWN-PEN-045",
+          "VCA-LCK-FSH-PEN-044",
+          "VCA-LCK-LDB-PEN-042",
+          "VCA-ALH-SWT-MOP-BRC-028"
+        ],
+        "expected_ids": [
+          "VCA-PRL-DIA-RNG-018",
+          "VCA-ALH-PUR-DIA-RNG-058",
+          "VCA-ALH-VIN-WMP-DIA-RNG-027"
+        ]
+      },
+      {
+        "item_id": "gold-003",
+        "intent": "gift",
+        "recall_at_1": 0.3333333333333333,
+        "recall_at_3": 0.6666666666666666,
+        "recall_at_5": 0.6666666666666666,
+        "mrr": 1.0,
+        "hit_at_1": true,
+        "retrieved_ids": [
+          "VCA-LCK-BTF-PEN-016",
+          "VCA-LCK-FRG-PEN-021",
+          "VCA-LCK-DRG-PEN-046",
+          "VCA-ALH-VIN-CHR-NCK-033",
+          "VCA-ALH-SWT-MOP-BRC-028"
+        ],
+        "expected_ids": [
+          "VCA-FRV-YG-PEN-011",
+          "VCA-LCK-BTF-PEN-016",
+          "VCA-LCK-DRG-PEN-046"
+        ]
+      },
+      {
+        "item_id": "gold-004",
+        "intent": "gift",
+        "recall_at_1": 0.3333333333333333,
+        "recall_at_3": 0.3333333333333333,
+        "recall_at_5": 0.6666666666666666,
+        "mrr": 1.0,
+        "hit_at_1": true,
+        "retrieved_ids": [
+          "VCA-ALH-VIN-MOP-PEN-001",
+          "VCA-BAL-DIA-CLP-013",
+          "VCA-ALH-MAG-MOP-EAR-029",
+          "VCA-ALH-SWT-MOP-EAR-005",
+          "VCA-ALH-VIN-YG-NCK-032"
+        ],
+        "expected_ids": [
+          "VCA-ALH-VIN-MOP-PEN-001",
+          "VCA-ALH-SWT-MOP-EAR-005",
+          "VCA-ALH-VIN-CAR-PEN-002"
+        ]
+      },
+      {
+        "item_id": "gold-005",
+        "intent": "celebration",
+        "recall_at_1": 0.0,
+        "recall_at_3": 0.0,
+        "recall_at_5": 0.3333333333333333,
+        "mrr": 0.2,
+        "hit_at_1": false,
+        "retrieved_ids": [
+          "VCA-PRL-WG-RNG-054",
+          "VCA-ALH-VIN-MAL-RNG-006",
+          "VCA-PRL-CLR-TUR-RNG-051",
+          "VCA-PRL-SGL-RNG-052",
+          "VCA-ALH-PUR-DIA-RNG-058"
+        ],
+        "expected_ids": [
+          "VCA-PRL-DIA-RNG-018",
+          "VCA-ALH-PUR-DIA-RNG-058",
+          "VCA-ALH-VIN-WMP-DIA-RNG-027"
+        ]
+      },
+      {
+        "item_id": "gold-006",
+        "intent": "celebration",
+        "recall_at_1": 0.0,
+        "recall_at_3": 0.0,
+        "recall_at_5": 0.0,
+        "mrr": 0.0,
+        "hit_at_1": false,
+        "retrieved_ids": [
+          "VCA-FRV-YG-EAR-037",
+          "VCA-PRL-CLR-TUR-RNG-051",
+          "VCA-LCK-LDB-PEN-042",
+          "VCA-ALH-VIN-CAR-PEN-002",
+          "VCA-PRL-WG-RNG-054"
+        ],
+        "expected_ids": [
+          "VCA-ALH-MEN-ONX-CUF-034",
+          "VCA-CAD-YG-WCH-055",
+          "VCA-CAD-DIA-WCH-056"
+        ]
+      },
+      {
+        "item_id": "gold-007",
+        "intent": "celebration",
+        "recall_at_1": 0.0,
+        "recall_at_3": 0.0,
+        "recall_at_5": 0.3333333333333333,
+        "mrr": 0.25,
+        "hit_at_1": false,
+        "retrieved_ids": [
+          "VCA-ALH-VIN-CAR-PEN-002",
+          "VCA-ALH-VIN-CHL-PEN-031",
+          "VCA-ALH-VIN-AGT-PEN-026",
+          "VCA-ALH-VIN-COR-PEN-035",
+          "VCA-ALH-VIN-TUR-EAR-019"
+        ],
+        "expected_ids": [
+          "VCA-CAD-YG-WCH-055",
+          "VCA-ALH-VIN-COR-PEN-035",
+          "VCA-ALH-VIN-CHR-NCK-033"
+        ]
+      },
+      {
+        "item_id": "gold-013",
+        "intent": "browse",
+        "recall_at_1": 0.0,
+        "recall_at_3": 0.0,
+        "recall_at_5": 0.3333333333333333,
+        "mrr": 0.25,
+        "hit_at_1": false,
+        "retrieved_ids": [
+          "VCA-LCK-FRG-PEN-021",
+          "VCA-LCK-DRG-PEN-046",
+          "VCA-PRL-YG-NCK-050",
+          "VCA-FRV-YG-RNG-009",
+          "VCA-LCK-CAT-PEN-015"
+        ],
+        "expected_ids": [
+          "VCA-ALH-VIN-MOP-PEN-001",
+          "VCA-FRV-YG-RNG-009",
+          "VCA-PRL-YG-BRC-017"
+        ]
+      },
+      {
+        "item_id": "gold-014",
+        "intent": "browse",
+        "recall_at_1": 0.3333333333333333,
+        "recall_at_3": 0.3333333333333333,
+        "recall_at_5": 0.6666666666666666,
+        "mrr": 1.0,
+        "hit_at_1": true,
+        "retrieved_ids": [
+          "VCA-ALH-VIN-ONX-BRC-003",
+          "VCA-ALH-SWT-MOP-BRC-028",
+          "VCA-FRV-YG-EAR-037",
+          "VCA-PRL-YG-BRC-017",
+          "VCA-ALH-VIN-CHL-PEN-031"
+        ],
+        "expected_ids": [
+          "VCA-ALH-VIN-ONX-BRC-003",
+          "VCA-PRL-YG-BRC-017",
+          "VCA-FRV-YG-BRC-039"
+        ]
+      },
+      {
+        "item_id": "gold-015",
+        "intent": "browse",
+        "recall_at_1": 0.5,
+        "recall_at_3": 0.5,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "hit_at_1": true,
+        "retrieved_ids": [
+          "VCA-FRV-YG-EAR-037",
+          "VCA-ALH-SWT-MOP-BRC-028",
+          "VCA-LCK-LDB-EAR-049",
+          "VCA-ALH-VIN-TUR-EAR-019",
+          "VCA-ALH-SWT-MOP-EAR-005"
+        ],
+        "expected_ids": [
+          "VCA-ALH-SWT-MOP-EAR-005",
+          "VCA-FRV-YG-EAR-037"
+        ]
+      },
+      {
+        "item_id": "gold-016",
+        "intent": "investment_piece",
+        "recall_at_1": 0.0,
+        "recall_at_3": 0.0,
+        "recall_at_5": 0.3333333333333333,
+        "mrr": 0.25,
+        "hit_at_1": false,
+        "retrieved_ids": [
+          "VCA-BAL-SPP-CLP-022",
+          "VCA-ALH-VIN-CHR-NCK-033",
+          "VCA-FRV-YG-NCK-023",
+          "VCA-BAL-EME-CLP-014",
+          "VCA-ALH-MAG-MOP-NCK-004"
+        ],
+        "expected_ids": [
+          "VCA-BAL-DIA-CLP-013",
+          "VCA-BAL-EME-CLP-014",
+          "VCA-BAL-RUB-MYS-CLP-040"
+        ]
+      },
+      {
+        "item_id": "gold-017",
+        "intent": "investment_piece",
+        "recall_at_1": 0.3333333333333333,
+        "recall_at_3": 0.6666666666666666,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "hit_at_1": true,
+        "retrieved_ids": [
+          "VCA-BAL-SPP-CLP-022",
+          "VCA-BAL-RUB-MYS-CLP-040",
+          "VCA-BAL-EME-CLP-014",
+          "VCA-BAL-DIA-CLP-013",
+          "VCA-BAL-YDI-CLP-041"
+        ],
+        "expected_ids": [
+          "VCA-BAL-DIA-CLP-013",
+          "VCA-BAL-EME-CLP-014",
+          "VCA-BAL-SPP-CLP-022"
+        ]
+      },
+      {
+        "item_id": "gold-018",
+        "intent": "investment_piece",
+        "recall_at_1": 0.5,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "hit_at_1": true,
+        "retrieved_ids": [
+          "VCA-CAD-DIA-WCH-056",
+          "VCA-CAD-YG-WCH-055",
+          "VCA-ALH-VIN-CAR-PEN-002",
+          "VCA-ALH-VIN-TIG-BRC-020",
+          "VCA-ALH-MEN-ONX-CUF-034"
+        ],
+        "expected_ids": [
+          "VCA-CAD-YG-WCH-055",
+          "VCA-CAD-DIA-WCH-056"
+        ]
+      },
+      {
+        "item_id": "gold-019",
+        "intent": "price_inquiry",
+        "recall_at_1": 0.5,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "hit_at_1": true,
+        "retrieved_ids": [
+          "VCA-ALH-MAG-MOP-NCK-004",
+          "VCA-ALH-VIN-YG-NCK-032",
+          "VCA-ALH-MAG-LAP-NCK-008",
+          "VCA-ALH-VIN-CHR-NCK-033",
+          "VCA-ALH-MAG-MOP-EAR-029"
+        ],
+        "expected_ids": [
+          "VCA-ALH-MAG-MOP-NCK-004",
+          "VCA-ALH-MAG-LAP-NCK-008"
+        ]
+      },
+      {
+        "item_id": "gold-020",
+        "intent": "price_inquiry",
+        "recall_at_1": 0.0,
+        "recall_at_3": 0.0,
+        "recall_at_5": 0.0,
+        "mrr": 0.0,
+        "hit_at_1": false,
+        "retrieved_ids": [
+          "VCA-CAD-YG-WCH-055",
+          "VCA-FRV-WG-RNG-038",
+          "VCA-FRV-YG-PEN-011",
+          "VCA-FRV-YG-BRC-039",
+          "VCA-LCK-LDB-PEN-042"
+        ],
+        "expected_ids": [
+          "VCA-ALH-SWT-MOP-EAR-005",
+          "VCA-PRL-SGL-RNG-052",
+          "VCA-PRL-WG-RNG-054"
+        ]
+      },
+      {
+        "item_id": "gold-021",
+        "intent": "price_inquiry",
+        "recall_at_1": 0.5,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "hit_at_1": true,
+        "retrieved_ids": [
+          "VCA-PRL-WG-RNG-054",
+          "VCA-PRL-SGL-RNG-052",
+          "VCA-PRL-YG-BRC-017",
+          "VCA-PRL-CLR-TUR-RNG-051",
+          "VCA-FRV-WG-RNG-038"
+        ],
+        "expected_ids": [
+          "VCA-PRL-SGL-RNG-052",
+          "VCA-PRL-WG-RNG-054"
+        ]
+      },
+      {
+        "item_id": "gold-023",
+        "intent": "appointment",
+        "recall_at_1": 0.0,
+        "recall_at_3": 0.0,
+        "recall_at_5": 0.0,
+        "mrr": 0.0,
+        "hit_at_1": false,
+        "retrieved_ids": [
+          "VCA-ALH-VIN-TUR-EAR-019",
+          "VCA-ALH-VIN-AGT-PEN-026",
+          "VCA-ALH-PUR-DIA-EAR-007",
+          "VCA-ALH-SWT-MOP-EAR-005",
+          "VCA-ALH-VIN-YG-NCK-032"
+        ],
+        "expected_ids": [
+          "VCA-ALH-VIN-MOP-PEN-001",
+          "VCA-ALH-VIN-CAR-PEN-002"
+        ]
+      },
+      {
+        "item_id": "gold-029",
+        "intent": "gift",
+        "recall_at_1": 0.0,
+        "recall_at_3": 0.0,
+        "recall_at_5": 0.0,
+        "mrr": 0.0,
+        "hit_at_1": false,
+        "retrieved_ids": [
+          "VCA-BAL-DIA-CLP-013",
+          "VCA-ALH-VIN-TUR-EAR-019",
+          "VCA-BAL-RUB-MYS-CLP-040",
+          "VCA-ALH-VIN-AGT-PEN-026",
+          "VCA-BAL-SPP-CLP-022"
+        ],
+        "expected_ids": [
+          "VCA-LCK-LDB-PEN-042",
+          "VCA-LCK-FRG-PEN-021",
+          "VCA-LCK-OWL-PEN-043"
+        ]
+      }
+    ]
   },
   "heritage_retrieval": {
     "n_queries": 7,

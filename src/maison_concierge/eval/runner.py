@@ -87,6 +87,20 @@ def write_eval_report(report: EvalReport, path: Path) -> None:
             "recall_at_5": report.catalog_retrieval.recall_at_5,
             "mrr": report.catalog_retrieval.mrr,
             "per_intent": report.catalog_retrieval.per_intent,
+            "per_query": [
+                {
+                    "item_id": q.item_id,
+                    "intent": q.intent.value,
+                    "recall_at_1": q.recall_at_1,
+                    "recall_at_3": q.recall_at_3,
+                    "recall_at_5": q.recall_at_5,
+                    "mrr": q.mrr,
+                    "hit_at_1": q.hit_at_1,
+                    "retrieved_ids": q.retrieved_ids,
+                    "expected_ids": q.expected_ids,
+                }
+                for q in report.catalog_retrieval.per_query
+            ],
         },
         "catalog_hybrid_retrieval": {
             "n_queries": report.catalog_hybrid_retrieval.n_queries,
@@ -95,6 +109,20 @@ def write_eval_report(report: EvalReport, path: Path) -> None:
             "recall_at_5": report.catalog_hybrid_retrieval.recall_at_5,
             "mrr": report.catalog_hybrid_retrieval.mrr,
             "per_intent": report.catalog_hybrid_retrieval.per_intent,
+            "per_query": [
+                {
+                    "item_id": q.item_id,
+                    "intent": q.intent.value,
+                    "recall_at_1": q.recall_at_1,
+                    "recall_at_3": q.recall_at_3,
+                    "recall_at_5": q.recall_at_5,
+                    "mrr": q.mrr,
+                    "hit_at_1": q.hit_at_1,
+                    "retrieved_ids": q.retrieved_ids,
+                    "expected_ids": q.expected_ids,
+                }
+                for q in report.catalog_hybrid_retrieval.per_query
+            ],
         },
         "heritage_retrieval": {
             "n_queries": report.heritage_retrieval.n_queries,
