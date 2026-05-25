@@ -30,6 +30,7 @@ from maison_concierge.config import get_settings
 from maison_concierge.observability import get_recorder
 from maison_concierge.segmentation import load_profiles
 from maison_concierge.segmentation.booking_model import load_booking_model
+from maison_concierge.ui import render_chat_panel
 
 st.set_page_config(
     page_title="Maison Concierge — Dashboard",
@@ -789,15 +790,17 @@ def render_heritage_graph() -> None:
 
 
 def main() -> None:
-    st.title("Maison Concierge — Stakeholder dashboard")
+    st.title("Maison Concierge")
     st.caption(
-        "Operational metrics, quality evaluation, ROI model and lead-scoring intelligence "
-        "for the multi-agent client advisor."
+        "Multi-agent client advisor for a luxury maison — chat surface, retrieval quality, "
+        "business case, segmentation intelligence and heritage knowledge graph in one place."
     )
 
-    overview_tab, quality_tab, business_tab, segments_tab, sim_tab, heritage_tab = st.tabs(
-        ["Overview", "Quality", "Business case", "Segments", "Simulator", "Heritage graph"]
+    chat_tab, overview_tab, quality_tab, business_tab, segments_tab, sim_tab, heritage_tab = st.tabs(
+        ["◆ Chat", "Overview", "Quality", "Business case", "Segments", "Simulator", "Heritage graph"]
     )
+    with chat_tab:
+        render_chat_panel(with_header=False)
     with overview_tab:
         render_overview()
     with quality_tab:

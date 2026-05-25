@@ -360,3 +360,4 @@
 {"type":"intent_detected","conversation_id":"sim-3a8975ce","timestamp":"2026-05-25T08:26:19.129763Z","payload":{"intent":"appointment","confidence":0.88}}
 {"type":"intent_detected","conversation_id":"sim-1c0b4858","timestamp":"2026-05-25T08:26:19.153727Z","payload":{"intent":"appointment","confidence":0.88}}
 {"type":"intent_detected","conversation_id":"trace-test","timestamp":"2026-05-25T08:30:48.527138Z","payload":{"intent":"celebration","confidence":0.88}}
+{"type":"conversation_started","conversation_id":"c928a090-7b0c-4752-8142-3ab5f5a81aed","timestamp":"2026-05-25T08:39:04.001533Z","payload":{}}
