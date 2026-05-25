@@ -79,6 +79,7 @@ def isolated_settings(monkeypatch, tmp_path):
     monkeypatch.setenv("METRICS_DIR", str(tmp_path / "metrics"))
     monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key")
     monkeypatch.setenv("APP_ESCALATION_THRESHOLD", "0.65")
+    monkeypatch.setenv("DEMO_MODE", "false")  # tests exercise the Claude path
     from maison_concierge.config import get_settings
     from maison_concierge.observability.metrics import get_recorder
 

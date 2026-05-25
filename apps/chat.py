@@ -71,6 +71,18 @@ def main() -> None:
     st.title(t("app.title", locale))
     st.caption(t("app.tagline", locale))
 
+    if _orchestrator().demo_mode:
+        st.info(
+            "**Demo mode** — replies are produced by a rule-based intent classifier "
+            "and templated EN/FR composer over the real retrieval layer (BM25 + dense + RRF). "
+            "Add `ANTHROPIC_API_KEY` to `.env` to switch to live Claude Sonnet 4.6 generation."
+            if locale == "en"
+            else "**Mode démo** — les réponses sont produites par un classificateur d'intention "
+            "à règles et un composeur EN/FR templaté, au-dessus de la couche de recherche réelle "
+            "(BM25 + dense + RRF). Ajoutez `ANTHROPIC_API_KEY` à `.env` pour activer Claude Sonnet 4.6.",
+            icon="◆",
+        )
+
     with st.sidebar:
         st.markdown("### Settings")
         new_locale = st.selectbox(

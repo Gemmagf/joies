@@ -22,7 +22,7 @@ _EN_MARKERS = {
     "story", "history", "appointment",
 }
 
-_TOKEN = re.compile(r"[A-Za-zÀ-ÿ']+")
+_TOKEN = re.compile(r"[A-Za-zÀ-ÿ]+")
 
 
 def detect_locale(text: str, default: Locale = "en") -> Locale:

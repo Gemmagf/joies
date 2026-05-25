@@ -18,8 +18,10 @@ from ..config import get_settings
 from ..i18n import detect_locale, t
 from ..models import ClientIntent, EscalationReason
 from ..observability import get_recorder
-from ..retrieval import CatalogRAG, HeritageRAG, VisualSearch
+from ..retrieval import CatalogRAG, HeritageRAG, HybridCatalogRAG, VisualSearch
 from .composer import compose_reply
+from .demo_composer import compose_reply_templated
+from .demo_intent import classify_intent_rule_based
 from .intent import classify_intent
 from .state import OrchestratorState
 
@@ -31,18 +33,27 @@ class Orchestrator:
         heritage: HeritageRAG | None = None,
         visual: VisualSearch | None = None,
     ) -> None:
-        self._catalog = catalog or CatalogRAG()
+        # Default the catalog to the hybrid (BM25 + dense, RRF) retriever — it produced
+        # +33% recall@1 / +27% recall@5 on the golden set; see the README.
+        self._catalog = catalog or HybridCatalogRAG()
         self._heritage = heritage or HeritageRAG()
         self._visual = visual or VisualSearch()
         self._recorder = get_recorder()
         self._settings = get_settings()
         self._graph = self._build_graph()
 
+    @property
+    def demo_mode(self) -> bool:
+        return self._settings.use_demo_mode
+
     def _node_classify(self, state: OrchestratorState) -> dict:
         text = state.get("user_message", "")
         has_image = state.get("image_bytes") is not None
         locale = state.get("locale") or detect_locale(text, self._settings.app_locale_default)
-        result = classify_intent(text, default_locale=locale, has_image=has_image)
+        if self.demo_mode:
+            result = classify_intent_rule_based(text, default_locale=locale, has_image=has_image)
+        else:
+            result = classify_intent(text, default_locale=locale, has_image=has_image)
 
         intent = ClientIntent(result.intent)
         self._recorder.record_intent(state["conversation_id"], intent, result.confidence)
@@ -94,18 +105,28 @@ class Orchestrator:
 
     def _node_compose(self, state: OrchestratorState) -> dict:
         locale = state.get("locale", "en")
+        intent = state.get("intent") or ClientIntent.UNKNOWN
         if state.get("escalate"):
             return {
                 "assistant_reply": t("chat.escalation", locale),
                 "citations": [],
             }
-        reply, citations = compose_reply(
-            user_message=state["user_message"],
-            locale=locale,
-            catalog_hits=state.get("catalog_hits", []),
-            heritage_hits=state.get("heritage_hits", []),
-            visual_hits=state.get("visual_hits", []),
-        )
+        if self.demo_mode:
+            reply, citations = compose_reply_templated(
+                intent=intent,
+                locale=locale,
+                catalog_hits=state.get("catalog_hits", []),
+                heritage_hits=state.get("heritage_hits", []),
+                visual_hits=state.get("visual_hits", []),
+            )
+        else:
+            reply, citations = compose_reply(
+                user_message=state["user_message"],
+                locale=locale,
+                catalog_hits=state.get("catalog_hits", []),
+                heritage_hits=state.get("heritage_hits", []),
+                visual_hits=state.get("visual_hits", []),
+            )
         return {"assistant_reply": reply, "citations": citations}
 
     def _build_graph(self):

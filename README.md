@@ -133,15 +133,24 @@ Top coefficients are interpretable: `intent=appointment` (+0.76), `intent=herita
 
 ---
 
+## Two modes — Claude or offline
+
+| Mode | When | What runs |
+|---|---|---|
+| **Demo (default)** | No `ANTHROPIC_API_KEY` set | Rule-based intent classifier + templated EN/FR composer over the real retrieval (BM25 + dense + RRF). Deterministic, free, no external calls. The chat works for anyone. |
+| **Claude** | `ANTHROPIC_API_KEY` set | Live Sonnet 4.6 calls for intent (`messages.parse`) and composition (adaptive thinking, prompt caching). The voice is richer; everything else is identical. |
+
+Switching is automatic: the orchestrator inspects `settings.use_demo_mode` on every turn. Force the mode explicitly with `DEMO_MODE=true` or `DEMO_MODE=false`. The dashboard, eval framework, business case and segmentation modules are independent of the chat path and work in either mode.
+
 ## Quick start
 
 ```bash
 # 1. Install
 pip install -e ".[app,dev]"
 
-# 2. Configure
+# 2. (Optional) configure — without a key you get demo mode, which is fine
 cp .env.example .env
-# Add your ANTHROPIC_API_KEY
+# Add ANTHROPIC_API_KEY to .env to switch the chat to live Claude
 
 # 3. Seed data + indices (one-off, no API key needed)
 python scripts/seed.py                    # ChromaDB catalog + heritage

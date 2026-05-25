@@ -37,6 +37,19 @@ class Settings(BaseSettings):
 
     metrics_dir: Path = Field(default=Path("data/metrics"), alias="METRICS_DIR")
 
+    # `auto` (default) → demo mode iff ANTHROPIC_API_KEY is missing or starts with "sk-ant-...".
+    # `true` / `false` force the mode explicitly.
+    demo_mode: str = Field(default="auto", alias="DEMO_MODE")
+
+    @property
+    def use_demo_mode(self) -> bool:
+        if self.demo_mode.lower() == "true":
+            return True
+        if self.demo_mode.lower() == "false":
+            return False
+        key = (self.anthropic_api_key or "").strip()
+        return not key or key in {"sk-ant-...", "missing-key", "test-key", "dummy-for-ci"}
+
     @property
     def data_dir(self) -> Path:
         return Path(__file__).resolve().parents[2] / "data"

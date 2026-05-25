@@ -116,3 +116,8 @@
 {"type":"rating_submitted","conversation_id":"c4e1f273-a13d-4fcb-b9b9-42d4e7e587de","timestamp":"2026-05-16T17:43:23.088556Z","payload":{"rating":5}}
 {"type":"rating_submitted","conversation_id":"84c99fbc-dceb-40ac-a4d1-68cb4615464a","timestamp":"2026-05-18T06:19:53.966943Z","payload":{"rating":4}}
 {"type":"rating_submitted","conversation_id":"84c99fbc-dceb-40ac-a4d1-68cb4615464a","timestamp":"2026-05-15T23:44:35.812712Z","payload":{"rating":3}}
+{"type":"intent_detected","conversation_id":"demo-1","timestamp":"2026-05-25T08:04:32.713080Z","payload":{"intent":"celebration","confidence":0.88}}
+{"type":"intent_detected","conversation_id":"demo-2","timestamp":"2026-05-25T08:04:41.316547Z","payload":{"intent":"gift","confidence":0.88}}
+{"type":"intent_detected","conversation_id":"demo-3","timestamp":"2026-05-25T08:04:41.344528Z","payload":{"intent":"heritage_inquiry","confidence":0.88}}
+{"type":"intent_detected","conversation_id":"demo-4","timestamp":"2026-05-25T08:04:46.313768Z","payload":{"intent":"appointment","confidence":0.88}}
+{"type":"intent_detected","conversation_id":"demo-5","timestamp":"2026-05-25T08:04:46.342536Z","payload":{"intent":"price_inquiry","confidence":0.88}}
