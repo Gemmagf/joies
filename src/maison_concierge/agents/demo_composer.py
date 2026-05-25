@@ -164,11 +164,10 @@ def compose_reply_templated(
         return _appointment(locale, catalog_hits), []
     if intent is ClientIntent.INVESTMENT_PIECE:
         return _investment(locale, catalog_hits), []
-    if visual_hits:
-        if locale == "en":
-            top = visual_hits[0]
-            return (
-                f"Drawing from your inspiration, {_format_piece(top.piece, locale)} reads as the closest match in our catalog.",
-                [],
-            )
+    if visual_hits and locale == "en":
+        top = visual_hits[0]
+        return (
+            f"Drawing from your inspiration, {_format_piece(top.piece, locale)} reads as the closest match in our catalog.",
+            [],
+        )
     return _browse_or_unknown(locale, catalog_hits), []

@@ -30,7 +30,8 @@ _INTENT_RULES: list[tuple[str, list[str]]] = [
             r"\bhistory\b", r"\bstory\b", r"\borigin\b", r"\bheritage\b",
             r"\barchive\b", r"\btradition\b", r"\bsavoir[\s-]faire\b",
             r"\bhistoire\b", r"\bpatrimoine\b", r"\borigine\b",
-            r"\bd[''‘]où vient\b", r"\bparlez-moi de\b",
+            r"\bd['’]où vient\b",  # noqa: RUF001
+            r"\bparlez-moi de\b",
         ],
     ),
     (

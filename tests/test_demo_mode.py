@@ -4,9 +4,9 @@ from __future__ import annotations
 
 from maison_concierge.agents.demo_composer import compose_reply_templated
 from maison_concierge.agents.demo_intent import classify_intent_rule_based
+from maison_concierge.data_loader import load_catalog, load_heritage
 from maison_concierge.models import ClientIntent
 from maison_concierge.retrieval import CatalogSearchResult, HeritageSearchResult
-from maison_concierge.data_loader import load_catalog, load_heritage
 
 
 def test_intent_appointment_en():
