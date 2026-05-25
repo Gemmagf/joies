@@ -142,6 +142,25 @@ Top coefficients are interpretable: `intent=appointment` (+0.76), `intent=herita
 
 Switching is automatic: the orchestrator inspects `settings.use_demo_mode` on every turn. Force the mode explicitly with `DEMO_MODE=true` or `DEMO_MODE=false`. The dashboard, eval framework, business case and segmentation modules are independent of the chat path and work in either mode.
 
+> **Why demo mode is the default for the public repo.** A portfolio demo should run for anyone visiting — without exposing a paid API key, without rate-limit headaches, without me paying per-recruiter-conversation. The architecture is unchanged: the same orchestrator, the same retrieval, the same citation discipline. Only the generation surface is swapped.
+
+### Scaling beyond the demo
+
+The current chat path is built to scale upward without architectural changes. In a real production deployment for a luxury maison, the LLM surface would step up along several axes:
+
+| Axis | Demo today | Production target |
+|---|---|---|
+| **Model tier** | Templated responses (offline) or Sonnet 4.6 | **Claude Opus 4.7** for the headline voice; Sonnet 4.6 reserved for triage / classification to keep cost down. The `CLAUDE_MODEL` env var already covers this. |
+| **Hosting** | Direct Anthropic API | **Amazon Bedrock** or **Google Vertex AI** for EU data residency, contractual SLAs, and unified billing with the maison's existing cloud spend. |
+| **Languages** | EN / FR | Add **Mandarin, Japanese, Arabic, Italian** — the maison's actual client base. Same orchestrator, expanded i18n strings and locale detection markers, plus a Claude model that already speaks them natively. |
+| **Voice channel** | Text only | **Whisper / Speech-to-Text** for sales-associate dictation in boutique; **ElevenLabs** or equivalent for voice-note responses to high-tier clients. |
+| **Vision** | OpenCLIP (gated, generic) | **Domain-fine-tuned CLIP** or a multimodal Claude call with the maison's archive as context — useful when clients send photos of vintage pieces for identification. |
+| **Memory** | Conversation only (Redis or in-process) | **Anthropic Managed Agents** with persistent memory stores per client, scoped by segment, so the concierge remembers prior visits, owned collections, and preference patterns across sessions. |
+| **Personalisation** | Static segment guidance (4 tiers) | Real client profile data flowing in from the maison's CRM; segment-aware system prompts injected per conversation; the lead scorer retrained nightly on actual booking outcomes instead of synthetic labels. |
+| **Evaluation** | 30-query golden set, deterministic groundedness | Expand the golden set to ~300 queries with human-rated rubrics; add **LLM-as-judge** scoring with Claude evaluating responses on four dimensions (groundedness, citation accuracy, tone, completeness); nightly regression CI. |
+
+None of these change the shape of the system. They change the quality ceiling, the deployment context, and the cost envelope — and they're enabled by the modular architecture (the orchestrator doesn't care which classifier or composer it's wired to; the eval framework runs against any retriever).
+
 ## Quick start
 
 ```bash

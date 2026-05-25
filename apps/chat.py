@@ -73,13 +73,21 @@ def main() -> None:
 
     if _orchestrator().demo_mode:
         st.info(
-            "**Demo mode** — replies are produced by a rule-based intent classifier "
-            "and templated EN/FR composer over the real retrieval layer (BM25 + dense + RRF). "
-            "Add `ANTHROPIC_API_KEY` to `.env` to switch to live Claude Sonnet 4.6 generation."
+            "**Demo mode** — replies are produced by a rule-based intent classifier and "
+            "templated EN/FR composer over the real retrieval layer (BM25 + dense + RRF). "
+            "Add `ANTHROPIC_API_KEY` to `.env` to switch to live Claude Sonnet 4.6 generation.  \n"
+            "*In a real production deployment, this would step up to Claude Opus 4.7 (or another "
+            "frontier model) hosted on AWS Bedrock / Google Vertex AI, with EU data residency, "
+            "fine-tuned vision over the maison's archive, and multi-language support beyond EN/FR. "
+            "See the README — Scaling beyond the demo.*"
             if locale == "en"
-            else "**Mode démo** — les réponses sont produites par un classificateur d'intention "
-            "à règles et un composeur EN/FR templaté, au-dessus de la couche de recherche réelle "
-            "(BM25 + dense + RRF). Ajoutez `ANTHROPIC_API_KEY` à `.env` pour activer Claude Sonnet 4.6.",
+            else "**Mode démo** — les réponses sont produites par un classificateur d'intention à règles "
+            "et un composeur EN/FR templaté, au-dessus de la couche de recherche réelle "
+            "(BM25 + dense + RRF). Ajoutez `ANTHROPIC_API_KEY` à `.env` pour activer Claude Sonnet 4.6.  \n"
+            "*En production réelle, le système basculerait sur Claude Opus 4.7 (ou un modèle "
+            "équivalent) hébergé sur AWS Bedrock / Google Vertex AI, avec résidence des données en "
+            "Europe, vision affinée sur les archives de la maison, et support de langues au-delà "
+            "de EN/FR. Voir le README — Scaling beyond the demo.*",
             icon="◆",
         )
 
