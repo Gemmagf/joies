@@ -1,0 +1,784 @@
+{
+  "precomputed_at": "2026-05-26T08:55:14+00:00",
+  "n_scenarios": 8,
+  "scenarios": [
+    {
+      "id": "anniversary-gift-en",
+      "title": "Anniversary gift \u2014 English",
+      "description": "A client looking for a meaningful CHF 5,000 anniversary gift. Demonstrates intent classification (celebration), hybrid retrieval suggesting two complementary pieces, and an offer of a private appointment.",
+      "tags": [
+        "gift",
+        "celebration",
+        "EN",
+        "core"
+      ],
+      "locale": "en",
+      "user_messages": [
+        "I'm looking for an anniversary gift for my wife, around CHF 5,000."
+      ],
+      "turns": [
+        {
+          "role": "user",
+          "text": "I'm looking for an anniversary gift for my wife, around CHF 5,000."
+        },
+        {
+          "role": "assistant",
+          "text": "An anniversary calls for something quietly memorable. I would suggest the Vintage Alhambra pendant, carnelian \u2014 VCA-ALH-VIN-CAR-PEN-002 (CHF 4,200) as the founding silhouette, or the Lucky Animals pendant, butterfly \u2014 VCA-LCK-BTF-PEN-016 (CHF 5,400) as a warmer counterpoint. Would you like me to arrange for them to be presented privately?",
+          "intent": "celebration",
+          "confidence": 0.88,
+          "locale": "en",
+          "escalated": false,
+          "catalog_hits": [
+            {
+              "id": "VCA-ALH-VIN-CAR-PEN-002",
+              "name_en": "Vintage Alhambra pendant, carnelian",
+              "name_fr": "Pendentif Vintage Alhambra, cornaline",
+              "price_chf": 4200.0,
+              "collection": "alhambra",
+              "score": 0.031
+            },
+            {
+              "id": "VCA-LCK-BTF-PEN-016",
+              "name_en": "Lucky Animals pendant, butterfly",
+              "name_fr": "Pendentif Lucky Animals, papillon",
+              "price_chf": 5400.0,
+              "collection": "lucky_animals",
+              "score": 0.03
+            },
+            {
+              "id": "VCA-LCK-LDB-EAR-049",
+              "name_en": "Lucky Animals earrings, ladybug",
+              "name_fr": "Boucles d'oreilles Lucky Animals, coccinelle",
+              "price_chf": 3850.0,
+              "collection": "lucky_animals",
+              "score": 0.03
+            },
+            {
+              "id": "VCA-LCK-FRG-PEN-021",
+              "name_en": "Lucky Animals pendant, frog",
+              "name_fr": "Pendentif Lucky Animals, grenouille",
+              "price_chf": 5800.0,
+              "collection": "lucky_animals",
+              "score": 0.03
+            }
+          ],
+          "heritage_hits": [],
+          "citations": [],
+          "trace": {
+            "intent": {
+              "mode": "demo",
+              "detected": "celebration",
+              "confidence": 0.88,
+              "locale": "en",
+              "escalate": false,
+              "escalation_reason": null
+            },
+            "catalog": {
+              "n_hits": 4,
+              "latency_ms": 10000.9,
+              "bm25_top": [
+                "VCA-FRV-YG-PEN-011",
+                "VCA-LCK-DRG-PEN-046",
+                "VCA-LCK-BTF-PEN-016",
+                "VCA-LCK-HMB-PEN-047",
+                "VCA-ALH-VIN-CAR-PEN-002"
+              ],
+              "dense_top": [
+                "VCA-LCK-LDB-PEN-042",
+                "VCA-LCK-LDB-EAR-049",
+                "VCA-ALH-VIN-CAR-PEN-002",
+                "VCA-ALH-VIN-MOP-PEN-001",
+                "VCA-LCK-CHM-BRC-048"
+              ],
+              "fused_top": [
+                "VCA-ALH-VIN-CAR-PEN-002",
+                "VCA-LCK-BTF-PEN-016",
+                "VCA-LCK-LDB-EAR-049",
+                "VCA-LCK-FRG-PEN-021",
+                "VCA-LCK-LDB-PEN-042"
+              ],
+              "retriever": "hybrid (BM25 + dense, RRF)"
+            },
+            "heritage": {
+              "skipped": true
+            },
+            "visual": {
+              "skipped": true
+            },
+            "compose": {
+              "mode": "demo",
+              "intent": "celebration",
+              "latency_ms": 0.0,
+              "reply_length_chars": 340,
+              "n_citations": 0
+            },
+            "groundedness": {
+              "is_grounded": true,
+              "hallucination_count": 0,
+              "findings_by_kind": {}
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "engagement-fr",
+      "title": "Bague de fian\u00e7ailles \u2014 Fran\u00e7ais",
+      "description": "Un client cherche une bague de fian\u00e7ailles dans une fourchette de CHF 12 000. D\u00e9montre la d\u00e9tection automatique du fran\u00e7ais, la classification celebration, et la recommandation de pi\u00e8ces bridal.",
+      "tags": [
+        "celebration",
+        "bridal",
+        "FR",
+        "core"
+      ],
+      "locale": "fr",
+      "user_messages": [
+        "Bonjour, je cherche une bague de fian\u00e7ailles autour de CHF 12 000."
+      ],
+      "turns": [
+        {
+          "role": "user",
+          "text": "Bonjour, je cherche une bague de fian\u00e7ailles autour de CHF 12 000."
+        },
+        {
+          "role": "assistant",
+          "text": "Un anniversaire appelle quelque chose de discr\u00e8tement m\u00e9morable. Je vous propose le Bague Vintage Alhambra, malachite \u2014 VCA-ALH-VIN-MAL-RNG-006 (CHF 3,850) comme silhouette fondatrice, ou le Bague Perl\u00e9e signature, or blanc \u2014 VCA-PRL-WG-RNG-054 (CHF 2,800) pour une lecture plus chaleureuse. Souhaitez-vous que je les fasse pr\u00e9parer pour une pr\u00e9sentation priv\u00e9e ?",
+          "intent": "celebration",
+          "confidence": 0.88,
+          "locale": "fr",
+          "escalated": false,
+          "catalog_hits": [
+            {
+              "id": "VCA-ALH-VIN-MAL-RNG-006",
+              "name_en": "Vintage Alhambra ring, malachite",
+              "name_fr": "Bague Vintage Alhambra, malachite",
+              "price_chf": 3850.0,
+              "collection": "alhambra",
+              "score": 0.032
+            },
+            {
+              "id": "VCA-PRL-WG-RNG-054",
+              "name_en": "Perl\u00e9e signature ring, white gold",
+              "name_fr": "Bague Perl\u00e9e signature, or blanc",
+              "price_chf": 2800.0,
+              "collection": "perlee",
+              "score": 0.031
+            },
+            {
+              "id": "VCA-PRL-CLR-TUR-RNG-051",
+              "name_en": "Perl\u00e9e couleurs ring, turquoise",
+              "name_fr": "Bague Perl\u00e9e couleurs, turquoise",
+              "price_chf": 4750.0,
+              "collection": "perlee",
+              "score": 0.031
+            },
+            {
+              "id": "VCA-FRV-YG-RNG-009",
+              "name_en": "Frivole between-the-finger ring, yellow gold",
+              "name_fr": "Bague Frivole entre-les-doigts, or jaune",
+              "price_chf": 8600.0,
+              "collection": "frivole",
+              "score": 0.031
+            }
+          ],
+          "heritage_hits": [],
+          "citations": [],
+          "trace": {
+            "intent": {
+              "mode": "demo",
+              "detected": "celebration",
+              "confidence": 0.88,
+              "locale": "fr",
+              "escalate": false,
+              "escalation_reason": null
+            },
+            "catalog": {
+              "n_hits": 4,
+              "latency_ms": 18.1,
+              "bm25_top": [
+                "VCA-ALH-PUR-DIA-RNG-058",
+                "VCA-ALH-VIN-MAL-RNG-006",
+                "VCA-PRL-DIA-RNG-018",
+                "VCA-PRL-RG-RNG-024",
+                "VCA-PRL-CLR-TUR-RNG-051"
+              ],
+              "dense_top": [
+                "VCA-FRV-YG-RNG-009",
+                "VCA-PRL-WG-RNG-054",
+                "VCA-PRL-CLR-TUR-RNG-051",
+                "VCA-ALH-VIN-MAL-RNG-006",
+                "VCA-PRL-SGL-RNG-052"
+              ],
+              "fused_top": [
+                "VCA-ALH-VIN-MAL-RNG-006",
+                "VCA-PRL-WG-RNG-054",
+                "VCA-PRL-CLR-TUR-RNG-051",
+                "VCA-FRV-YG-RNG-009",
+                "VCA-PRL-RG-RNG-024"
+              ],
+              "retriever": "hybrid (BM25 + dense, RRF)"
+            },
+            "heritage": {
+              "skipped": true
+            },
+            "visual": {
+              "skipped": true
+            },
+            "compose": {
+              "mode": "demo",
+              "intent": "celebration",
+              "latency_ms": 0.0,
+              "reply_length_chars": 363,
+              "n_citations": 0
+            },
+            "groundedness": {
+              "is_grounded": true,
+              "hallucination_count": 0,
+              "findings_by_kind": {}
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "alhambra-heritage-en",
+      "title": "Alhambra heritage inquiry \u2014 English",
+      "description": "Heritage-led conversation. The orchestrator routes only to heritage RAG (no catalog), composes a reply with a verifiable [HER-XXX] citation, and offers a next step.",
+      "tags": [
+        "heritage",
+        "EN",
+        "RAG",
+        "citation"
+      ],
+      "locale": "en",
+      "user_messages": [
+        "Tell me about the history of the Alhambra collection."
+      ],
+      "turns": [
+        {
+          "role": "user",
+          "text": "Tell me about the history of the Alhambra collection."
+        },
+        {
+          "role": "assistant",
+          "text": "In 1968, the maison introduced the Alhambra long necklace, a refined chain of four-leaf clover motifs framed by a beaded gold edge. Inspired by the geometric mosaics of the Alhambra palace in Granada, the design was conceived as a talisman of luck and quickly became one of the mo\u2026 [HER-001-ALHAMBRA-1968] Would you like me to bring you the pieces that descend from that lineage?",
+          "intent": "heritage_inquiry",
+          "confidence": 0.88,
+          "locale": "en",
+          "escalated": false,
+          "catalog_hits": [],
+          "heritage_hits": [
+            {
+              "id": "HER-001-ALHAMBRA-1968",
+              "title_en": "1968 \u2014 The debut of the Alhambra motif",
+              "title_fr": "1968 \u2014 La naissance du motif Alhambra",
+              "score": 0.697,
+              "snippet": "In 1968, the maison introduced the Alhambra long necklace, a refined chain of four-leaf clover motifs framed by a beaded gold edge. Inspired by the geometric mosaics of the Alhambra palace in Granada, the design was conceived as a talisman of luck and quickly became one of the mo\u2026"
+            },
+            {
+              "id": "HER-009-MOTHER-OF-PEARL",
+              "title_en": "Mother-of-pearl \u2014 a signature material",
+              "title_fr": "La nacre \u2014 un mat\u00e9riau signature",
+              "score": 0.518,
+              "snippet": "White mother-of-pearl became a signature of the Alhambra collection from its inception. Sourced primarily from the Mexican Gulf, the shells are cut into discs by a small group of lapidaries in the maison's workshop. The natural striations are read like fingerprints \u2014 no two motif\u2026"
+            },
+            {
+              "id": "HER-006-LUCKY-ANIMALS",
+              "title_en": "Talismans and lucky animals",
+              "title_fr": "Talismans et animaux porte-bonheur",
+              "score": 0.286,
+              "snippet": "The maison's affection for talismans dates back to the early 20th century, when frogs, ladybirds, and four-leaf clovers were offered to clients on the eve of important events. The contemporary Lucky Animals collection draws directly from these early sketches preserved in the arch\u2026"
+            }
+          ],
+          "citations": [
+            {
+              "document_id": "HER-001-ALHAMBRA-1968",
+              "snippet": "In 1968, the maison introduced the Alhambra long necklace, a refined chain of four-leaf clover motifs framed by a beaded gold edge. Inspired by the geometric mosaics of the Alhambra palace in Granada, the design was conceived as a talisman of luck and quickly became one of the mo\u2026",
+              "relevance": 0.697
+            }
+          ],
+          "trace": {
+            "intent": {
+              "mode": "demo",
+              "detected": "heritage_inquiry",
+              "confidence": 0.88,
+              "locale": "en",
+              "escalate": false,
+              "escalation_reason": null
+            },
+            "catalog": {
+              "skipped": true
+            },
+            "heritage": {
+              "retriever": "dense (Chroma)",
+              "n_hits": 3,
+              "top_ids": [
+                "HER-001-ALHAMBRA-1968",
+                "HER-009-MOTHER-OF-PEARL",
+                "HER-006-LUCKY-ANIMALS"
+              ],
+              "latency_ms": 6346.3
+            },
+            "visual": {
+              "skipped": true
+            },
+            "compose": {
+              "mode": "demo",
+              "intent": "heritage_inquiry",
+              "latency_ms": 0.0,
+              "reply_length_chars": 379,
+              "n_citations": 1
+            },
+            "groundedness": {
+              "is_grounded": true,
+              "hallucination_count": 0,
+              "findings_by_kind": {}
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "mystery-setting-fr",
+      "title": "Serti Myst\u00e9rieux \u2014 Fran\u00e7ais",
+      "description": "Question patrimoniale en fran\u00e7ais sur la technique du Serti Myst\u00e9rieux. Test du locale detection, du retrieval heritage en fran\u00e7ais, et de la citation [HER-002-MYSTERY-SETTING].",
+      "tags": [
+        "heritage",
+        "FR",
+        "savoir-faire"
+      ],
+      "locale": "fr",
+      "user_messages": [
+        "Parlez-moi de la technique du Serti Myst\u00e9rieux."
+      ],
+      "turns": [
+        {
+          "role": "user",
+          "text": "Parlez-moi de la technique du Serti Myst\u00e9rieux."
+        },
+        {
+          "role": "assistant",
+          "text": "Le Serti Myst\u00e9rieux est brevet\u00e9 par la maison en 1933. La technique permet de sertir les pierres pr\u00e9cieuses \u2014 g\u00e9n\u00e9ralement rubis et saphirs \u2014 sans qu'aucun m\u00e9tal ne soit visible. Chaque pierre est taill\u00e9e et rainur\u00e9e individuellement, puis gliss\u00e9e sur de fins rails d'or, cr\u00e9ant u\u2026 [HER-002-MYSTERY-SETTING] Souhaitez-vous d\u00e9couvrir les pi\u00e8ces qui s'en inspirent ?",
+          "intent": "heritage_inquiry",
+          "confidence": 0.88,
+          "locale": "fr",
+          "escalated": false,
+          "catalog_hits": [],
+          "heritage_hits": [
+            {
+              "id": "HER-002-MYSTERY-SETTING",
+              "title_en": "1933 \u2014 The patenting of the Mystery Setting",
+              "title_fr": "1933 \u2014 Le brevet du Serti Myst\u00e9rieux",
+              "score": 0.504,
+              "snippet": "Le Serti Myst\u00e9rieux est brevet\u00e9 par la maison en 1933. La technique permet de sertir les pierres pr\u00e9cieuses \u2014 g\u00e9n\u00e9ralement rubis et saphirs \u2014 sans qu'aucun m\u00e9tal ne soit visible. Chaque pierre est taill\u00e9e et rainur\u00e9e individuellement, puis gliss\u00e9e sur de fins rails d'or, cr\u00e9ant u\u2026"
+            },
+            {
+              "id": "HER-008-PERLEE-GRANULATION",
+              "title_en": "2008 \u2014 Perl\u00e9e and the granulation technique",
+              "title_fr": "2008 \u2014 Perl\u00e9e et la technique de la granulation",
+              "score": 0.301,
+              "snippet": "Lanc\u00e9e en 2008, la collection Perl\u00e9e s'appuie sur la technique de la granulation \u2014 d'infimes sph\u00e8res d'or soud\u00e9es sur une base m\u00e9tallique. Pratiqu\u00e9e depuis l'Antiquit\u00e9, elle exige de l'artisan une ma\u00eetrise rigoureuse des temp\u00e9ratures de fusion. Chaque bracelet Perl\u00e9e porte entre \u2026"
+            },
+            {
+              "id": "HER-006-LUCKY-ANIMALS",
+              "title_en": "Talismans and lucky animals",
+              "title_fr": "Talismans et animaux porte-bonheur",
+              "score": 0.288,
+              "snippet": "L'attachement de la maison aux talismans remonte au d\u00e9but du XXe si\u00e8cle, lorsque grenouilles, coccinelles et tr\u00e8fles \u00e0 quatre feuilles \u00e9taient offerts aux clients \u00e0 la veille d'\u00e9v\u00e9nements importants. La collection contemporaine Lucky Animals s'inspire directement de ces premi\u00e8res\u2026"
+            }
+          ],
+          "citations": [
+            {
+              "document_id": "HER-002-MYSTERY-SETTING",
+              "snippet": "Le Serti Myst\u00e9rieux est brevet\u00e9 par la maison en 1933. La technique permet de sertir les pierres pr\u00e9cieuses \u2014 g\u00e9n\u00e9ralement rubis et saphirs \u2014 sans qu'aucun m\u00e9tal ne soit visible. Chaque pierre est taill\u00e9e et rainur\u00e9e individuellement, puis gliss\u00e9e sur de fins rails d'or, cr\u00e9ant u\u2026",
+              "relevance": 0.504
+            }
+          ],
+          "trace": {
+            "intent": {
+              "mode": "demo",
+              "detected": "heritage_inquiry",
+              "confidence": 0.88,
+              "locale": "fr",
+              "escalate": false,
+              "escalation_reason": null
+            },
+            "catalog": {
+              "skipped": true
+            },
+            "heritage": {
+              "retriever": "dense (Chroma)",
+              "n_hits": 3,
+              "top_ids": [
+                "HER-002-MYSTERY-SETTING",
+                "HER-008-PERLEE-GRANULATION",
+                "HER-006-LUCKY-ANIMALS"
+              ],
+              "latency_ms": 42.7
+            },
+            "visual": {
+              "skipped": true
+            },
+            "compose": {
+              "mode": "demo",
+              "intent": "heritage_inquiry",
+              "latency_ms": 0.0,
+              "reply_length_chars": 364,
+              "n_citations": 1
+            },
+            "groundedness": {
+              "is_grounded": true,
+              "hallucination_count": 0,
+              "findings_by_kind": {}
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "collector-investment-en",
+      "title": "Collector investment piece \u2014 English",
+      "description": "A senior collector looking for an archival Ballerina clip. Triggers investment_piece intent, retrieves high-jewelry pieces, and shows the trace panel revealing BM25's contribution from the word 'archival'.",
+      "tags": [
+        "investment",
+        "high jewelry",
+        "EN",
+        "collector"
+      ],
+      "locale": "en",
+      "user_messages": [
+        "I'm building a collection of archival Ballerina clips and willing to invest meaningfully."
+      ],
+      "turns": [
+        {
+          "role": "user",
+          "text": "I'm building a collection of archival Ballerina clips and willing to invest meaningfully."
+        },
+        {
+          "role": "assistant",
+          "text": "Investment pieces ask for personal attention. From our archive, the Ballerina clip, emerald \u2014 VCA-BAL-EME-CLP-014 (CHF 168,000) is a strong candidate \u2014 alongside the Ballerina clip, sapphire \u2014 VCA-BAL-SPP-CLP-022 (CHF 142,000). Shall I arrange a private appointment with our archive advisor?",
+          "intent": "investment_piece",
+          "confidence": 0.88,
+          "locale": "en",
+          "escalated": false,
+          "catalog_hits": [
+            {
+              "id": "VCA-BAL-EME-CLP-014",
+              "name_en": "Ballerina clip, emerald",
+              "name_fr": "Clip Ballerine, \u00e9meraude",
+              "price_chf": 168000.0,
+              "collection": "ballerinas",
+              "score": 0.032
+            },
+            {
+              "id": "VCA-BAL-SPP-CLP-022",
+              "name_en": "Ballerina clip, sapphire",
+              "name_fr": "Clip Ballerine, saphir",
+              "price_chf": 142000.0,
+              "collection": "ballerinas",
+              "score": 0.032
+            },
+            {
+              "id": "VCA-BAL-RUB-MYS-CLP-040",
+              "name_en": "Ballerina clip, mystery-set ruby",
+              "name_fr": "Clip Ballerine, rubis Serti Myst\u00e9rieux",
+              "price_chf": 215000.0,
+              "collection": "ballerinas",
+              "score": 0.032
+            },
+            {
+              "id": "VCA-BAL-YDI-CLP-041",
+              "name_en": "Ballerina clip, yellow diamond",
+              "name_fr": "Clip Ballerine, diamant jaune",
+              "price_chf": 188000.0,
+              "collection": "ballerinas",
+              "score": 0.031
+            }
+          ],
+          "heritage_hits": [],
+          "citations": [],
+          "trace": {
+            "intent": {
+              "mode": "demo",
+              "detected": "investment_piece",
+              "confidence": 0.88,
+              "locale": "en",
+              "escalate": false,
+              "escalation_reason": null
+            },
+            "catalog": {
+              "n_hits": 4,
+              "latency_ms": 46.6,
+              "bm25_top": [
+                "VCA-BAL-EME-CLP-014",
+                "VCA-BAL-SPP-CLP-022",
+                "VCA-BAL-YDI-CLP-041",
+                "VCA-BAL-DIA-CLP-013",
+                "VCA-BAL-RUB-MYS-CLP-040"
+              ],
+              "dense_top": [
+                "VCA-BAL-RUB-MYS-CLP-040",
+                "VCA-BAL-SPP-CLP-022",
+                "VCA-BAL-EME-CLP-014",
+                "VCA-BAL-DIA-CLP-013",
+                "VCA-BAL-YDI-CLP-041"
+              ],
+              "fused_top": [
+                "VCA-BAL-EME-CLP-014",
+                "VCA-BAL-SPP-CLP-022",
+                "VCA-BAL-RUB-MYS-CLP-040",
+                "VCA-BAL-YDI-CLP-041",
+                "VCA-BAL-DIA-CLP-013"
+              ],
+              "retriever": "hybrid (BM25 + dense, RRF)"
+            },
+            "heritage": {
+              "skipped": true
+            },
+            "visual": {
+              "skipped": true
+            },
+            "compose": {
+              "mode": "demo",
+              "intent": "investment_piece",
+              "latency_ms": 0.1,
+              "reply_length_chars": 291,
+              "n_citations": 0
+            },
+            "groundedness": {
+              "is_grounded": true,
+              "hallucination_count": 0,
+              "findings_by_kind": {}
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "out-of-scope-en",
+      "title": "Out-of-scope escalation \u2014 English",
+      "description": "Client asks about a third-party brand (Cartier). The rule-based classifier matches the brand pattern and escalates with a graceful human-handoff message. Demonstrates safety / boundary handling.",
+      "tags": [
+        "escalation",
+        "EN",
+        "safety"
+      ],
+      "locale": "en",
+      "user_messages": [
+        "Do you also carry Cartier or Bvlgari pieces?"
+      ],
+      "turns": [
+        {
+          "role": "user",
+          "text": "Do you also carry Cartier or Bvlgari pieces?"
+        },
+        {
+          "role": "assistant",
+          "text": "I'd like to introduce you to one of our advisors who can help further. May I arrange a private appointment?",
+          "intent": "unknown",
+          "confidence": 0.25,
+          "locale": "en",
+          "escalated": true,
+          "catalog_hits": [],
+          "heritage_hits": [],
+          "citations": [],
+          "trace": {
+            "intent": {
+              "mode": "demo",
+              "detected": "unknown",
+              "confidence": 0.25,
+              "locale": "en",
+              "escalate": true,
+              "escalation_reason": "explicit_request"
+            },
+            "catalog": {
+              "skipped": true
+            },
+            "heritage": {
+              "skipped": true
+            },
+            "visual": {
+              "skipped": true
+            },
+            "compose": {
+              "mode": "escalation",
+              "template": "chat.escalation"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "resale-valuation-fr",
+      "title": "Estimation hors catalogue \u2014 Fran\u00e7ais",
+      "description": "Une cliente demande la valeur de revente d'une pi\u00e8ce h\u00e9rit\u00e9e. Hors p\u00e9rim\u00e8tre du concierge \u2192 escalade vers un conseiller humain en fran\u00e7ais. D\u00e9montre le routing safety bilingue.",
+      "tags": [
+        "escalation",
+        "FR",
+        "safety"
+      ],
+      "locale": "fr",
+      "user_messages": [
+        "Pouvez-vous me dire la valeur de revente du collier de ma grand-m\u00e8re ?"
+      ],
+      "turns": [
+        {
+          "role": "user",
+          "text": "Pouvez-vous me dire la valeur de revente du collier de ma grand-m\u00e8re ?"
+        },
+        {
+          "role": "assistant",
+          "text": "Je souhaite vous mettre en contact avec l'un de nos conseillers. Puis-je organiser un rendez-vous priv\u00e9 ?",
+          "intent": "unknown",
+          "confidence": 0.4,
+          "locale": "fr",
+          "escalated": true,
+          "catalog_hits": [],
+          "heritage_hits": [],
+          "citations": [],
+          "trace": {
+            "intent": {
+              "mode": "demo",
+              "detected": "unknown",
+              "confidence": 0.4,
+              "locale": "fr",
+              "escalate": true,
+              "escalation_reason": "low_confidence"
+            },
+            "catalog": {
+              "skipped": true
+            },
+            "heritage": {
+              "skipped": true
+            },
+            "visual": {
+              "skipped": true
+            },
+            "compose": {
+              "mode": "escalation",
+              "template": "chat.escalation"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "appointment-geneva-en",
+      "title": "Private appointment in Geneva \u2014 English",
+      "description": "Client requests a private appointment. Demonstrates appointment intent, advisor assignment in templated reply, and the maison's voice for booking.",
+      "tags": [
+        "appointment",
+        "EN",
+        "booking"
+      ],
+      "locale": "en",
+      "user_messages": [
+        "I'd like to book a private appointment in Geneva next week."
+      ],
+      "turns": [
+        {
+          "role": "user",
+          "text": "I'd like to book a private appointment in Geneva next week."
+        },
+        {
+          "role": "assistant",
+          "text": "With pleasure. Camille Laurent welcomes clients at our Geneva atelier on Rue du Rh\u00f4ne. If you have a preference, the Perl\u00e9e couleurs ring, malachite (VCA-PRL-RG-RNG-024) can be prepared in advance. Which day next week would suit you?",
+          "intent": "appointment",
+          "confidence": 0.88,
+          "locale": "en",
+          "escalated": false,
+          "catalog_hits": [
+            {
+              "id": "VCA-PRL-RG-RNG-024",
+              "name_en": "Perl\u00e9e couleurs ring, malachite",
+              "name_fr": "Bague Perl\u00e9e couleurs, malachite",
+              "price_chf": 4400.0,
+              "collection": "perlee",
+              "score": 0.031
+            },
+            {
+              "id": "VCA-CAD-YG-WCH-055",
+              "name_en": "Cadenas watch, yellow gold",
+              "name_fr": "Montre Cadenas, or jaune",
+              "price_chf": 14500.0,
+              "collection": "perlee",
+              "score": 0.029
+            },
+            {
+              "id": "VCA-PRL-CLR-TUR-RNG-051",
+              "name_en": "Perl\u00e9e couleurs ring, turquoise",
+              "name_fr": "Bague Perl\u00e9e couleurs, turquoise",
+              "price_chf": 4750.0,
+              "collection": "perlee",
+              "score": 0.028
+            },
+            {
+              "id": "VCA-BAL-YDI-CLP-041",
+              "name_en": "Ballerina clip, yellow diamond",
+              "name_fr": "Clip Ballerine, diamant jaune",
+              "price_chf": 188000.0,
+              "collection": "ballerinas",
+              "score": 0.028
+            }
+          ],
+          "heritage_hits": [],
+          "citations": [],
+          "trace": {
+            "intent": {
+              "mode": "demo",
+              "detected": "appointment",
+              "confidence": 0.88,
+              "locale": "en",
+              "escalate": false,
+              "escalation_reason": null
+            },
+            "catalog": {
+              "n_hits": 4,
+              "latency_ms": 18.3,
+              "bm25_top": [
+                "VCA-CAD-YG-WCH-055",
+                "VCA-PRL-RG-RNG-024",
+                "VCA-LCK-LDB-EAR-049",
+                "VCA-ALH-SWT-MOP-EAR-005",
+                "VCA-PRL-YG-NCK-050"
+              ],
+              "dense_top": [
+                "VCA-BAL-RUB-MYS-CLP-040",
+                "VCA-BAL-DIA-CLP-013",
+                "VCA-PRL-CLR-TUR-RNG-051",
+                "VCA-PRL-WG-RNG-054",
+                "VCA-FRV-WG-RNG-038"
+              ],
+              "fused_top": [
+                "VCA-PRL-RG-RNG-024",
+                "VCA-CAD-YG-WCH-055",
+                "VCA-PRL-CLR-TUR-RNG-051",
+                "VCA-BAL-YDI-CLP-041",
+                "VCA-BAL-SPP-CLP-022"
+              ],
+              "retriever": "hybrid (BM25 + dense, RRF)"
+            },
+            "heritage": {
+              "skipped": true
+            },
+            "visual": {
+              "skipped": true
+            },
+            "compose": {
+              "mode": "demo",
+              "intent": "appointment",
+              "latency_ms": 0.0,
+              "reply_length_chars": 233,
+              "n_citations": 0
+            },
+            "groundedness": {
+              "is_grounded": true,
+              "hallucination_count": 0,
+              "findings_by_kind": {}
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -361,3 +361,13 @@
 {"type":"intent_detected","conversation_id":"sim-1c0b4858","timestamp":"2026-05-25T08:26:19.153727Z","payload":{"intent":"appointment","confidence":0.88}}
 {"type":"intent_detected","conversation_id":"trace-test","timestamp":"2026-05-25T08:30:48.527138Z","payload":{"intent":"celebration","confidence":0.88}}
 {"type":"conversation_started","conversation_id":"c928a090-7b0c-4752-8142-3ab5f5a81aed","timestamp":"2026-05-25T08:39:04.001533Z","payload":{}}
+{"type":"intent_detected","conversation_id":"scenario-anniversary-gift-en","timestamp":"2026-05-26T08:54:57.495563Z","payload":{"intent":"celebration","confidence":0.88}}
+{"type":"intent_detected","conversation_id":"scenario-engagement-fr","timestamp":"2026-05-26T08:55:07.520672Z","payload":{"intent":"celebration","confidence":0.88}}
+{"type":"intent_detected","conversation_id":"scenario-alhambra-heritage-en","timestamp":"2026-05-26T08:55:07.541406Z","payload":{"intent":"heritage_inquiry","confidence":0.88}}
+{"type":"intent_detected","conversation_id":"scenario-mystery-setting-fr","timestamp":"2026-05-26T08:55:13.894719Z","payload":{"intent":"heritage_inquiry","confidence":0.88}}
+{"type":"intent_detected","conversation_id":"scenario-collector-investment-en","timestamp":"2026-05-26T08:55:13.940559Z","payload":{"intent":"investment_piece","confidence":0.88}}
+{"type":"intent_detected","conversation_id":"scenario-out-of-scope-en","timestamp":"2026-05-26T08:55:13.990368Z","payload":{"intent":"unknown","confidence":0.25}}
+{"type":"escalation","conversation_id":"scenario-out-of-scope-en","timestamp":"2026-05-26T08:55:13.990741Z","payload":{"reason":"explicit_request"}}
+{"type":"intent_detected","conversation_id":"scenario-resale-valuation-fr","timestamp":"2026-05-26T08:55:13.993205Z","payload":{"intent":"unknown","confidence":0.4}}
+{"type":"escalation","conversation_id":"scenario-resale-valuation-fr","timestamp":"2026-05-26T08:55:13.993340Z","payload":{"reason":"low_confidence"}}
+{"type":"intent_detected","conversation_id":"scenario-appointment-geneva-en","timestamp":"2026-05-26T08:55:13.995011Z","payload":{"intent":"appointment","confidence":0.88}}

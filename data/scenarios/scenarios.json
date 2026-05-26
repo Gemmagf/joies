@@ -1,0 +1,82 @@
+[
+  {
+    "id": "anniversary-gift-en",
+    "title": "Anniversary gift — English",
+    "description": "A client looking for a meaningful CHF 5,000 anniversary gift. Demonstrates intent classification (celebration), hybrid retrieval suggesting two complementary pieces, and an offer of a private appointment.",
+    "tags": ["gift", "celebration", "EN", "core"],
+    "locale": "en",
+    "user_messages": [
+      "I'm looking for an anniversary gift for my wife, around CHF 5,000."
+    ]
+  },
+  {
+    "id": "engagement-fr",
+    "title": "Bague de fiançailles — Français",
+    "description": "Un client cherche une bague de fiançailles dans une fourchette de CHF 12 000. Démontre la détection automatique du français, la classification celebration, et la recommandation de pièces bridal.",
+    "tags": ["celebration", "bridal", "FR", "core"],
+    "locale": "fr",
+    "user_messages": [
+      "Bonjour, je cherche une bague de fiançailles autour de CHF 12 000."
+    ]
+  },
+  {
+    "id": "alhambra-heritage-en",
+    "title": "Alhambra heritage inquiry — English",
+    "description": "Heritage-led conversation. The orchestrator routes only to heritage RAG (no catalog), composes a reply with a verifiable [HER-XXX] citation, and offers a next step.",
+    "tags": ["heritage", "EN", "RAG", "citation"],
+    "locale": "en",
+    "user_messages": [
+      "Tell me about the history of the Alhambra collection."
+    ]
+  },
+  {
+    "id": "mystery-setting-fr",
+    "title": "Serti Mystérieux — Français",
+    "description": "Question patrimoniale en français sur la technique du Serti Mystérieux. Test du locale detection, du retrieval heritage en français, et de la citation [HER-002-MYSTERY-SETTING].",
+    "tags": ["heritage", "FR", "savoir-faire"],
+    "locale": "fr",
+    "user_messages": [
+      "Parlez-moi de la technique du Serti Mystérieux."
+    ]
+  },
+  {
+    "id": "collector-investment-en",
+    "title": "Collector investment piece — English",
+    "description": "A senior collector looking for an archival Ballerina clip. Triggers investment_piece intent, retrieves high-jewelry pieces, and shows the trace panel revealing BM25's contribution from the word 'archival'.",
+    "tags": ["investment", "high jewelry", "EN", "collector"],
+    "locale": "en",
+    "user_messages": [
+      "I'm building a collection of archival Ballerina clips and willing to invest meaningfully."
+    ]
+  },
+  {
+    "id": "out-of-scope-en",
+    "title": "Out-of-scope escalation — English",
+    "description": "Client asks about a third-party brand (Cartier). The rule-based classifier matches the brand pattern and escalates with a graceful human-handoff message. Demonstrates safety / boundary handling.",
+    "tags": ["escalation", "EN", "safety"],
+    "locale": "en",
+    "user_messages": [
+      "Do you also carry Cartier or Bvlgari pieces?"
+    ]
+  },
+  {
+    "id": "resale-valuation-fr",
+    "title": "Estimation hors catalogue — Français",
+    "description": "Une cliente demande la valeur de revente d'une pièce héritée. Hors périmètre du concierge → escalade vers un conseiller humain en français. Démontre le routing safety bilingue.",
+    "tags": ["escalation", "FR", "safety"],
+    "locale": "fr",
+    "user_messages": [
+      "Pouvez-vous me dire la valeur de revente du collier de ma grand-mère ?"
+    ]
+  },
+  {
+    "id": "appointment-geneva-en",
+    "title": "Private appointment in Geneva — English",
+    "description": "Client requests a private appointment. Demonstrates appointment intent, advisor assignment in templated reply, and the maison's voice for booking.",
+    "tags": ["appointment", "EN", "booking"],
+    "locale": "en",
+    "user_messages": [
+      "I'd like to book a private appointment in Geneva next week."
+    ]
+  }
+]
