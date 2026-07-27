@@ -36,6 +36,10 @@ class Settings(BaseSettings):
     clip_pretrained: str = Field(default="laion2b_s34b_b79k", alias="CLIP_PRETRAINED")
 
     metrics_dir: Path = Field(default=Path("data/metrics"), alias="METRICS_DIR")
+    bookings_path: Path = Field(
+        default=Path("data/bookings/hotel_bookings.csv.gz"), alias="BOOKINGS_PATH"
+    )
+    models_dir: Path = Field(default=Path("data/models"), alias="MODELS_DIR")
 
     # `auto` (default) → demo mode iff ANTHROPIC_API_KEY is missing or starts with "sk-ant-...".
     # `true` / `false` force the mode explicitly.

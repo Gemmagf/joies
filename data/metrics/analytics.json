@@ -1,0 +1,110 @@
+{
+  "churn": {
+    "n_train": 94837,
+    "n_test": 23710,
+    "train_cancellation_rate": 0.36333920305366046,
+    "test_cancellation_rate": 0.40923660902572756,
+    "auroc": 0.864152143094837,
+    "average_precision": 0.8242484915633796,
+    "brier": 0.1844843083687363,
+    "cutoff_date": "2017-04-23",
+    "best_iteration": 10,
+    "feature_importance": {
+      "lead_time": 0.1470067292411013,
+      "adr": 0.01811239003744551,
+      "previous_cancellations": 0.0643591088921813,
+      "previous_bookings_not_canceled": 0.016575426611301007,
+      "booking_changes": 0.019981447542418096,
+      "total_of_special_requests": 0.07703514351046702,
+      "required_car_parking_spaces": 0.042649914706016645,
+      "days_in_waiting_list": 0.0030885916057820906,
+      "total_nights": 0.005871024343983367,
+      "party_size": 0.0011863895952975237,
+      "is_repeated_guest": 0.0,
+      "hotel": 0.0068421636032893595,
+      "market_segment": 0.06997076587092589,
+      "distribution_channel": 0.0014399178176734198,
+      "deposit_type": 0.3506445602136678,
+      "customer_type": 0.028357560447073882,
+      "country_bucket": 0.1310454364856621,
+      "meal": 0.00455069959435977,
+      "reserved_room_type": 8.332374069972274e-05,
+      "arrival_month": 0.0111994061406542
+    }
+  },
+  "clv": {
+    "n_fit": 94837,
+    "quartile_cutoffs": [
+      140.0,
+      260.0,
+      450.0
+    ],
+    "band_distribution": {
+      "Gold": 23935,
+      "Silver": 23819,
+      "Platinum": 23733,
+      "Bronze": 23350
+    },
+    "mean_revenue_by_band": {
+      "Bronze": 86.8510972162741,
+      "Silver": 198.11957848776188,
+      "Gold": 337.0724177982035,
+      "Platinum": 824.4500404500064
+    },
+    "loyalty_weight": 0.15
+  },
+  "segmentation": {
+    "n_fit": 94837,
+    "k": 5,
+    "inertia": 225688.35071951844,
+    "centroids": {
+      "weekend_getaway": {
+        "total_nights": -0.5223202657913625,
+        "party_size": -0.24167727377231707,
+        "lead_time": -0.29314879335111116,
+        "adr": -0.1560201156710286,
+        "is_family": -0.277791392846686,
+        "is_weekend_heavy": 2.8737977081899073
+      },
+      "early_planner": {
+        "total_nights": -0.07307501355996897,
+        "party_size": -0.07423420223067281,
+        "lead_time": 1.574782581922427,
+        "adr": -0.3720641107759334,
+        "is_family": -0.28849997620112244,
+        "is_weekend_heavy": -0.3446541830277952
+      },
+      "family_holiday": {
+        "total_nights": 0.22255768972968756,
+        "party_size": 2.274767770664031,
+        "lead_time": -0.1668834340517349,
+        "adr": 1.1543027366191865,
+        "is_family": 3.4584947995522084,
+        "is_weekend_heavy": -0.05995020633050055
+      },
+      "extended_stay": {
+        "total_nights": 1.1258134745006294,
+        "party_size": 0.22767476201956754,
+        "lead_time": -0.04502876020450749,
+        "adr": 0.7097999977078185,
+        "is_family": -0.2889370200057165,
+        "is_weekend_heavy": -0.34797160466450827
+      },
+      "last_minute": {
+        "total_nights": -0.37368464131976725,
+        "party_size": -0.403931346633419,
+        "lead_time": -0.5361477574846705,
+        "adr": -0.3146285553908284,
+        "is_family": -0.2889660045960045,
+        "is_weekend_heavy": -0.34797160466450944
+      }
+    },
+    "sizes": {
+      "last_minute": 42300,
+      "extended_stay": 18249,
+      "early_planner": 17432,
+      "weekend_getaway": 9574,
+      "family_holiday": 7282
+    }
+  }
+}
