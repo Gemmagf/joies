@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "hospitality",
+      "runtimeExecutable": ".venv/bin/streamlit",
+      "runtimeArgs": ["run", "apps/hospitality.py", "--server.port", "8503", "--server.headless", "true"],
+      "port": 8503
+    }
+  ]
+}

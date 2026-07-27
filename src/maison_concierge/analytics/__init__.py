@@ -14,9 +14,10 @@ from .dataset import (
     split_chronological,
 )
 from .segmentation import GuestSegmenter, SegmentationReport, fit_guest_segmenter
-from .store import load_all_artifacts, save_all_artifacts
+from .store import AnalyticsArtifacts, load_all_artifacts, save_all_artifacts
 
 __all__ = [
+    "AnalyticsArtifacts",
     "CLVBander",
     "CLVReport",
     "ChurnModel",
