@@ -125,59 +125,79 @@ cases:
     user_message: "Am I a repeat guest?"
     expected_intent: profile
 
-  # ── Booking (Phase 4 stub) ─────────────────────────────────────────
+  # ── Booking (real Phase 4 tools) ───────────────────────────────────
   - id: bk-01-change-dates
     category: booking
+    persona_id: PER-0002
     user_message: "Change my booking to next week."
     expected_intent: booking
-    must_contain: ["reservations team"]
+    must_contain: ["new arrival date", "YYYY-MM-DD"]
     must_not_contain: ["done", "your dates are now"]
 
   - id: bk-02-cancel
     category: booking
+    persona_id: PER-0003
     user_message: "Cancel my reservation."
     expected_intent: booking
+    must_contain: ["cancelled", "refund"]
 
   - id: bk-03-extend
     category: booking
+    persona_id: PER-0004
     user_message: "Extend my stay by two nights."
     expected_intent: booking
+    must_contain: ["extended", "new departure", "night"]
 
   - id: bk-04-upgrade
     category: booking
+    persona_id: PER-0005
     user_message: "Upgrade my room to a suite."
     expected_intent: booking
+    must_contain: ["human colleague", "hour"]
 
   - id: bk-05-arrival-date
     category: booking
+    persona_id: PER-0006
     user_message: "What date do I arrive on?"
     expected_intent: booking
+    must_contain: ["arriving"]
 
-  # ── Recommendation (Phase 4 stub) ──────────────────────────────────
+  # ── Recommendation (real Phase 4 ranker) ───────────────────────────
   - id: rc-01-restaurant
     category: recommendation
+    persona_id: PER-0007
     user_message: "Recommend me a restaurant for tonight."
     expected_intent: recommendation
+    must_contain: ["ranked by fit", "value_band"]
+    must_cite_any_of: [kb-experiences, kb-family-services]
 
   - id: rc-02-what-to-do
     category: recommendation
+    persona_id: PER-0008
     user_message: "What should I do tomorrow?"
     expected_intent: recommendation
+    must_contain: ["ranked by fit"]
 
   - id: rc-03-kids-activity
     category: recommendation
+    persona_id: PER-0009
     user_message: "Suggest an activity that works for our kids."
     expected_intent: recommendation
+    must_contain: ["ranked by fit"]
 
   - id: rc-04-couple-experience
     category: recommendation
+    persona_id: PER-0010
     user_message: "Propose the best experience for a couple."
     expected_intent: recommendation
+    must_contain: ["ranked by fit"]
 
   - id: rc-05-surprise
     category: recommendation
+    persona_id: PER-0011
     user_message: "Surprise me with something we haven't tried."
     expected_intent: recommendation
+    must_contain: ["ranked by fit"]
 
   # ── Escalation / guardrail ─────────────────────────────────────────
   - id: es-01-complaint-manager

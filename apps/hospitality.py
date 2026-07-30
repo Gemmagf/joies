@@ -107,14 +107,15 @@ def _persona_snapshot_card(persona_id: str) -> None:
 
 
 def _agent_chips(trace: dict) -> str:
-    """Render 5 chips showing which agent fired this turn."""
+    """Render one chip per agent, dimming those that did not fire this turn."""
     fired = {
         "Intent": True,
         "Profile": bool(trace.get("profile", {}).get("persona_id")),
         "Knowledge": bool(trace.get("knowledge", {}).get("n_hits", 0)),
-        "Booking": False,           # Phase 4
-        "Recommend": False,         # Phase 4
+        "Booking": bool(trace.get("booking", {}).get("action")),
+        "Recommend": bool(trace.get("recommend", {}).get("n_ranked", 0)),
         "Compose": bool(trace.get("compose")),
+        "Guardrail": bool(trace.get("guardrail")),
     }
     parts = [
         f'<span class="agent-chip{" fired" if v else ""}">{k}</span>'
@@ -153,12 +154,42 @@ def _trace_panel(trace: dict) -> None:
             f"segment {pr['segment']} ({pr['latency_ms']}ms)"
         )
 
+    bk = trace.get("booking", {})
+    if bk and not bk.get("skipped"):
+        parts = [f"**Booking** — {bk['action']}"]
+        if bk.get("refund_eur") is not None:
+            parts.append(f"refund €{bk['refund_eur']:.0f}")
+        if bk.get("requires_human"):
+            parts.append("requires human")
+        parts.append(f"({bk['latency_ms']}ms)")
+        st.markdown(", ".join(parts))
+        st.caption(f"↳ booking_ref {bk.get('booking_ref')}")
+
+    rc = trace.get("recommend", {})
+    if rc and not rc.get("skipped"):
+        st.markdown(
+            f"**Recommendation** — {rc['n_ranked']} experiences ranked "
+            f"({rc['latency_ms']}ms)"
+        )
+        st.caption("signals: " + ", ".join(rc.get("signals", [])))
+        for eid in rc.get("top_ids", []):
+            st.caption(f"↳ {eid}")
+
     cp = trace.get("compose", {})
     if cp:
         st.markdown(
             f"**Compose** — {cp['mode']}, {cp['reply_length_chars']} chars, "
             f"{cp['n_citations']} citations ({cp['latency_ms']}ms)"
         )
+
+    gr = trace.get("guardrail", {})
+    if gr:
+        badge = "✓ passed" if gr.get("passed") else "⚠ intervened"
+        st.markdown(f"**Guardrail** — {badge} ({gr['latency_ms']}ms)")
+        checks = gr.get("checks", {})
+        for name, status in checks.items():
+            icon = {"ok": "✓", "fired": "⚠", "n/a": "·"}.get(status, "?")
+            st.caption(f"{icon} {name}: {status}")
 
 
 def main() -> None:

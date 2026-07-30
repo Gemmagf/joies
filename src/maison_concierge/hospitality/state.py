@@ -4,9 +4,12 @@ from __future__ import annotations
 
 from typing import Annotated, Any, TypedDict
 
+from .booking import BookingActionResult
+from .guardrail import GuardrailReport
 from .intent import HospitalityIntent
 from .kb import KBSearchResult
 from .profile import ProfileSnapshot
+from .recommend import RecommendationResult
 
 
 def _take_last(_: object, new: object) -> object:
@@ -36,7 +39,10 @@ class HospitalityState(TypedDict, total=False):
 
     profile_snapshot: ProfileSnapshot | None
     kb_hits: list[KBSearchResult]
+    booking_result: BookingActionResult | None
+    recommendation: RecommendationResult | None
+    guardrail_report: GuardrailReport | None
 
     assistant_reply: Annotated[str, _take_last]
-    citations: list[str]
+    citations: Annotated[list[str], _take_last]
     trace: Annotated[dict[str, Any], _merge_dicts]

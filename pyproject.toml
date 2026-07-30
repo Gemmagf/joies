@@ -79,7 +79,7 @@ target-version = "py311"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP", "N", "SIM", "RUF"]
-ignore = ["E501", "N803", "N806", "RUF002"]  # N803/N806: ML convention — `X`, `X_train`. RUF002: unicode in docstrings (×, —) is fine.
+ignore = ["E501", "N803", "N806", "RUF001", "RUF002", "RUF003"]  # N803/N806: ML convention — `X`, `X_train`. RUF00{1,2,3}: unicode (×, —, sigma) is fine in strings/comments/docstrings.
 
 [tool.mypy]
 python_version = "3.11"
