@@ -29,6 +29,15 @@ _UNKNOWN_REPLY = (
     "curated experiences."
 )
 
+_GREETING_REPLIES = (
+    "Welcome, {name}. I'm your concierge for {property}. How may I help — "
+    "your booking, an experience, or something about the property?",
+    "Hello {name} — delighted to have you. Ask me anything about your stay "
+    "at {property}, or about your guest profile.",
+    "Good to hear from you, {name}. Anything you'd like me to look up "
+    "about {property}, your booking, or an experience for your stay?",
+)
+
 
 @dataclass(slots=True)
 class ComposerOutput:
@@ -135,6 +144,24 @@ def _compose_recommendation(
     )
 
 
+def _compose_greeting(persona: Persona | None) -> ComposerOutput:
+    """Pick a deterministic warm reply — we index into the pool by persona id
+    so the same guest gets the same greeting, but different guests differ."""
+    name = persona.display_name.split()[0] if persona else "there"
+    property_name = persona.property if persona else "the Maison"
+    if persona is None:
+        template = _GREETING_REPLIES[0]
+    else:
+        # Deterministic pick from the pool — sum of ord() over id is stable.
+        idx = sum(ord(c) for c in persona.id) % len(_GREETING_REPLIES)
+        template = _GREETING_REPLIES[idx]
+    return ComposerOutput(
+        reply=template.format(name=name, property=property_name),
+        citations=[],
+        mode="templated",
+    )
+
+
 def compose_templated(
     *,
     intent: HospitalityIntent,
@@ -147,6 +174,8 @@ def compose_templated(
 ) -> ComposerOutput:
     if escalate or intent == HospitalityIntent.ESCALATE:
         return ComposerOutput(reply=_ESCALATION_REPLY, citations=[], mode="templated")
+    if intent == HospitalityIntent.GREETING:
+        return _compose_greeting(persona)
     if intent == HospitalityIntent.PROFILE:
         return _compose_profile(profile, persona)
     if intent == HospitalityIntent.KNOWLEDGE:

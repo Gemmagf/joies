@@ -28,6 +28,7 @@ def test_case_set_covers_every_category() -> None:
         "guardrail_pii",
         "guardrail_out_of_scope",
         "guardrail_no_invention",
+        "greeting",
         "unknown",
     ):
         assert required in categories, f"case set missing category {required!r}"

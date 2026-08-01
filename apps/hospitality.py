@@ -126,11 +126,18 @@ def _agent_chips(trace: dict) -> str:
         "Compose": bool(trace.get("compose")),
         "Guardrail": bool(trace.get("guardrail")),
     }
-    parts = [
+    chips = "".join(
         f'<span style="{_CHIP_FIRED if v else _CHIP_IDLE}">{k}</span>'
         for k, v in fired.items()
-    ]
-    return "".join(parts)
+    )
+    # Wrap in a flex container so Streamlit's iframe sanitiser can't collapse
+    # the per-span margins into nothing — flex + gap is the reliable pattern.
+    return (
+        '<div style="display:flex; flex-wrap:wrap; gap:8px; '
+        'margin:4px 0 12px 0;">'
+        f"{chips}"
+        "</div>"
+    )
 
 
 def _trace_panel(trace: dict) -> None:

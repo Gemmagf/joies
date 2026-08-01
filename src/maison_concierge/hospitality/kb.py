@@ -33,9 +33,23 @@ class KBPage:
     body: str            # markdown body (frontmatter stripped)
     path: Path
 
-    def snippet(self, max_chars: int = 320) -> str:
-        cleaned = re.sub(r"\s+", " ", self.body).strip()
-        return cleaned[:max_chars] + ("…" if len(cleaned) > max_chars else "")
+    def snippet(self, max_chars: int = 480) -> str:
+        """Preserve paragraph structure so the composer's reply reads like prose
+        and not one whitespace-crushed sentence."""
+        # Strip the leading H1 (the composer already surfaces the page title).
+        body = re.sub(r"^#\s+.+?\n+", "", self.body, count=1)
+        body = body.strip()
+        paragraphs = [p.strip() for p in re.split(r"\n{2,}", body) if p.strip()]
+        if not paragraphs:
+            return ""
+        result = paragraphs[0]
+        for p in paragraphs[1:]:
+            if len(result) + len(p) + 2 > max_chars:
+                break
+            result += "\n\n" + p
+        if len(result) > max_chars:
+            result = result[:max_chars].rstrip() + "…"
+        return result
 
 
 @dataclass(slots=True, frozen=True)

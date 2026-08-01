@@ -12,10 +12,11 @@
 |---|---:|---:|---:|
 | booking | 5 | 5 | 100% |
 | escalation | 3 | 3 | 100% |
+| greeting | 3 | 3 | 100% |
 | guardrail_no_invention | 2 | 2 | 100% |
 | guardrail_out_of_scope | 2 | 2 | 100% |
 | guardrail_pii | 2 | 2 | 100% |
 | knowledge | 10 | 10 | 100% |
 | profile | 6 | 6 | 100% |
 | recommendation | 5 | 5 | 100% |
-| unknown | 4 | 4 | 100% |
+| unknown | 1 | 1 | 100% |

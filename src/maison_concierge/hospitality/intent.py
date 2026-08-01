@@ -21,6 +21,7 @@ class HospitalityIntent(StrEnum):
     KNOWLEDGE = "knowledge"      # policy / property / amenity questions
     BOOKING = "booking"          # dates, changes, cancellation actions
     RECOMMENDATION = "recommendation"  # "what should I do", "suggest"
+    GREETING = "greeting"        # "hi", "hello", "bonjour", "hola"
     ESCALATE = "escalate"        # complaint, harm, out-of-scope
     UNKNOWN = "unknown"
 
@@ -83,6 +84,12 @@ _RECOMMENDATION_TERMS = (
     r"(surprise me|delight me)",
 )
 
+_GREETING_TERMS = (
+    r"^\s*(hi|hello|hey|hola|olá|ola|bonjour|hallo|salut|ciao)\b",
+    r"^\s*(good (morning|afternoon|evening))\b",
+    r"^\s*(how are you|how's it going)\b",
+)
+
 _ESCALATE_TERMS = (
     r"(complain|complaint|awful|terrible|angry|furious|refund now|manager)",
     r"(unsafe|dangerous|hurt|injur|medical emergency|police)",
@@ -134,6 +141,7 @@ def classify_intent_rule_based(
 
     for intent, terms, base_conf in (
         (HospitalityIntent.ESCALATE, _ESCALATE_TERMS, 0.70),
+        (HospitalityIntent.GREETING, _GREETING_TERMS, 0.70),
         (HospitalityIntent.BOOKING, _BOOKING_TERMS, 0.65),
         (HospitalityIntent.PROFILE, _PROFILE_TERMS, 0.60),
         (HospitalityIntent.RECOMMENDATION, _RECOMMENDATION_TERMS, 0.60),

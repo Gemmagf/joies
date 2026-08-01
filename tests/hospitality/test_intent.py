@@ -26,7 +26,11 @@ from maison_concierge.hospitality.intent import (
         ("recommend a restaurant", HospitalityIntent.RECOMMENDATION),
         ("this is unacceptable, I want a manager", HospitalityIntent.ESCALATE),
         ("I'm having a medical emergency", HospitalityIntent.ESCALATE),
-        ("hello", HospitalityIntent.UNKNOWN),
+        ("hello", HospitalityIntent.GREETING),
+        ("hola", HospitalityIntent.GREETING),
+        ("bonjour", HospitalityIntent.GREETING),
+        ("How are you doing today?", HospitalityIntent.GREETING),
+        ("gibberish qwerty", HospitalityIntent.UNKNOWN),
     ],
 )
 def test_intent_routing(text: str, expected: HospitalityIntent) -> None:
@@ -41,6 +45,6 @@ def test_escalation_flags_are_set() -> None:
 
 
 def test_unknown_has_zero_confidence() -> None:
-    r = classify_intent_rule_based("hello")
+    r = classify_intent_rule_based("gibberish qwerty")
     assert r.intent == HospitalityIntent.UNKNOWN
     assert r.confidence == 0.0
