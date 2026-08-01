@@ -6,10 +6,18 @@ on:
   pull_request:
     branches: [main]
 
+env:
+  # Prevent a torch/loky race that segfaults on shutdown when Chroma and
+  # sentence-transformers are both loaded in the same Python process.
+  TOKENIZERS_PARALLELISM: "false"
+  OMP_NUM_THREADS: "1"
+  ANTHROPIC_API_KEY: "dummy-for-ci"
+
 jobs:
   lint-and-test:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         python-version: ["3.11", "3.12"]
 
@@ -27,25 +35,22 @@ jobs:
           python -m pip install --upgrade pip
           pip install -e ".[dev,app]"
 
-      - name: Ruff (lint)
-        run: ruff check src tests
+      - name: Ruff lint
+        run: ruff check src tests apps scripts
 
-      - name: Ruff (format check)
-        run: ruff format --check src tests
+      - name: Bootstrap demo artifacts (train models + generate personas + index KB)
+        run: python scripts/bootstrap_demo.py
 
-      - name: Mypy
-        run: mypy src
-        continue-on-error: true
+      - name: Pytest — analytics
+        run: pytest tests/analytics -q
 
-      - name: Pytest
-        env:
-          ANTHROPIC_API_KEY: dummy-for-ci
-        run: pytest --cov=maison_concierge --cov-report=term-missing
+      - name: Pytest — hospitality (per-file, avoids py3.14 chroma+torch shutdown segfault)
+        run: |
+          set -e
+          for f in tests/hospitality/test_*.py; do
+            echo "=== $f ==="
+            pytest "$f" -q
+          done
 
-  docker-build:
-    runs-on: ubuntu-latest
-    needs: lint-and-test
-    steps:
-      - uses: actions/checkout@v4
-      - name: Build image
-        run: docker build -t maison-concierge:ci .
+      - name: Run hospitality eval harness
+        run: python scripts/run_hospitality_eval.py

@@ -25,29 +25,32 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-st.markdown(
+# Custom styling — st.html injects the <style> block into the document head
+# reliably across recent Streamlit versions; st.markdown(unsafe_allow_html=True)
+# no longer works for <style> since Streamlit 1.36's tighter sanitizer.
+st.html(
     """
     <style>
-    .main { background-color: #faf8f4; }
+    section.main { background-color: #faf8f4; }
     .stApp, .stMarkdown, .stChatMessage {
         font-family: "Garamond", "Cormorant Garamond", "EB Garamond", serif;
     }
-    h1, h2, h3 { font-family: "Garamond", "Cormorant Garamond", serif;
-                 letter-spacing: 0.04em; font-weight: 500; }
-    .agent-chip {
-        display: inline-block; padding: 2px 8px; margin-right: 6px;
-        border: 1px solid #6c5b3f; border-radius: 12px; font-size: 12px;
-        color: #6c5b3f; background: #f6f0e5;
-    }
-    .agent-chip.fired { background: #6c5b3f; color: #faf8f4; }
-    .metric-tile {
-        padding: 8px 12px; border: 1px solid #d9cdb3; border-radius: 4px;
-        background: #fdfbf7; margin-bottom: 8px;
+    h1, h2, h3 {
+        font-family: "Garamond", "Cormorant Garamond", serif;
+        letter-spacing: 0.04em; font-weight: 500;
     }
     </style>
-    """,
-    unsafe_allow_html=True,
+    """
 )
+
+
+_CHIP_BASE = (
+    "display:inline-block;padding:2px 10px;margin-right:6px;"
+    "border:1px solid #6c5b3f;border-radius:12px;font-size:12px;"
+    "font-family:'Garamond',serif;"
+)
+_CHIP_IDLE = _CHIP_BASE + "color:#6c5b3f;background:#f6f0e5;"
+_CHIP_FIRED = _CHIP_BASE + "color:#faf8f4;background:#6c5b3f;"
 
 
 @st.cache_resource(show_spinner=False)
@@ -107,7 +110,13 @@ def _persona_snapshot_card(persona_id: str) -> None:
 
 
 def _agent_chips(trace: dict) -> str:
-    """Render one chip per agent, dimming those that did not fire this turn."""
+    """Render one chip per agent, dimming those that did not fire this turn.
+
+    Uses inline styles rather than a class-based CSS rule so the styling is
+    guaranteed to apply — Streamlit only injects our <style> block via
+    st.html at the top of the page; individual markdown renders don't
+    inherit an author stylesheet.
+    """
     fired = {
         "Intent": True,
         "Profile": bool(trace.get("profile", {}).get("persona_id")),
@@ -118,7 +127,7 @@ def _agent_chips(trace: dict) -> str:
         "Guardrail": bool(trace.get("guardrail")),
     }
     parts = [
-        f'<span class="agent-chip{" fired" if v else ""}">{k}</span>'
+        f'<span style="{_CHIP_FIRED if v else _CHIP_IDLE}">{k}</span>'
         for k, v in fired.items()
     ]
     return "".join(parts)
@@ -126,7 +135,7 @@ def _agent_chips(trace: dict) -> str:
 
 def _trace_panel(trace: dict) -> None:
     st.markdown("**Which agents fired**", help="Nodes traversed by the LangGraph orchestrator this turn.")
-    st.markdown(_agent_chips(trace), unsafe_allow_html=True)
+    st.html(_agent_chips(trace))
 
     intent_info = trace.get("intent", {})
     if intent_info:

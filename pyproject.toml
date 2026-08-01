@@ -4,13 +4,13 @@ build-backend = "hatchling.build"
 
 [project]
 name = "maison-concierge"
-version = "0.1.0"
-description = "Multi-agent GenAI client advisor for luxury maisons — chat, visual search, heritage RAG, appointments."
+version = "0.2.0"
+description = "Multi-agent AI hospitality concierge — LangGraph orchestration, RAG on a property KB, LightGBM churn/CLV/segmentation, explicit RAI guardrails, 39-case eval harness."
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
 authors = [{ name = "Gemma Gardela" }]
-keywords = ["genai", "rag", "langgraph", "luxury", "multi-agent", "clip"]
+keywords = ["genai", "rag", "langgraph", "multi-agent", "hospitality", "responsible-ai"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Programming Language :: Python :: 3.11",
@@ -65,10 +65,7 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/gemmagardela/maison-concierge"
-
-[project.scripts]
-maison-seed = "maison_concierge.scripts.seed:main"
+Homepage = "https://github.com/Gemmagf/joies"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/maison_concierge"]

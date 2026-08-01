@@ -1,254 +1,245 @@
-# Maison Concierge
+# Maison — Hospitality Concierge
 
-> A bilingual (EN / FR) multi-agent GenAI client advisor for a luxury jewelry maison — built end-to-end with the analytics, business case, and evaluation framework a hiring manager would expect from a real production deployment.
+A multi-agent AI concierge for a fictional luxury hospitality brand, built
+to prove out the whole intake → route → execute → guardrail → monitor
+loop with a real orchestration framework, real analytics, real
+retrieval, and an eval harness that fails the build when things regress.
 
-[![tests](https://img.shields.io/badge/tests-58%20passing-1c6e1c?style=flat-square)](tests/)
-[![ruff](https://img.shields.io/badge/ruff-clean-1c6e1c?style=flat-square)](https://github.com/astral-sh/ruff)
-[![python](https://img.shields.io/badge/python-3.11%20%7C%203.12-blue?style=flat-square)](pyproject.toml)
-[![model](https://img.shields.io/badge/model-claude--sonnet--4--6-8a6f3f?style=flat-square)](https://platform.claude.com)
+[![CI](https://github.com/Gemmagf/joies/actions/workflows/ci.yml/badge.svg)](https://github.com/Gemmagf/joies/actions/workflows/ci.yml)
+![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue)
+![License: MIT](https://img.shields.io/badge/license-MIT-green)
 
----
+**Live demo:** _add your Streamlit Community Cloud URL here after
+following [Deploy](#deploy)._
 
 ## What it is
 
-A working private-advisor system in the voice of a senior salon advisor: discovers pieces from a catalog, tells verifiable heritage stories with citations, books private appointments, and routes high-net-worth leads to the human team — in **English or French**, switching mid-conversation when the client does.
+A guest can chat with the concierge and, in a single turn, trigger:
 
-Built around an opinionated stack: **LangGraph** (orchestration) · **Anthropic Claude API** (Sonnet 4.6, prompt-cached, adaptive thinking) · **ChromaDB** (dense RAG) · **rank-bm25** (lexical RAG, fused via RRF) · **OpenCLIP** (visual similarity) · **scikit-learn** (lead scorer) · **Streamlit** (chat surface + analytics dashboard).
+- an **intent classifier** that routes the message to specialist agents,
+- a **Profile & Analytics** agent that reads a trained LightGBM
+  cancellation model, a value-band bander, and a KMeans segmenter (no LLM
+  guessing — the numbers come from real hotel-booking data),
+- a **Knowledge** agent that answers grounded questions from a
+  hand-written 13-page property KB, retrieved via dense embeddings, with
+  citations,
+- a **Booking & Itinerary** agent that runs pure-Python tools against the
+  guest's booking to cancel, extend, or hand off changes to a human, with
+  refund figures computed exactly from the KB's cancellation policy,
+- a **Recommendation** agent that ranks a curated experience catalogue by
+  persona affinity and justifies each pick,
+- a **Guardrail / Responsible-AI node** that runs after compose and can
+  redact PII, override low-confidence answers, verify citation subsets,
+  and refuse escalation-content that leaks forbidden strings.
 
-> Catalog, heritage stories, client profiles and prices are entirely synthetic. They reference real collection names from the world of haute joaillerie to make the demo feel grounded — but no real maison data is used.
-
----
-
-## Why it's interesting
-
-Most LLM chatbot projects stop at "it works on a happy path." This one was built to answer the three questions a senior data scientist will ask:
-
-1. **Does it actually work?** → an **eval framework** with a 30-query bilingual golden set, deterministic groundedness checks, retrieval metrics (recall@k, MRR) over **dense vs hybrid (BM25 + dense + RRF)**, and confidence calibration with ECE / Brier score.
-2. **Is it worth the money?** → a **quantified business case** with named, defensible assumptions and a sensitivity matrix — answers "what's the annual saving, at what deflection rate, and where's the break-even?"
-3. **Do you understand the clients?** → a **4-tier segmentation** with 50 synthetic profiles, segment-aware prompt strategy, and a sklearn lead-scoring model so SAs can prioritize follow-ups.
-
----
-
-## Headline results
-
-### Retrieval — hybrid BM25 + dense closes the catalog gap
-
-The dense-only retrieval struggled on a small product catalog where exact tokens (materials, stones, collection names) carry most of the signal. Adding BM25 in parallel and fusing with Reciprocal Rank Fusion (Cormack et al., 2009) recovered the missing recall:
-
-| Metric | Dense only | Hybrid (BM25 + dense, RRF) | Lift |
-|---|---:|---:|---:|
-| recall@1 | 0.14 | **0.19** | **+33%** |
-| recall@3 | 0.31 | **0.32** | +3% |
-| recall@5 | 0.38 | **0.48** | **+27%** |
-| MRR | 0.45 | **0.53** | **+18%** |
-
-*Heritage retrieval is dense-only — at recall@5 = 0.93 / MRR = 0.89 there's no gap for BM25 to close.*
-
-### Groundedness — zero tolerance for fabricated references
-
-A deterministic post-hoc parser walks every assistant reply, extracts each `VCA-XXX` reference and `CHF X,XXX` claim, and verifies them against the retrieval evidence + the underlying catalog. Findings are bucketed into `unsupported_piece`, `unsupported_price`, `unsupported_heritage`. **0 hallucinations on the validated sample, 2 detected on a planted-failure sample.**
-
-### Calibration — the intent classifier is slightly overconfident
-
-| Metric | Value |
-|---|---|
-| Expected Calibration Error (ECE) | **0.124** |
-| Brier score | **0.228** |
-| N predictions | 200 |
-
-Reliability diagram renders in the dashboard. Honest finding: out-of-the-box LLM intent classifiers are mildly miscalibrated at the high end (0.9-confidence predictions are right ~82% of the time).
-
-### Business case — quantified ROI
-
-At 2,500 conversations/month and a 64% blended deflection rate:
-
-| Metric | Value |
-|---|---:|
-| **Annual net saving** | **CHF 176K** |
-| Monthly net saving | CHF 14,676 |
-| API cost per conversation (Sonnet 4.6 + 85% cache hit) | CHF 0.026 |
-| SA cost per handled inquiry (Geneva fully-loaded) | CHF 9.17 |
-| **Break-even deflection rate** | **0.28%** |
-| Payback on CHF 15K setup | **1 month** |
-
-Sensitivity matrix (annual net saving, CHF):
-
-| Monthly conversations | 30% defl | 45% defl | 60% defl | 75% defl | 90% defl |
-|---:|---:|---:|---:|---:|---:|
-| 500 | 16,345 | 24,595 | 32,845 | 41,095 | 49,345 |
-| 1,000 | 32,691 | 49,191 | 65,691 | 82,191 | 98,691 |
-| 2,500 | 81,727 | 122,977 | 164,227 | 205,477 | 246,727 |
-| 5,000 | 163,454 | 245,954 | 328,454 | 410,954 | 493,454 |
-| 10,000 | 326,907 | 491,907 | 656,907 | 821,907 | 986,907 |
-
-### Lead scoring — sklearn pipeline for SA prioritization
-
-Logistic Regression on 1,500 synthetic conversations, with segment-aware features:
-
-| Metric | Value |
-|---|---|
-| ROC AUC | 0.61 |
-| Average Precision | 0.59 |
-| Per-segment precision (collector) | **0.83** |
-| Per-segment precision (VIP) | 0.64 |
-
-Top coefficients are interpretable: `intent=appointment` (+0.76), `intent=heritage_inquiry` (−0.55), `n_turns` (+0.29), `segment=prospect` (−0.30).
-
----
+The Streamlit demo exposes the full audit trail — you see which agents
+fired, which KB pages surfaced, and which guardrail checks intervened.
 
 ## Architecture
 
 ```
-                    ┌──────────────────────────────┐
-                    │  Streamlit chat  (EN / FR)   │
-                    └───────────────┬──────────────┘
-                                    │
-                  ┌─────────────────▼──────────────────┐
-                  │  Orchestrator — LangGraph           │
-                  │  • intent classification (parse)    │
-                  │  • parallel retrieval               │
-                  │  • prompt-cached compose            │
-                  └──┬──────────────┬───────────────┬──┘
-                     │              │               │
-            ┌────────▼──┐ ┌─────────▼─────────┐ ┌──▼────────┐
-            │ Catalog   │ │ Heritage          │ │ Visual    │
-            │ BM25+dense│ │ dense (Chroma)    │ │ CLIP      │
-            │ + RRF     │ │                   │ │ (opt.)    │
-            └─────┬─────┘ └─────────┬─────────┘ └──────┬────┘
-                  │                 │                   │
-                  └─────────────────┼───────────────────┘
-                                    │
-            ┌───────────────────────▼───────────────────────┐
-            │  Stakeholder dashboard (4 tabs)                │
-            │  Overview · Quality · Business case · Segments │
-            └────────────────────────────────────────────────┘
-                                    ▲
-                                    │
-        ┌──────────────────────┬────┴─────┬──────────────────────┐
-        │ Eval framework        │ Business │ Segmentation + sklearn│
-        │ (retrieval, ground-   │ case ROI │ booking-probability   │
-        │  edness, calibration) │  model   │ logistic regression   │
-        └──────────────────────┴──────────┴──────────────────────┘
+                 ┌─────────────────┐
+   guest msg ───►│    Classify     │  (rule-based, priority-tiered)
+                 └────────┬────────┘
+        ┌────────┬────────┼────────┬────────┐
+        v        v        v        v        v
+   ┌────────┐┌────────┐┌────────┐┌──────────┐
+   │Profile ││Knowledge││Booking ││ Recommend│
+   │(LGBM + ││ (RAG,   ││(tools) ││ (ranker) │
+   │ KMeans)││ Chroma) │└────────┘└──────────┘
+   └────────┘└────────┘
+        └────────┴────────┼────────┴────────┘
+                          v
+                    ┌───────────┐
+                    │  Compose  │  templated per intent, cites KB
+                    └─────┬─────┘
+                          v
+                    ┌───────────┐
+                    │ Guardrail │  PII scrub · confidence override
+                    │ (RAI node)│  citation subset · escalation content
+                    └─────┬─────┘
+                          v
+                       reply + trace
 ```
 
----
+All routing lives in a LangGraph state machine (`src/maison_concierge/hospitality/orchestrator.py`)
+— no `if/else` in the composer, no LLM in the analytics or tools.
 
-## Two modes — Claude or offline
+## Eval results
 
-| Mode | When | What runs |
-|---|---|---|
-| **Demo (default)** | No `ANTHROPIC_API_KEY` set | Rule-based intent classifier + templated EN/FR composer over the real retrieval (BM25 + dense + RRF). Deterministic, free, no external calls. The chat works for anyone. |
-| **Claude** | `ANTHROPIC_API_KEY` set | Live Sonnet 4.6 calls for intent (`messages.parse`) and composition (adaptive thinking, prompt caching). The voice is richer; everything else is identical. |
+Run against a 39-case scripted harness spanning nine categories
+(knowledge, profile, booking, recommendation, escalation, three
+guardrail flavours, unknown). The pytest wrapper fails CI if these bars
+regress.
 
-Switching is automatic: the orchestrator inspects `settings.use_demo_mode` on every turn. Force the mode explicitly with `DEMO_MODE=true` or `DEMO_MODE=false`. The dashboard, eval framework, business case and segmentation modules are independent of the chat path and work in either mode.
+| Metric | Latest run |
+|---|---:|
+| Task success | **39 / 39 (100%)** |
+| Routing accuracy | **100%** |
+| Groundedness (KB cited when required) | **100%** |
+| Guardrail catch-rate | **100%** |
 
-> **Why demo mode is the default for the public repo.** A portfolio demo should run for anyone visiting — without exposing a paid API key, without rate-limit headaches, without me paying per-recruiter-conversation. The architecture is unchanged: the same orchestrator, the same retrieval, the same citation discipline. Only the generation surface is swapped.
+Per-category breakdown lives in [`data/eval/hospitality_report.md`](data/eval/hospitality_report.md),
+raw JSON in [`data/eval/hospitality_report.json`](data/eval/hospitality_report.json).
 
-### Scaling beyond the demo
+Analytics numbers on the chronological holdout (train on 2015-07 → 2017-05,
+test on the last 20%):
 
-The current chat path is built to scale upward without architectural changes. In a real production deployment for a luxury maison, the LLM surface would step up along several axes:
+| Model | Metric | Value |
+|---|---|---:|
+| Cancellation risk (LightGBM) | AUROC | **0.864** |
+| Cancellation risk | Average precision | 0.824 |
+| Cancellation risk | Brier | 0.184 |
+| Value band | Quartile cutoffs (€) | 140 · 260 · 450 |
+| Segmentation | KMeans k | 5 |
 
-| Axis | Demo today | Production target |
-|---|---|---|
-| **Model tier** | Templated responses (offline) or Sonnet 4.6 | **Claude Opus 4.7** for the headline voice; Sonnet 4.6 reserved for triage / classification to keep cost down. The `CLAUDE_MODEL` env var already covers this. |
-| **Hosting** | Direct Anthropic API | **Amazon Bedrock** or **Google Vertex AI** for EU data residency, contractual SLAs, and unified billing with the maison's existing cloud spend. |
-| **Languages** | EN / FR | Add **Mandarin, Japanese, Arabic, Italian** — the maison's actual client base. Same orchestrator, expanded i18n strings and locale detection markers, plus a Claude model that already speaks them natively. |
-| **Voice channel** | Text only | **Whisper / Speech-to-Text** for sales-associate dictation in boutique; **ElevenLabs** or equivalent for voice-note responses to high-tier clients. |
-| **Vision** | OpenCLIP (gated, generic) | **Domain-fine-tuned CLIP** or a multimodal Claude call with the maison's archive as context — useful when clients send photos of vintage pieces for identification. |
-| **Memory** | Conversation only (Redis or in-process) | **Anthropic Managed Agents** with persistent memory stores per client, scoped by segment, so the concierge remembers prior visits, owned collections, and preference patterns across sessions. |
-| **Personalisation** | Static segment guidance (4 tiers) | Real client profile data flowing in from the maison's CRM; segment-aware system prompts injected per conversation; the lead scorer retrained nightly on actual booking outcomes instead of synthetic labels. |
-| **Evaluation** | 30-query golden set, deterministic groundedness | Expand the golden set to ~300 queries with human-rated rubrics; add **LLM-as-judge** scoring with Claude evaluating responses on four dimensions (groundedness, citation accuracy, tone, completeness); nightly regression CI. |
+Top churn drivers (gain share): `deposit_type` (35%), `lead_time` (15%),
+`country_bucket` (13%), `total_of_special_requests` (8%),
+`market_segment` (7%) — consistent with the Antonio et al. literature.
 
-None of these change the shape of the system. They change the quality ceiling, the deployment context, and the cost envelope — and they're enabled by the modular architecture (the orchestrator doesn't care which classifier or composer it's wired to; the eval framework runs against any retriever).
+## Data — honest grounding
 
-## Quick start
+- **Bookings.** [Antonio, Almeida & Nunes (2019)](https://doi.org/10.1016/j.dib.2018.11.126)
+  hotel booking demand — 118k rows from one city hotel and one resort
+  hotel in Portugal, released for research under CC BY 4.0. Provenance
+  and cleaning notes in [`data/bookings/README.md`](data/bookings/README.md).
+- **Guest personas.** 20 synthetic identities generated by stratified
+  sampling from the real dataset. The names, emails, and booking
+  references are invented; the underlying booking features (lead time,
+  deposit type, ADR, party size) are real distributional samples.
+  **No row corresponds to a real, identifiable person.**
+- **Property KB.** 13 hand-written markdown pages describing a fictional
+  two-property maison (`Maison Lisboa` / `Maison Algarve`) — amenities,
+  policies, experiences. This is the RAG corpus.
+- **What we don't do.** We don't train or fine-tune LLMs; we orchestrate
+  them. We don't pull from any live booking system. We don't invent
+  policy — the composer only quotes KB pages the retriever surfaced.
+
+## Quickstart
+
+Requires Python 3.11+ and ~2 GB free (torch + sentence-transformers).
 
 ```bash
-# 1. Install
-pip install -e ".[app,dev]"
+git clone https://github.com/Gemmagf/joies.git
+cd joies
 
-# 2. (Optional) configure — without a key you get demo mode, which is fine
-cp .env.example .env
-# Add ANTHROPIC_API_KEY to .env to switch the chat to live Claude
+python -m venv .venv
+source .venv/bin/activate         # Windows: .venv\Scripts\activate
+pip install -e ".[dev,app]"
 
-# 3. Seed data + indices (one-off, no API key needed)
-python scripts/seed.py                    # ChromaDB catalog + heritage
-python scripts/seed_client_profiles.py    # 50 synthetic profiles
-python scripts/train_booking_model.py     # sklearn lead-scoring model
-python scripts/run_eval.py                # eval report for dashboard
-python scripts/seed_demo_metrics.py       # synthetic event log
-python scripts/seed_eval_calibration.py   # synthetic calibration pairs
+# One-shot: trains analytics, generates personas, indexes the KB.
+# Idempotent — safe to re-run.
+python scripts/bootstrap_demo.py
 
-# 4. Run the chat surface (needs ANTHROPIC_API_KEY)
-streamlit run apps/chat.py
-
-# 5. Run the dashboard (no API key needed)
-streamlit run apps/dashboard.py --server.port 8502
-
-# 6. Print the business case
-python scripts/business_case_report.py
+# Local demo
+streamlit run streamlit_app.py    # opens on http://localhost:8501
 ```
 
-For Redis-backed conversation memory and a containerized stack:
+An `ANTHROPIC_API_KEY` isn't required — the composer runs in a fully
+templated deterministic mode. When the API key is set (in a `.env` or
+via Streamlit Cloud secrets), a future release will swap in the LLM
+composer with prompt caching on the maison's brand system prompt.
 
-```bash
-docker compose up --build
+## Deploy (Streamlit Community Cloud)
+
+1. Push the repo to GitHub (already committed here).
+2. Go to <https://share.streamlit.io>, click **New app**.
+3. Pick this repo. Set **Main file** to `streamlit_app.py` (the default).
+4. Under **Advanced settings → Python version**, choose `3.11` or `3.12`.
+5. Under **Secrets**, paste:
+   ```toml
+   TOKENIZERS_PARALLELISM = "false"
+   OMP_NUM_THREADS = "1"
+   ```
+   These avoid a torch/loky shutdown race on shared workers.
+6. Click **Deploy**. The first cold start takes 2–4 minutes
+   (`bootstrap_demo.py` trains models and indexes Chroma on the fly);
+   subsequent boots are fast.
+7. Once live, verify the URL is **Public** — not gated behind the
+   Streamlit Cloud login. In the app dashboard, under **Settings →
+   Sharing**, set access to *"Anyone with the link"* if not already.
+
+## Repository layout
+
 ```
-
----
-
-## Project layout
-
-```
-src/maison_concierge/
-├── agents/         LangGraph orchestrator + composer + intent classifier
-├── retrieval/      catalog (dense + BM25 hybrid), heritage RAG, CLIP visual
-├── eval/           golden set, recall@k/MRR, groundedness, calibration
-├── analysis/       ROI model + sensitivity matrix
-├── segmentation/   client profiles, segment guidance, sklearn lead scorer
-├── tools/          mock booking, pricing, HNW lead flagging
-├── memory/         Redis or in-memory conversation store
-├── observability/  event log + dashboard snapshots
-├── models/         Pydantic domain models
-└── i18n/           EN/FR string tables + locale detection
-
-apps/
-├── chat.py         Streamlit chat surface
-└── dashboard.py    Stakeholder dashboard (4 tabs)
-
+apps/                        # Streamlit UI
+├── hospitality.py           # main app (chat + persona sidebar + trace panel)
+└── legacy/                  # earlier VCA-style demo, kept for reference
 data/
-├── catalog/        60 synthetic pieces (5 collections, EN+FR)
-├── heritage/       10 heritage stories (EN+FR)
-├── clients/        50 client profiles + trained booking model
-└── eval/           30-query golden set + eval reports
+├── bookings/                # Antonio et al hotel_bookings.csv.gz + citation
+├── property_kb/             # 13 hand-written markdown pages (RAG corpus)
+├── personas/                # generated synthetic guests (JSON)
+├── models/                  # trained analytics artifacts (gitignored)
+├── metrics/analytics.json   # last-run analytics summary
+└── eval/                    # eval case set + latest report
+src/maison_concierge/
+├── analytics/               # churn / CLV / segmentation models
+├── hospitality/             # LangGraph orchestrator + 5 specialists + guardrail
+└── eval/                    # eval harness
+scripts/
+├── bootstrap_demo.py        # one-shot: train + generate personas + index KB
+├── train_analytics.py       # retrain analytics only
+├── generate_personas.py     # regenerate synthetic personas only
+└── run_hospitality_eval.py  # run the 39-case eval and write the report
+tests/
+├── analytics/               # 17 tests: dataset, churn, CLV, segmentation
+└── hospitality/             # 39 tests + the eval-harness CI wrapper
 ```
 
----
-
-## How it works
-
-Each turn flows through the orchestrator graph:
-
-1. **Classify** — Claude returns a structured `IntentResult` via `messages.parse()` (intent, confidence, locale, routing flags). Confidence below the escalation threshold short-circuits to a graceful human handoff.
-2. **Retrieve** — The orchestrator fans out to whichever sub-graphs the intent requires: catalog RAG (hybrid), heritage RAG (dense), visual similarity (CLIP, optional). These run in parallel.
-3. **Compose** — A single Claude call assembles the evidence into the maison's voice. The system prompt is **prompt-cached** (~1.5K tokens × 5 turns × 85% cache hit) so every turn after the first reuses the cached prefix.
-
-The orchestrator emits a structured event log; the dashboard reads it directly so it renders even with the chat surface stopped.
-
----
-
-## Tests
+## Development
 
 ```bash
-pytest                  # 58 tests, ~30 seconds
-ruff check src tests    # lint
-mypy src                # type check
+# Lint
+ruff check src tests apps scripts
+
+# Analytics tests (run together)
+TOKENIZERS_PARALLELISM=false pytest tests/analytics -q
+
+# Hospitality tests (per-file — a Chroma/torch shutdown race segfaults
+# when they run together on Python 3.14)
+for f in tests/hospitality/test_*.py; do
+    TOKENIZERS_PARALLELISM=false pytest "$f" -q
+done
+
+# Re-run the eval harness
+TOKENIZERS_PARALLELISM=false python scripts/run_hospitality_eval.py
+
+# Retrain analytics (writes to data/models/ and data/metrics/analytics.json)
+python scripts/train_analytics.py
 ```
 
-CI runs all three on Python 3.11 and 3.12 — see [`.github/workflows/ci.yml`](.github/workflows/ci.yml).
+## Tech stack
 
----
+- **Orchestration.** LangGraph state machine, 7 nodes, deterministic
+  fan-out from a rule-based intent classifier.
+- **LLM host.** Anthropic Claude (currently unused — templated composer
+  ships as MVP; LLM composer with prompt caching is next).
+- **Retrieval.** Chroma + `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2`
+  embeddings; per-property scope filter.
+- **Analytics.** LightGBM (churn), NumPy + Pandas (value bander),
+  scikit-learn KMeans (segmentation), joblib + JSON persistence.
+- **UI.** Streamlit 1.35+ with a per-turn trace panel and live persona
+  snapshots.
+- **Quality.** pytest (56 tests + 39-case eval harness), ruff, GitHub
+  Actions CI on Python 3.11 and 3.12.
 
-## Acknowledgements & disclaimer
+## Non-goals
 
-This project is a portfolio demonstration. It is not affiliated with, endorsed by, or representative of any actual luxury maison. Collection names (Alhambra, Frivole, Ballerinas, Lucky Animals, Perlée) are referenced because they are part of the cultural vocabulary of haute joaillerie — every piece, price, advisor, heritage extract and client profile in this repository is fictional.
+- Not a real booking system integration.
+- Not a claim to train or fine-tune LLMs.
+- Not a large agent zoo — 5 specialists plus a guardrail node beat 12
+  shallow prompt chains.
+- When the analytics signal is weak, the report will say so — AUROC on
+  this dataset is 0.86 because deposit_type + lead_time actually
+  discriminate; on smaller signals we'd report smaller numbers.
+
+## License
+
+MIT. See the `license` field in `pyproject.toml`.
+
+## Attribution
+
+- Hotel booking demand dataset: Antonio, N., de Almeida, A., & Nunes, L.
+  (2019). *Hotel booking demand datasets.* Data in Brief, 22, 41–49.
+  <https://doi.org/10.1016/j.dib.2018.11.126>.
+- Built by [Gemma Gardela](https://github.com/Gemmagf).

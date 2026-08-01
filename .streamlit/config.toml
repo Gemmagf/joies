@@ -1,0 +1,15 @@
+[server]
+headless = true
+# CORS and XSRF are left at Streamlit's defaults (XSRF on, CORS on) — they
+# conflict when overridden together and Cloud handles origin allowlisting for us.
+
+[browser]
+gatherUsageStats = false
+
+[theme]
+base = "light"
+primaryColor = "#6c5b3f"
+backgroundColor = "#faf8f4"
+secondaryBackgroundColor = "#f6f0e5"
+textColor = "#2a221a"
+font = "serif"
