@@ -7,14 +7,23 @@ so the local `streamlit run apps/hospitality.py` command keeps working too.
 
 from __future__ import annotations
 
+import importlib.util as _importlib_util
+import sys as _sys
 from pathlib import Path
+
+_REPO_ROOT = Path(__file__).resolve().parent
+
+# Make `maison_concierge` importable even when the repo hasn't been
+# `pip install -e .`-installed (belt-and-braces alongside the `-e .` line
+# in requirements.txt — Streamlit Cloud reruns cause races where the
+# editable install can lose its .pth registration).
+_SRC = _REPO_ROOT / "src"
+if _SRC.exists() and str(_SRC) not in _sys.path:
+    _sys.path.insert(0, str(_SRC))
 
 # `apps/` is not a package (no __init__.py) — load the module by path so we
 # don't force a project-layout change that would break existing scripts.
-import importlib.util as _importlib_util
-import sys as _sys
-
-_APPS_DIR = Path(__file__).resolve().parent / "apps"
+_APPS_DIR = _REPO_ROOT / "apps"
 _HOSPITALITY_PATH = _APPS_DIR / "hospitality.py"
 
 _spec = _importlib_util.spec_from_file_location(

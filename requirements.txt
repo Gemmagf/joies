@@ -1,6 +1,11 @@
 # Streamlit Community Cloud reads this file. Kept in sync with pyproject.toml
 # by hand: any dep bumped there should be bumped here too.
 
+# Install this repo as an editable package so `from maison_concierge...` works.
+# Streamlit Cloud runs `pip install -r requirements.txt` — without this line
+# the src-layout package is on disk but not importable.
+-e .
+
 anthropic>=0.40.0
 langgraph>=0.2.0
 langchain-core>=0.3.0
